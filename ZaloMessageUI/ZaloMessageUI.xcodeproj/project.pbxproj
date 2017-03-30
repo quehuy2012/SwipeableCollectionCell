@@ -1,0 +1,886 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1090D3301E84DC55007FC31B /* PrivateIncomingMessageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1090D32F1E84DC55007FC31B /* PrivateIncomingMessageViewModel.m */; };
+		1090D3331E84DFFC007FC31B /* GroupEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1090D3321E84DFFC007FC31B /* GroupEntity.m */; };
+		A54EDA715895A8DB538BD9C1 /* Pods_ZaloMessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FCF286A1AC67DC86B6FFC3F /* Pods_ZaloMessageUI.framework */; };
+		C801D6621E8A5E510029FE85 /* ZASwippableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C801D6611E8A5E510029FE85 /* ZASwippableCell.m */; };
+		C8080E401E83D8100027231F /* ZAPrivateIncomingMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8080E3F1E83D8100027231F /* ZAPrivateIncomingMessageCell.m */; };
+		C8080E431E83D8270027231F /* ZAGroupIncomingMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8080E421E83D8270027231F /* ZAGroupIncomingMessageCell.m */; };
+		C8412AB81E83792F0003B9B5 /* IGIncomingMessageSectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8412AB71E83792F0003B9B5 /* IGIncomingMessageSectionController.m */; };
+		C8412ABC1E837D4A0003B9B5 /* ZAIncomingMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8412ABB1E837D4A0003B9B5 /* ZAIncomingMessageCell.m */; };
+		C846FEBD1E7F8D4400AD8116 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C846FEBC1E7F8D4400AD8116 /* main.m */; };
+		C846FEC01E7F8D4400AD8116 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C846FEBF1E7F8D4400AD8116 /* AppDelegate.m */; };
+		C846FEC31E7F8D4400AD8116 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C846FEC21E7F8D4400AD8116 /* ViewController.m */; };
+		C846FEC61E7F8D4400AD8116 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C846FEC41E7F8D4400AD8116 /* Main.storyboard */; };
+		C846FEC81E7F8D4400AD8116 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C846FEC71E7F8D4400AD8116 /* Assets.xcassets */; };
+		C846FECB1E7F8D4400AD8116 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C846FEC91E7F8D4400AD8116 /* LaunchScreen.storyboard */; };
+		C846FED61E7F8D4400AD8116 /* ZaloMessageUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C846FED51E7F8D4400AD8116 /* ZaloMessageUITests.m */; };
+		C846FEE61E7F939C00AD8116 /* FriendEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = C846FEE51E7F939C00AD8116 /* FriendEntity.m */; };
+		C846FEE91E7F948400AD8116 /* FriendViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C846FEE81E7F948400AD8116 /* FriendViewModel.m */; };
+		C846FEEE1E7F95B400AD8116 /* MainMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C846FEED1E7F95B400AD8116 /* MainMessageViewController.m */; };
+		C846FEF11E7F969500AD8116 /* MainMessageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C846FEF01E7F969500AD8116 /* MainMessageViewModel.m */; };
+		C846FEF41E7F991B00AD8116 /* IncomingMessageEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = C846FEF31E7F991B00AD8116 /* IncomingMessageEntity.m */; };
+		C846FEF71E7FC3FB00AD8116 /* IncomingMessageFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = C846FEF61E7FC3FB00AD8116 /* IncomingMessageFactory.m */; };
+		C846FEFB1E7FC99700AD8116 /* IGMainMessageDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C846FEFA1E7FC99700AD8116 /* IGMainMessageDataSource.m */; };
+		C846FF001E7FD1A900AD8116 /* IGCollapseSupplementary.m in Sources */ = {isa = PBXBuildFile; fileRef = C846FEFF1E7FD1A900AD8116 /* IGCollapseSupplementary.m */; };
+		C846FF0B1E7FD38700AD8116 /* IGSuggestFriendDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C846FF0A1E7FD38700AD8116 /* IGSuggestFriendDataSource.m */; };
+		C846FF0E1E7FD52500AD8116 /* SuggestFriendCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C846FF0D1E7FD52500AD8116 /* SuggestFriendCollectionViewCell.m */; };
+		C846FF1C1E7FDC7700AD8116 /* UIView+Anchors.m in Sources */ = {isa = PBXBuildFile; fileRef = C846FF111E7FDC7700AD8116 /* UIView+Anchors.m */; };
+		C846FF1D1E7FDC7700AD8116 /* AHAnchors.m in Sources */ = {isa = PBXBuildFile; fileRef = C846FF131E7FDC7700AD8116 /* AHAnchors.m */; };
+		C846FF1E1E7FDC7700AD8116 /* AHLayoutAnchor.m in Sources */ = {isa = PBXBuildFile; fileRef = C846FF151E7FDC7700AD8116 /* AHLayoutAnchor.m */; };
+		C846FF1F1E7FDC7700AD8116 /* AHLayoutDimension.m in Sources */ = {isa = PBXBuildFile; fileRef = C846FF171E7FDC7700AD8116 /* AHLayoutDimension.m */; };
+		C846FF201E7FDC7700AD8116 /* AHLayoutYAxisAnchor.m in Sources */ = {isa = PBXBuildFile; fileRef = C846FF191E7FDC7700AD8116 /* AHLayoutYAxisAnchor.m */; };
+		C846FF211E7FDC7700AD8116 /* AHLayoutXAxisAnchor.m in Sources */ = {isa = PBXBuildFile; fileRef = C846FF1B1E7FDC7700AD8116 /* AHLayoutXAxisAnchor.m */; };
+		C846FF271E7FE52B00AD8116 /* IGFriendSectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = C846FF241E7FE52B00AD8116 /* IGFriendSectionController.m */; };
+		C846FF281E7FE52B00AD8116 /* IGEmbeddedAdapterSectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = C846FF261E7FE52B00AD8116 /* IGEmbeddedAdapterSectionController.m */; };
+		C84B45A01E8918200076DC8F /* GroupIncomingMessageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C84B459F1E8918200076DC8F /* GroupIncomingMessageViewModel.m */; };
+		C84B45A31E8919860076DC8F /* GroupViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C84B45A21E8919860076DC8F /* GroupViewModel.m */; };
+		C84B45A61E891F6D0076DC8F /* PrivateIncomingMessageEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = C84B45A51E891F6D0076DC8F /* PrivateIncomingMessageEntity.m */; };
+		C84B45A91E8923A40076DC8F /* GroupIncomingMessageEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = C84B45A81E8923A40076DC8F /* GroupIncomingMessageEntity.m */; };
+		C84DDDB91E822D1600B3EF09 /* HeaderCollapseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C84DDDB81E822D1600B3EF09 /* HeaderCollapseView.m */; };
+		C84DDDBD1E82308800B3EF09 /* UICollapseCaretView.m in Sources */ = {isa = PBXBuildFile; fileRef = C84DDDBC1E82308800B3EF09 /* UICollapseCaretView.m */; };
+		C84DDDC01E8260D300B3EF09 /* EmbeddedCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C84DDDBF1E8260D300B3EF09 /* EmbeddedCollectionViewCell.m */; };
+		C84F7C2A1E8CF49100CC32EF /* ZASwipeActionTransitioningContext.m in Sources */ = {isa = PBXBuildFile; fileRef = C84F7C291E8CF49100CC32EF /* ZASwipeActionTransitioningContext.m */; };
+		C84F7C2F1E8CF79B00CC32EF /* ZASwipeAction.m in Sources */ = {isa = PBXBuildFile; fileRef = C84F7C2E1E8CF79B00CC32EF /* ZASwipeAction.m */; };
+		C84F7C321E8D047C00CC32EF /* ZASwipeActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C84F7C311E8D047C00CC32EF /* ZASwipeActionButton.m */; };
+		C84F7C351E8D05CD00CC32EF /* ZASwipeCellOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = C84F7C341E8D05CD00CC32EF /* ZASwipeCellOptions.m */; };
+		C8FC57981E8A0754004AEDBB /* SenderEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = C8FC57971E8A0754004AEDBB /* SenderEntity.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C846FED21E7F8D4400AD8116 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C846FEB01E7F8D4400AD8116 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C846FEB71E7F8D4400AD8116;
+			remoteInfo = ZaloMessageUI;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1090D32E1E84DC55007FC31B /* PrivateIncomingMessageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateIncomingMessageViewModel.h; sourceTree = "<group>"; };
+		1090D32F1E84DC55007FC31B /* PrivateIncomingMessageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateIncomingMessageViewModel.m; sourceTree = "<group>"; };
+		1090D3311E84DFFC007FC31B /* GroupEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupEntity.h; sourceTree = "<group>"; };
+		1090D3321E84DFFC007FC31B /* GroupEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupEntity.m; sourceTree = "<group>"; };
+		6FCF286A1AC67DC86B6FFC3F /* Pods_ZaloMessageUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZaloMessageUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3E5951A7E11608CFE176C9B /* Pods-ZaloMessageUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZaloMessageUI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZaloMessageUI/Pods-ZaloMessageUI.debug.xcconfig"; sourceTree = "<group>"; };
+		C801D6601E8A5E510029FE85 /* ZASwippableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwippableCell.h; sourceTree = "<group>"; };
+		C801D6611E8A5E510029FE85 /* ZASwippableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwippableCell.m; sourceTree = "<group>"; };
+		C8080E3E1E83D8100027231F /* ZAPrivateIncomingMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZAPrivateIncomingMessageCell.h; sourceTree = "<group>"; };
+		C8080E3F1E83D8100027231F /* ZAPrivateIncomingMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZAPrivateIncomingMessageCell.m; sourceTree = "<group>"; };
+		C8080E411E83D8270027231F /* ZAGroupIncomingMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZAGroupIncomingMessageCell.h; sourceTree = "<group>"; };
+		C8080E421E83D8270027231F /* ZAGroupIncomingMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZAGroupIncomingMessageCell.m; sourceTree = "<group>"; };
+		C8412AB61E83792F0003B9B5 /* IGIncomingMessageSectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGIncomingMessageSectionController.h; sourceTree = "<group>"; };
+		C8412AB71E83792F0003B9B5 /* IGIncomingMessageSectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGIncomingMessageSectionController.m; sourceTree = "<group>"; };
+		C8412ABA1E837D4A0003B9B5 /* ZAIncomingMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZAIncomingMessageCell.h; sourceTree = "<group>"; };
+		C8412ABB1E837D4A0003B9B5 /* ZAIncomingMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZAIncomingMessageCell.m; sourceTree = "<group>"; };
+		C8412ABE1E83865C0003B9B5 /* Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
+		C846FEB81E7F8D4400AD8116 /* ZaloMessageUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZaloMessageUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C846FEBC1E7F8D4400AD8116 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C846FEBE1E7F8D4400AD8116 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C846FEBF1E7F8D4400AD8116 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C846FEC11E7F8D4400AD8116 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C846FEC21E7F8D4400AD8116 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C846FEC51E7F8D4400AD8116 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C846FEC71E7F8D4400AD8116 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C846FECA1E7F8D4400AD8116 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C846FECC1E7F8D4400AD8116 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C846FED11E7F8D4400AD8116 /* ZaloMessageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZaloMessageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C846FED51E7F8D4400AD8116 /* ZaloMessageUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZaloMessageUITests.m; sourceTree = "<group>"; };
+		C846FED71E7F8D4400AD8116 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C846FEE41E7F939C00AD8116 /* FriendEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendEntity.h; sourceTree = "<group>"; };
+		C846FEE51E7F939C00AD8116 /* FriendEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendEntity.m; sourceTree = "<group>"; };
+		C846FEE71E7F948400AD8116 /* FriendViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendViewModel.h; sourceTree = "<group>"; };
+		C846FEE81E7F948400AD8116 /* FriendViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendViewModel.m; sourceTree = "<group>"; };
+		C846FEEC1E7F95B400AD8116 /* MainMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMessageViewController.h; sourceTree = "<group>"; };
+		C846FEED1E7F95B400AD8116 /* MainMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMessageViewController.m; sourceTree = "<group>"; };
+		C846FEEF1E7F969500AD8116 /* MainMessageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMessageViewModel.h; sourceTree = "<group>"; };
+		C846FEF01E7F969500AD8116 /* MainMessageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMessageViewModel.m; sourceTree = "<group>"; };
+		C846FEF21E7F991B00AD8116 /* IncomingMessageEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncomingMessageEntity.h; sourceTree = "<group>"; };
+		C846FEF31E7F991B00AD8116 /* IncomingMessageEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncomingMessageEntity.m; sourceTree = "<group>"; };
+		C846FEF51E7FC3FB00AD8116 /* IncomingMessageFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncomingMessageFactory.h; sourceTree = "<group>"; };
+		C846FEF61E7FC3FB00AD8116 /* IncomingMessageFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncomingMessageFactory.m; sourceTree = "<group>"; };
+		C846FEF91E7FC99700AD8116 /* IGMainMessageDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMainMessageDataSource.h; sourceTree = "<group>"; };
+		C846FEFA1E7FC99700AD8116 /* IGMainMessageDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMainMessageDataSource.m; sourceTree = "<group>"; };
+		C846FEFE1E7FD1A900AD8116 /* IGCollapseSupplementary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGCollapseSupplementary.h; sourceTree = "<group>"; };
+		C846FEFF1E7FD1A900AD8116 /* IGCollapseSupplementary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGCollapseSupplementary.m; sourceTree = "<group>"; };
+		C846FF091E7FD38700AD8116 /* IGSuggestFriendDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGSuggestFriendDataSource.h; sourceTree = "<group>"; };
+		C846FF0A1E7FD38700AD8116 /* IGSuggestFriendDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGSuggestFriendDataSource.m; sourceTree = "<group>"; };
+		C846FF0C1E7FD52500AD8116 /* SuggestFriendCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestFriendCollectionViewCell.h; sourceTree = "<group>"; };
+		C846FF0D1E7FD52500AD8116 /* SuggestFriendCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestFriendCollectionViewCell.m; sourceTree = "<group>"; };
+		C846FF101E7FDC7700AD8116 /* UIView+Anchors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Anchors.h"; sourceTree = "<group>"; };
+		C846FF111E7FDC7700AD8116 /* UIView+Anchors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Anchors.m"; sourceTree = "<group>"; };
+		C846FF121E7FDC7700AD8116 /* AHAnchors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHAnchors.h; sourceTree = "<group>"; };
+		C846FF131E7FDC7700AD8116 /* AHAnchors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHAnchors.m; sourceTree = "<group>"; };
+		C846FF141E7FDC7700AD8116 /* AHLayoutAnchor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHLayoutAnchor.h; sourceTree = "<group>"; };
+		C846FF151E7FDC7700AD8116 /* AHLayoutAnchor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHLayoutAnchor.m; sourceTree = "<group>"; };
+		C846FF161E7FDC7700AD8116 /* AHLayoutDimension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHLayoutDimension.h; sourceTree = "<group>"; };
+		C846FF171E7FDC7700AD8116 /* AHLayoutDimension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHLayoutDimension.m; sourceTree = "<group>"; };
+		C846FF181E7FDC7700AD8116 /* AHLayoutYAxisAnchor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHLayoutYAxisAnchor.h; sourceTree = "<group>"; };
+		C846FF191E7FDC7700AD8116 /* AHLayoutYAxisAnchor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHLayoutYAxisAnchor.m; sourceTree = "<group>"; };
+		C846FF1A1E7FDC7700AD8116 /* AHLayoutXAxisAnchor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHLayoutXAxisAnchor.h; sourceTree = "<group>"; };
+		C846FF1B1E7FDC7700AD8116 /* AHLayoutXAxisAnchor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHLayoutXAxisAnchor.m; sourceTree = "<group>"; };
+		C846FF221E7FDD7D00AD8116 /* System.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = System.h; sourceTree = "<group>"; };
+		C846FF231E7FE52B00AD8116 /* IGFriendSectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGFriendSectionController.h; sourceTree = "<group>"; };
+		C846FF241E7FE52B00AD8116 /* IGFriendSectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGFriendSectionController.m; sourceTree = "<group>"; };
+		C846FF251E7FE52B00AD8116 /* IGEmbeddedAdapterSectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGEmbeddedAdapterSectionController.h; sourceTree = "<group>"; };
+		C846FF261E7FE52B00AD8116 /* IGEmbeddedAdapterSectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGEmbeddedAdapterSectionController.m; sourceTree = "<group>"; };
+		C84B459D1E88C2590076DC8F /* ZAIncomingMessageCellProtected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZAIncomingMessageCellProtected.h; sourceTree = "<group>"; };
+		C84B459E1E8918200076DC8F /* GroupIncomingMessageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupIncomingMessageViewModel.h; sourceTree = "<group>"; };
+		C84B459F1E8918200076DC8F /* GroupIncomingMessageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupIncomingMessageViewModel.m; sourceTree = "<group>"; };
+		C84B45A11E8919860076DC8F /* GroupViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupViewModel.h; sourceTree = "<group>"; };
+		C84B45A21E8919860076DC8F /* GroupViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupViewModel.m; sourceTree = "<group>"; };
+		C84B45A41E891F6D0076DC8F /* PrivateIncomingMessageEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateIncomingMessageEntity.h; sourceTree = "<group>"; };
+		C84B45A51E891F6D0076DC8F /* PrivateIncomingMessageEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateIncomingMessageEntity.m; sourceTree = "<group>"; };
+		C84B45A71E8923A40076DC8F /* GroupIncomingMessageEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupIncomingMessageEntity.h; sourceTree = "<group>"; };
+		C84B45A81E8923A40076DC8F /* GroupIncomingMessageEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupIncomingMessageEntity.m; sourceTree = "<group>"; };
+		C84DDDB71E822D1600B3EF09 /* HeaderCollapseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderCollapseView.h; sourceTree = "<group>"; };
+		C84DDDB81E822D1600B3EF09 /* HeaderCollapseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderCollapseView.m; sourceTree = "<group>"; };
+		C84DDDBB1E82308800B3EF09 /* UICollapseCaretView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollapseCaretView.h; sourceTree = "<group>"; };
+		C84DDDBC1E82308800B3EF09 /* UICollapseCaretView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICollapseCaretView.m; sourceTree = "<group>"; };
+		C84DDDBE1E8260D300B3EF09 /* EmbeddedCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmbeddedCollectionViewCell.h; sourceTree = "<group>"; };
+		C84DDDBF1E8260D300B3EF09 /* EmbeddedCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmbeddedCollectionViewCell.m; sourceTree = "<group>"; };
+		C84F7C281E8CF49100CC32EF /* ZASwipeActionTransitioningContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeActionTransitioningContext.h; sourceTree = "<group>"; };
+		C84F7C291E8CF49100CC32EF /* ZASwipeActionTransitioningContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwipeActionTransitioningContext.m; sourceTree = "<group>"; };
+		C84F7C2D1E8CF79B00CC32EF /* ZASwipeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeAction.h; sourceTree = "<group>"; };
+		C84F7C2E1E8CF79B00CC32EF /* ZASwipeAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwipeAction.m; sourceTree = "<group>"; };
+		C84F7C301E8D047C00CC32EF /* ZASwipeActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeActionButton.h; sourceTree = "<group>"; };
+		C84F7C311E8D047C00CC32EF /* ZASwipeActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwipeActionButton.m; sourceTree = "<group>"; };
+		C84F7C331E8D05CD00CC32EF /* ZASwipeCellOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeCellOptions.h; sourceTree = "<group>"; };
+		C84F7C341E8D05CD00CC32EF /* ZASwipeCellOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwipeCellOptions.m; sourceTree = "<group>"; };
+		C85172891E853A2A00FDC542 /* IncommingMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IncommingMessage.h; sourceTree = "<group>"; };
+		C8FC57961E8A0754004AEDBB /* SenderEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenderEntity.h; sourceTree = "<group>"; };
+		C8FC57971E8A0754004AEDBB /* SenderEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenderEntity.m; sourceTree = "<group>"; };
+		D9043DC909995ED814AB345E /* Pods-ZaloMessageUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZaloMessageUI.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZaloMessageUI/Pods-ZaloMessageUI.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C846FEB51E7F8D4400AD8116 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A54EDA715895A8DB538BD9C1 /* Pods_ZaloMessageUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C846FECE1E7F8D4400AD8116 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		73237A1C1B9C5B2102EFFD71 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6FCF286A1AC67DC86B6FFC3F /* Pods_ZaloMessageUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		867B2E843192E2A3D4302274 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B3E5951A7E11608CFE176C9B /* Pods-ZaloMessageUI.debug.xcconfig */,
+				D9043DC909995ED814AB345E /* Pods-ZaloMessageUI.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C8080E3D1E83D77A0027231F /* IncomingMessageCell */ = {
+			isa = PBXGroup;
+			children = (
+				C84B459D1E88C2590076DC8F /* ZAIncomingMessageCellProtected.h */,
+				C8412ABA1E837D4A0003B9B5 /* ZAIncomingMessageCell.h */,
+				C8412ABB1E837D4A0003B9B5 /* ZAIncomingMessageCell.m */,
+				C8080E3E1E83D8100027231F /* ZAPrivateIncomingMessageCell.h */,
+				C8080E3F1E83D8100027231F /* ZAPrivateIncomingMessageCell.m */,
+				C8080E411E83D8270027231F /* ZAGroupIncomingMessageCell.h */,
+				C8080E421E83D8270027231F /* ZAGroupIncomingMessageCell.m */,
+				C801D6601E8A5E510029FE85 /* ZASwippableCell.h */,
+				C801D6611E8A5E510029FE85 /* ZASwippableCell.m */,
+			);
+			name = IncomingMessageCell;
+			sourceTree = "<group>";
+		};
+		C8412AB91E837C9D0003B9B5 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				C84F7C271E8CBC3F00CC32EF /* ZASwipeCellKit */,
+				C8080E3D1E83D77A0027231F /* IncomingMessageCell */,
+				C84DDDBE1E8260D300B3EF09 /* EmbeddedCollectionViewCell.h */,
+				C84DDDBF1E8260D300B3EF09 /* EmbeddedCollectionViewCell.m */,
+				C846FF0C1E7FD52500AD8116 /* SuggestFriendCollectionViewCell.h */,
+				C846FF0D1E7FD52500AD8116 /* SuggestFriendCollectionViewCell.m */,
+			);
+			name = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		C846FEAF1E7F8D4400AD8116 = {
+			isa = PBXGroup;
+			children = (
+				C846FEBA1E7F8D4400AD8116 /* ZaloMessageUI */,
+				C846FED41E7F8D4400AD8116 /* ZaloMessageUITests */,
+				C846FEB91E7F8D4400AD8116 /* Products */,
+				867B2E843192E2A3D4302274 /* Pods */,
+				73237A1C1B9C5B2102EFFD71 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C846FEB91E7F8D4400AD8116 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C846FEB81E7F8D4400AD8116 /* ZaloMessageUI.app */,
+				C846FED11E7F8D4400AD8116 /* ZaloMessageUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C846FEBA1E7F8D4400AD8116 /* ZaloMessageUI */ = {
+			isa = PBXGroup;
+			children = (
+				C846FF0F1E7FDC6300AD8116 /* ZAAnchor */,
+				C846FEE31E7F934D00AD8116 /* Controllers */,
+				C846FEE21E7F934900AD8116 /* Views */,
+				C846FEE11E7F934400AD8116 /* ViewModels */,
+				C846FEE01E7F934000AD8116 /* Models */,
+				C846FEBE1E7F8D4400AD8116 /* AppDelegate.h */,
+				C846FEBF1E7F8D4400AD8116 /* AppDelegate.m */,
+				C846FEC11E7F8D4400AD8116 /* ViewController.h */,
+				C846FEC21E7F8D4400AD8116 /* ViewController.m */,
+				C846FEC41E7F8D4400AD8116 /* Main.storyboard */,
+				C846FEC71E7F8D4400AD8116 /* Assets.xcassets */,
+				C846FEC91E7F8D4400AD8116 /* LaunchScreen.storyboard */,
+				C846FECC1E7F8D4400AD8116 /* Info.plist */,
+				C846FEBB1E7F8D4400AD8116 /* Supporting Files */,
+			);
+			path = ZaloMessageUI;
+			sourceTree = "<group>";
+		};
+		C846FEBB1E7F8D4400AD8116 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C846FF221E7FDD7D00AD8116 /* System.h */,
+				C846FEBC1E7F8D4400AD8116 /* main.m */,
+				C8412ABE1E83865C0003B9B5 /* Constant.h */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C846FED41E7F8D4400AD8116 /* ZaloMessageUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C846FED51E7F8D4400AD8116 /* ZaloMessageUITests.m */,
+				C846FED71E7F8D4400AD8116 /* Info.plist */,
+			);
+			path = ZaloMessageUITests;
+			sourceTree = "<group>";
+		};
+		C846FEE01E7F934000AD8116 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C8FC57951E8A06DB004AEDBB /* SenderEntity */,
+				C846FEF21E7F991B00AD8116 /* IncomingMessageEntity.h */,
+				C846FEF31E7F991B00AD8116 /* IncomingMessageEntity.m */,
+				C84B45A41E891F6D0076DC8F /* PrivateIncomingMessageEntity.h */,
+				C84B45A51E891F6D0076DC8F /* PrivateIncomingMessageEntity.m */,
+				C84B45A71E8923A40076DC8F /* GroupIncomingMessageEntity.h */,
+				C84B45A81E8923A40076DC8F /* GroupIncomingMessageEntity.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		C846FEE11E7F934400AD8116 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C85172881E853A0500FDC542 /* IncomingMessage */,
+				C846FEE71E7F948400AD8116 /* FriendViewModel.h */,
+				C846FEE81E7F948400AD8116 /* FriendViewModel.m */,
+				C846FEEF1E7F969500AD8116 /* MainMessageViewModel.h */,
+				C846FEF01E7F969500AD8116 /* MainMessageViewModel.m */,
+				C84B45A11E8919860076DC8F /* GroupViewModel.h */,
+				C84B45A21E8919860076DC8F /* GroupViewModel.m */,
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		C846FEE21E7F934900AD8116 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C8412AB91E837C9D0003B9B5 /* CollectionViewCell */,
+				C84DDDBA1E822FA500B3EF09 /* CollapseView */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		C846FEE31E7F934D00AD8116 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C846FEFC1E7FD0B700AD8116 /* IGListKit */,
+				C846FEEA1E7F94B900AD8116 /* ViewControllers */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		C846FEEA1E7F94B900AD8116 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C846FEEC1E7F95B400AD8116 /* MainMessageViewController.h */,
+				C846FEED1E7F95B400AD8116 /* MainMessageViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C846FEEB1E7F94C000AD8116 /* IGListSectionControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C846FF231E7FE52B00AD8116 /* IGFriendSectionController.h */,
+				C846FF241E7FE52B00AD8116 /* IGFriendSectionController.m */,
+				C846FF251E7FE52B00AD8116 /* IGEmbeddedAdapterSectionController.h */,
+				C846FF261E7FE52B00AD8116 /* IGEmbeddedAdapterSectionController.m */,
+				C8412AB61E83792F0003B9B5 /* IGIncomingMessageSectionController.h */,
+				C8412AB71E83792F0003B9B5 /* IGIncomingMessageSectionController.m */,
+			);
+			name = IGListSectionControllers;
+			sourceTree = "<group>";
+		};
+		C846FEF81E7FC93200AD8116 /* IGListDataSources */ = {
+			isa = PBXGroup;
+			children = (
+				C846FEF91E7FC99700AD8116 /* IGMainMessageDataSource.h */,
+				C846FEFA1E7FC99700AD8116 /* IGMainMessageDataSource.m */,
+				C846FF091E7FD38700AD8116 /* IGSuggestFriendDataSource.h */,
+				C846FF0A1E7FD38700AD8116 /* IGSuggestFriendDataSource.m */,
+			);
+			name = IGListDataSources;
+			sourceTree = "<group>";
+		};
+		C846FEFC1E7FD0B700AD8116 /* IGListKit */ = {
+			isa = PBXGroup;
+			children = (
+				C846FF011E7FD1BC00AD8116 /* IGListSupplementary */,
+				C846FEF81E7FC93200AD8116 /* IGListDataSources */,
+				C846FEEB1E7F94C000AD8116 /* IGListSectionControllers */,
+			);
+			name = IGListKit;
+			sourceTree = "<group>";
+		};
+		C846FF011E7FD1BC00AD8116 /* IGListSupplementary */ = {
+			isa = PBXGroup;
+			children = (
+				C846FEFE1E7FD1A900AD8116 /* IGCollapseSupplementary.h */,
+				C846FEFF1E7FD1A900AD8116 /* IGCollapseSupplementary.m */,
+			);
+			name = IGListSupplementary;
+			sourceTree = "<group>";
+		};
+		C846FF0F1E7FDC6300AD8116 /* ZAAnchor */ = {
+			isa = PBXGroup;
+			children = (
+				C846FF101E7FDC7700AD8116 /* UIView+Anchors.h */,
+				C846FF111E7FDC7700AD8116 /* UIView+Anchors.m */,
+				C846FF121E7FDC7700AD8116 /* AHAnchors.h */,
+				C846FF131E7FDC7700AD8116 /* AHAnchors.m */,
+				C846FF141E7FDC7700AD8116 /* AHLayoutAnchor.h */,
+				C846FF151E7FDC7700AD8116 /* AHLayoutAnchor.m */,
+				C846FF161E7FDC7700AD8116 /* AHLayoutDimension.h */,
+				C846FF171E7FDC7700AD8116 /* AHLayoutDimension.m */,
+				C846FF181E7FDC7700AD8116 /* AHLayoutYAxisAnchor.h */,
+				C846FF191E7FDC7700AD8116 /* AHLayoutYAxisAnchor.m */,
+				C846FF1A1E7FDC7700AD8116 /* AHLayoutXAxisAnchor.h */,
+				C846FF1B1E7FDC7700AD8116 /* AHLayoutXAxisAnchor.m */,
+			);
+			name = ZAAnchor;
+			sourceTree = "<group>";
+		};
+		C84DDDBA1E822FA500B3EF09 /* CollapseView */ = {
+			isa = PBXGroup;
+			children = (
+				C84DDDB71E822D1600B3EF09 /* HeaderCollapseView.h */,
+				C84DDDB81E822D1600B3EF09 /* HeaderCollapseView.m */,
+				C84DDDBB1E82308800B3EF09 /* UICollapseCaretView.h */,
+				C84DDDBC1E82308800B3EF09 /* UICollapseCaretView.m */,
+			);
+			name = CollapseView;
+			sourceTree = "<group>";
+		};
+		C84F7C271E8CBC3F00CC32EF /* ZASwipeCellKit */ = {
+			isa = PBXGroup;
+			children = (
+				C84F7C2C1E8CF78400CC32EF /* ZASwipeAction */,
+				C84F7C2B1E8CF5FC00CC32EF /* ZASwipeActionTransitioningContext */,
+			);
+			name = ZASwipeCellKit;
+			sourceTree = "<group>";
+		};
+		C84F7C2B1E8CF5FC00CC32EF /* ZASwipeActionTransitioningContext */ = {
+			isa = PBXGroup;
+			children = (
+				C84F7C281E8CF49100CC32EF /* ZASwipeActionTransitioningContext.h */,
+				C84F7C291E8CF49100CC32EF /* ZASwipeActionTransitioningContext.m */,
+			);
+			name = ZASwipeActionTransitioningContext;
+			sourceTree = "<group>";
+		};
+		C84F7C2C1E8CF78400CC32EF /* ZASwipeAction */ = {
+			isa = PBXGroup;
+			children = (
+				C84F7C2D1E8CF79B00CC32EF /* ZASwipeAction.h */,
+				C84F7C2E1E8CF79B00CC32EF /* ZASwipeAction.m */,
+				C84F7C301E8D047C00CC32EF /* ZASwipeActionButton.h */,
+				C84F7C311E8D047C00CC32EF /* ZASwipeActionButton.m */,
+				C84F7C331E8D05CD00CC32EF /* ZASwipeCellOptions.h */,
+				C84F7C341E8D05CD00CC32EF /* ZASwipeCellOptions.m */,
+			);
+			name = ZASwipeAction;
+			sourceTree = "<group>";
+		};
+		C85172881E853A0500FDC542 /* IncomingMessage */ = {
+			isa = PBXGroup;
+			children = (
+				C85172891E853A2A00FDC542 /* IncommingMessage.h */,
+				C846FEF51E7FC3FB00AD8116 /* IncomingMessageFactory.h */,
+				C846FEF61E7FC3FB00AD8116 /* IncomingMessageFactory.m */,
+				1090D32E1E84DC55007FC31B /* PrivateIncomingMessageViewModel.h */,
+				1090D32F1E84DC55007FC31B /* PrivateIncomingMessageViewModel.m */,
+				C84B459E1E8918200076DC8F /* GroupIncomingMessageViewModel.h */,
+				C84B459F1E8918200076DC8F /* GroupIncomingMessageViewModel.m */,
+			);
+			name = IncomingMessage;
+			sourceTree = "<group>";
+		};
+		C8FC57951E8A06DB004AEDBB /* SenderEntity */ = {
+			isa = PBXGroup;
+			children = (
+				1090D3311E84DFFC007FC31B /* GroupEntity.h */,
+				1090D3321E84DFFC007FC31B /* GroupEntity.m */,
+				C846FEE41E7F939C00AD8116 /* FriendEntity.h */,
+				C846FEE51E7F939C00AD8116 /* FriendEntity.m */,
+				C8FC57961E8A0754004AEDBB /* SenderEntity.h */,
+				C8FC57971E8A0754004AEDBB /* SenderEntity.m */,
+			);
+			name = SenderEntity;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C846FEB71E7F8D4400AD8116 /* ZaloMessageUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C846FEDA1E7F8D4400AD8116 /* Build configuration list for PBXNativeTarget "ZaloMessageUI" */;
+			buildPhases = (
+				B84D1719BC28EAD94CC1E6AB /* [CP] Check Pods Manifest.lock */,
+				C846FEB41E7F8D4400AD8116 /* Sources */,
+				C846FEB51E7F8D4400AD8116 /* Frameworks */,
+				C846FEB61E7F8D4400AD8116 /* Resources */,
+				2796ACE7C7E69D9B79D27752 /* [CP] Embed Pods Frameworks */,
+				9D12E09E6A86CD6699281145 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZaloMessageUI;
+			productName = ZaloMessageUI;
+			productReference = C846FEB81E7F8D4400AD8116 /* ZaloMessageUI.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C846FED01E7F8D4400AD8116 /* ZaloMessageUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C846FEDD1E7F8D4400AD8116 /* Build configuration list for PBXNativeTarget "ZaloMessageUITests" */;
+			buildPhases = (
+				C846FECD1E7F8D4400AD8116 /* Sources */,
+				C846FECE1E7F8D4400AD8116 /* Frameworks */,
+				C846FECF1E7F8D4400AD8116 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C846FED31E7F8D4400AD8116 /* PBXTargetDependency */,
+			);
+			name = ZaloMessageUITests;
+			productName = ZaloMessageUITests;
+			productReference = C846FED11E7F8D4400AD8116 /* ZaloMessageUITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C846FEB01E7F8D4400AD8116 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = CPU11713;
+				TargetAttributes = {
+					C846FEB71E7F8D4400AD8116 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 2X825966A4;
+						ProvisioningStyle = Automatic;
+					};
+					C846FED01E7F8D4400AD8116 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 2X825966A4;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C846FEB71E7F8D4400AD8116;
+					};
+				};
+			};
+			buildConfigurationList = C846FEB31E7F8D4400AD8116 /* Build configuration list for PBXProject "ZaloMessageUI" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C846FEAF1E7F8D4400AD8116;
+			productRefGroup = C846FEB91E7F8D4400AD8116 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C846FEB71E7F8D4400AD8116 /* ZaloMessageUI */,
+				C846FED01E7F8D4400AD8116 /* ZaloMessageUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C846FEB61E7F8D4400AD8116 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C846FECB1E7F8D4400AD8116 /* LaunchScreen.storyboard in Resources */,
+				C846FEC81E7F8D4400AD8116 /* Assets.xcassets in Resources */,
+				C846FEC61E7F8D4400AD8116 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C846FECF1E7F8D4400AD8116 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2796ACE7C7E69D9B79D27752 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZaloMessageUI/Pods-ZaloMessageUI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9D12E09E6A86CD6699281145 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZaloMessageUI/Pods-ZaloMessageUI-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B84D1719BC28EAD94CC1E6AB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C846FEB41E7F8D4400AD8116 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C846FF001E7FD1A900AD8116 /* IGCollapseSupplementary.m in Sources */,
+				C84B45A01E8918200076DC8F /* GroupIncomingMessageViewModel.m in Sources */,
+				C84B45A61E891F6D0076DC8F /* PrivateIncomingMessageEntity.m in Sources */,
+				C846FEF71E7FC3FB00AD8116 /* IncomingMessageFactory.m in Sources */,
+				C846FEFB1E7FC99700AD8116 /* IGMainMessageDataSource.m in Sources */,
+				C84B45A31E8919860076DC8F /* GroupViewModel.m in Sources */,
+				C8412AB81E83792F0003B9B5 /* IGIncomingMessageSectionController.m in Sources */,
+				C846FF0B1E7FD38700AD8116 /* IGSuggestFriendDataSource.m in Sources */,
+				C846FF1F1E7FDC7700AD8116 /* AHLayoutDimension.m in Sources */,
+				C846FF1E1E7FDC7700AD8116 /* AHLayoutAnchor.m in Sources */,
+				C84B45A91E8923A40076DC8F /* GroupIncomingMessageEntity.m in Sources */,
+				C846FEF11E7F969500AD8116 /* MainMessageViewModel.m in Sources */,
+				C846FF271E7FE52B00AD8116 /* IGFriendSectionController.m in Sources */,
+				C846FF0E1E7FD52500AD8116 /* SuggestFriendCollectionViewCell.m in Sources */,
+				C84F7C351E8D05CD00CC32EF /* ZASwipeCellOptions.m in Sources */,
+				C846FF281E7FE52B00AD8116 /* IGEmbeddedAdapterSectionController.m in Sources */,
+				C8FC57981E8A0754004AEDBB /* SenderEntity.m in Sources */,
+				C8412ABC1E837D4A0003B9B5 /* ZAIncomingMessageCell.m in Sources */,
+				C846FEC31E7F8D4400AD8116 /* ViewController.m in Sources */,
+				C801D6621E8A5E510029FE85 /* ZASwippableCell.m in Sources */,
+				C846FEC01E7F8D4400AD8116 /* AppDelegate.m in Sources */,
+				C84DDDB91E822D1600B3EF09 /* HeaderCollapseView.m in Sources */,
+				C8080E401E83D8100027231F /* ZAPrivateIncomingMessageCell.m in Sources */,
+				C84DDDBD1E82308800B3EF09 /* UICollapseCaretView.m in Sources */,
+				C84F7C321E8D047C00CC32EF /* ZASwipeActionButton.m in Sources */,
+				C846FEE61E7F939C00AD8116 /* FriendEntity.m in Sources */,
+				C846FF1D1E7FDC7700AD8116 /* AHAnchors.m in Sources */,
+				1090D3301E84DC55007FC31B /* PrivateIncomingMessageViewModel.m in Sources */,
+				C84F7C2A1E8CF49100CC32EF /* ZASwipeActionTransitioningContext.m in Sources */,
+				C84F7C2F1E8CF79B00CC32EF /* ZASwipeAction.m in Sources */,
+				C846FEF41E7F991B00AD8116 /* IncomingMessageEntity.m in Sources */,
+				C846FF211E7FDC7700AD8116 /* AHLayoutXAxisAnchor.m in Sources */,
+				C846FEBD1E7F8D4400AD8116 /* main.m in Sources */,
+				C846FEEE1E7F95B400AD8116 /* MainMessageViewController.m in Sources */,
+				1090D3331E84DFFC007FC31B /* GroupEntity.m in Sources */,
+				C846FF201E7FDC7700AD8116 /* AHLayoutYAxisAnchor.m in Sources */,
+				C8080E431E83D8270027231F /* ZAGroupIncomingMessageCell.m in Sources */,
+				C84DDDC01E8260D300B3EF09 /* EmbeddedCollectionViewCell.m in Sources */,
+				C846FF1C1E7FDC7700AD8116 /* UIView+Anchors.m in Sources */,
+				C846FEE91E7F948400AD8116 /* FriendViewModel.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C846FECD1E7F8D4400AD8116 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C846FED61E7F8D4400AD8116 /* ZaloMessageUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C846FED31E7F8D4400AD8116 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C846FEB71E7F8D4400AD8116 /* ZaloMessageUI */;
+			targetProxy = C846FED21E7F8D4400AD8116 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C846FEC41E7F8D4400AD8116 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C846FEC51E7F8D4400AD8116 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C846FEC91E7F8D4400AD8116 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C846FECA1E7F8D4400AD8116 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C846FED81E7F8D4400AD8116 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C846FED91E7F8D4400AD8116 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C846FEDB1E7F8D4400AD8116 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3E5951A7E11608CFE176C9B /* Pods-ZaloMessageUI.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2X825966A4;
+				INFOPLIST_FILE = ZaloMessageUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.VNG.Huy.ZaloMessageUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C846FEDC1E7F8D4400AD8116 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D9043DC909995ED814AB345E /* Pods-ZaloMessageUI.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2X825966A4;
+				INFOPLIST_FILE = ZaloMessageUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.VNG.Huy.ZaloMessageUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C846FEDE1E7F8D4400AD8116 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 2X825966A4;
+				INFOPLIST_FILE = ZaloMessageUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.VNG.Huy.ZaloMessageUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZaloMessageUI.app/ZaloMessageUI";
+			};
+			name = Debug;
+		};
+		C846FEDF1E7F8D4400AD8116 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 2X825966A4;
+				INFOPLIST_FILE = ZaloMessageUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.VNG.Huy.ZaloMessageUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZaloMessageUI.app/ZaloMessageUI";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C846FEB31E7F8D4400AD8116 /* Build configuration list for PBXProject "ZaloMessageUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C846FED81E7F8D4400AD8116 /* Debug */,
+				C846FED91E7F8D4400AD8116 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C846FEDA1E7F8D4400AD8116 /* Build configuration list for PBXNativeTarget "ZaloMessageUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C846FEDB1E7F8D4400AD8116 /* Debug */,
+				C846FEDC1E7F8D4400AD8116 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C846FEDD1E7F8D4400AD8116 /* Build configuration list for PBXNativeTarget "ZaloMessageUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C846FEDE1E7F8D4400AD8116 /* Debug */,
+				C846FEDF1E7F8D4400AD8116 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C846FEB01E7F8D4400AD8116 /* Project object */;
+}
