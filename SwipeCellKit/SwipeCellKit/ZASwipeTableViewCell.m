@@ -7,34 +7,35 @@
 //
 
 #import "ZASwipeTableViewCell.h"
-#import "ZASwipeActionState.h"
 #import "ZASwipeActionsView.h"
 #import "ZASwipeExpansionStyle.h"
 #import "ZASwipeCellOptions.h"
+#import "ZASwipeAccessibilityCustomAction.h"
 #import "UIPanGestureRecognizer+SwipeCellKit.h"
 #import "UITableView+SwipeCellKit.h"
 
-@interface ZASwipeTableViewCell () <ZASwipeActionsViewDelegate, ZASwipeable>
+@interface ZASwipeTableViewCell () <ZASwipeActionsViewDelegate, ZASwipeable, UIGestureRecognizerDelegate>
+
+- (void)handlePanGesture:(UIPanGestureRecognizer *)gesture;
 
 @end
 
 @implementation ZASwipeTableViewCell
 
 @synthesize actionsView = _actionsView;
-@synthesize actionState = _actionState;
-@synthesize frame = _frame;
+@synthesize state = _state;
+@synthesize swipeViewFrame = _frame;
 @synthesize layoutMargins = _layoutMargins;
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
 }
+
+//- (CGRect)swipeCellFrame {
+//    return self.frame;
+//}
 
 #pragma mark - Life cycle
 
@@ -71,31 +72,36 @@
 }
 
 - (void)setUp {
-    _actionState = [ZASwipeActionState center];
+    _state = ZASwipeStateCenter;
     _originalLayoutMargins = UIEdgeInsetsZero;
     _originalCenter = 0;
     _elasticScrollRatio = 0.4;
     _scrollRatio = 1.0;
     
+    self.clipsToBounds = NO;
+    
     _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
     _tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
+    
+    _panGestureRecognizer.delegate = self;
+    _tapGestureRecognizer.delegate = self;
     
     [self addGestureRecognizer:_panGestureRecognizer];
     [self addGestureRecognizer:_tapGestureRecognizer];
     
-    self.clipsToBounds = NO;
+    self.userInteractionEnabled = YES;
     
-    [self addObserver:self forKeyPath:@"center" options:NSKeyValueObservingOptionNew context:nil];
+    //[self addObserver:self forKeyPath:@"center" options:NSKeyValueObservingOptionNew context:nil];
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    if ([@"center" compare:keyPath] == NSOrderedSame) {
-        CGPoint newCenter = [change[NSKeyValueChangeNewKey] CGPointValue];
-        NSLog(@"New center: (%f, %f)", newCenter.x, newCenter.y);
-        
-        self.actionsView.visibleWidth = fabs(CGRectGetMinX(self.frame));
-    }
-}
+//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+//    if ([@"center" compare:keyPath] == NSOrderedSame) {
+//        CGPoint newCenter = [change[NSKeyValueChangeNewKey] CGPointValue];
+//        NSLog(@"New center: (%f, %f)", newCenter.x, newCenter.y);
+//        
+//        self.actionsView.visibleWidth = fabs(CGRectGetMinX(self.frame));
+//    }
+//}
 
 - (void)didMoveToSuperview {
     [super didMoveToSuperview];
@@ -118,14 +124,15 @@
     [super setEditing:editing animated:animated];
     
     if (editing) {
-        [self hideSwipeWithAnimation:animated];
+        [self hideSwipeWithAnimation:NO];
     }
 }
 
 
 #pragma mark - Gesture
 - (void)handlePanGesture:(UIPanGestureRecognizer *)gesture {
-    if (self.editing == NO || gesture.view == nil) {
+    NSLog(@"Panning");
+    if (self.editing == YES || gesture.view == nil) {
         return;
     }
     
@@ -137,7 +144,7 @@
             
             self.originalCenter = self.center.x;
             
-            if (self.actionState.state == ZASwipeStateCenter || self.actionState.state == ZASwipeStateAnimatingToCenter) {
+            if (self.state == ZASwipeStateCenter || self.state == ZASwipeStateAnimatingToCenter) {
                 CGPoint velocity = [gesture velocityInView:target];
                 ZASwipeActionsOrientation orientation = velocity.x > 0 ? ZASwipeActionsOrientationLeft : ZASwipeActionsOrientationRight;
                 [self showActionsViewForOrientation:orientation];
@@ -145,7 +152,7 @@
             break;
         
         case UIGestureRecognizerStateChanged:
-            if (self.actionsView) {
+            if (!self.actionsView) {
                 return;
             }
             
@@ -174,6 +181,7 @@
                     CGFloat delta = centerForTranslationToEdge - self.originalCenter;
 #warning animateToOffset
                     // [self animateToOffset: centerForTranslationToEdge];
+                    [self animateWithDuration:0.7 toOffset:centerForTranslationToEdge withInitialVelocity:0 completion:nil];
                     [gesture setTranslation:CGPointMake(delta, 0) inView:self.superview];
                 }
                 else {
@@ -204,19 +212,25 @@
             }
             
             CGPoint velocity = [gesture velocityInView:target];
-            self.actionState = [self targetStateForVelocity:velocity];
+            self.state = [self targetStateForVelocity:velocity];
             
             if (self.actionsView.expanded == YES && self.actionsView.expandableAction) {
                 [self performAction:self.actionsView.expandableAction];
             }
             else {
-                CGFloat targetOffset = [self targetCenterActive:self.actionState.isActive];
+                CGFloat targetOffset = [self targetCenterActive:(self.state != ZASwipeStateCenter)];
                 CGFloat distance = targetOffset - self.center.x;
                 CGFloat normalizedVelocity = velocity.x * self.scrollRatio / distance;
 #warning animate
                 //[self animateToOffset:targetOffset withInitialVelocity:normalizedVelocity];
+                __weak typeof(self) weakSelf = self;
+                [self animateWithDuration:0.7 toOffset:targetOffset withInitialVelocity:normalizedVelocity completion:^{
+                    if (weakSelf.state == ZASwipeStateCenter) {
+                        [weakSelf reset];
+                    }
+                }];
                 
-                if (!self.actionState.isActive) {
+                if (self.state == ZASwipeStateCenter) {
                     [self notifyEditingStateChangeIsActive:NO];
                 }
             }
@@ -227,11 +241,12 @@
     }
 }
 
-- (void)handleTapGesture:(UITapGestureRecognizer *)gesture {
+- (void)handleTapGesture:(UIGestureRecognizer *)gesture {
+    NSLog(@"Tapping");
     [self hideSwipeWithAnimation:YES];
 }
 
-- (void)handleTablePanGesture:(UIPanGestureRecognizer *)gesture {
+- (void)handleTablePanGesture:(UIGestureRecognizer *)gesture {
     if (gesture.state == UIGestureRecognizerStateBegan) {
         [self hideSwipeWithAnimation:YES];
     }
@@ -242,17 +257,17 @@
 - (BOOL)showActionsViewForOrientation:(ZASwipeActionsOrientation)orientation {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:self];
     NSArray<ZASwipeAction *> *actions;
-    if (indexPath) {
-        actions = [self.delegate tableView:self.tableView editActionsForRowAtIndexPath:indexPath forOrientation:orientation];
-        if (actions == nil || actions.count == 0) {
-            return NO;
-        }
+    
+    if (!indexPath) {
+        return NO;
     }
-    else {
+    actions = [self.delegate tableView:self.tableView editActionsForRowAtIndexPath:indexPath forOrientation:orientation];
+    if (actions == nil || actions.count == 0) {
         return NO;
     }
     
-    self.originalLayoutMargins = [super layoutMargins];
+    
+    self.originalLayoutMargins = super.layoutMargins;
     
     // Remove hightlight and deselect any selected cells
     [self setHighlighted:NO];
@@ -287,8 +302,7 @@
     ZASwipeActionsView *actionsView = [[ZASwipeActionsView alloc] initWithMaxSize:self.bounds.size option:options orientation:orientation actions:actions];
     actionsView.delegate = self;
     [self addSubview:actionsView];
-    
-#warning minimum required ios 9
+
     NSLayoutConstraint *height, *width, *top, *pinHorizontal;
     height = [actionsView.heightAnchor constraintEqualToAnchor:self.heightAnchor];
     width = [actionsView.widthAnchor constraintEqualToAnchor:self.widthAnchor multiplier:2.0];
@@ -326,8 +340,8 @@
     
 #warning sua animator thanh animate de support ios 9
     __weak typeof(self) weakSelf = self;
-    [UIView animateWithDuration:duration delay:0.0 usingSpringWithDamping:18.0 initialSpringVelocity:velocity options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        weakSelf.center = CGPointMake(offset, self.center.y);
+    [UIView animateWithDuration:duration delay:0.0 usingSpringWithDamping:1.0 initialSpringVelocity:velocity options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        weakSelf.center = CGPointMake(offset, weakSelf.center.y);
         [weakSelf layoutIfNeeded];
     } completion:^(BOOL finished) {
         if (completion) {
@@ -348,7 +362,7 @@
     
     if (!UIAccessibilityIsVoiceOverRunning()) {
         for (ZASwipeTableViewCell *cell in self.tableView.swipeCells) {
-            if ((cell.actionState.state == ZASwipeStateLeft || cell.actionState.state == ZASwipeStateRight) && ![cell containsPoint:pointInSuperView]) {
+            if ((cell.state == ZASwipeStateLeft || cell.state == ZASwipeStateRight) && ![cell containsPoint:pointInSuperView]) {
                 [self.tableView hideSwipeCell];
                 return NO;
             }
@@ -363,33 +377,33 @@
 }
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
-    if (self.actionState.state == ZASwipeStateCenter) {
+    if (self.state == ZASwipeStateCenter) {
         [super setHighlighted:highlighted animated:animated];
     }
 }
 
 #warning override super property with getter
 - (UIEdgeInsets)layoutMargins {
-    return self.frame.origin.x != 0 ? _originalLayoutMargins : _layoutMargins;
+    return self.frame.origin.x != 0 ? _originalLayoutMargins : [super layoutMargins];
 }
 
 - (void)setLayoutMargins:(UIEdgeInsets)layoutMargins {
-    _layoutMargins = layoutMargins;
+    [super setLayoutMargins:layoutMargins];
 }
 
 #pragma mark - Swipe state
 
-- (ZASwipeActionState *)targetStateForVelocity:(CGPoint)velocity {
+- (ZASwipeState)targetStateForVelocity:(CGPoint)velocity {
     if (!self.actionsView) {
-        return [ZASwipeActionState center];
+        return ZASwipeStateCenter;
     }
     
     switch (self.actionsView.orientation) {
         case ZASwipeActionsOrientationLeft:
-            return (velocity.x < 0 && !self.actionsView.expanded) ? [ZASwipeActionState center] : [ZASwipeActionState left];
+            return (velocity.x < 0 && !self.actionsView.expanded) ? ZASwipeStateCenter : ZASwipeStateLeft;
             break;
         case ZASwipeActionsOrientationRight:
-            return (velocity.x > 0 && !self.actionsView.expanded) ? [ZASwipeActionState center] : [ZASwipeActionState right];
+            return (velocity.x > 0 && !self.actionsView.expanded) ? ZASwipeStateCenter: ZASwipeStateRight;
         default:
             break;
     }
@@ -405,29 +419,30 @@
 }
 
 - (void)reset {
-    self.actionState = [ZASwipeActionState center];
+    self.state = ZASwipeStateCenter;
     
     [self.tableView setGestureEnabled:YES];
     
     [self.actionsView removeFromSuperview];
-    self.actionState = nil;
+    self.actionsView = nil;
 }
 
 - (void)hideSwipeWithAnimation:(BOOL)animated {
-    if (self.actionState.state != ZASwipeStateLeft &&
-        self.actionState.state != ZASwipeStateRight) {
+    if (self.state != ZASwipeStateLeft &&
+        self.state != ZASwipeStateRight) {
         return;
     }
     
-    self.actionState = [ZASwipeActionState animatingToCenter];
+    self.state = ZASwipeStateAnimatingToCenter;
     
     [self.tableView setGestureEnabled:YES];
     
     CGFloat targetCenter = [self targetCenterActive:NO];
     
     if (animated) {
+        __weak typeof(self) weakSelf = self;
         [self animateToOffset:targetCenter completion:^{
-            [self reset];
+            [weakSelf reset];
         }];
     }
     else {
@@ -439,15 +454,15 @@
 }
 
 - (void)showSwipe:(ZASwipeActionsOrientation)orientation animated:(BOOL)animated completion:(void (^)(BOOL))completion {
-    ZASwipeActionState *targetState = [ZASwipeActionState stateFromOrientation:orientation];
+    ZASwipeState targetState = orientation == ZASwipeActionsOrientationLeft ? ZASwipeStateLeft : ZASwipeStateRight;
     
-    if ([self.actionState isEqual:targetState] || ![self showActionsViewForOrientation:orientation]) {
+    if (self.state == targetState || ![self showActionsViewForOrientation:orientation]) {
         return;
     }
     
     [self.tableView hideSwipeCell];
     
-    self.actionState = targetState;
+    self.state = targetState;
     
     CGFloat targetCenter = [self targetCenterActive:YES];
     
@@ -520,7 +535,7 @@
     mask.backgroundColor = [UIColor whiteColor];
     self.maskView = mask;
     
-    CGFloat newCenter =CGRectGetMidX(self.bounds) - (self.bounds.size.width + self.actionsView.minimumButtonWidth) * self.actionsView.orientation;
+    CGFloat newCenter = CGRectGetMidX(self.bounds) - (self.bounds.size.width + self.actionsView.minimumButtonWidth) * self.actionsView.orientation;
     
     __weak typeof(self) weakSelf = self;
     __weak ZASwipeAction *weakAction = action;
@@ -578,6 +593,8 @@
     }
 }
 
+
+#pragma mark - UIGestureRecognizerDelegate
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
     if (gestureRecognizer == self.tapGestureRecognizer) {
         if (UIAccessibilityIsVoiceOverRunning()) {
@@ -586,7 +603,7 @@
         
         NSArray<ZASwipeTableViewCell *> *cells = self.tableView.visibleCells;
         for (ZASwipeTableViewCell *cell in cells) {
-            if ([cell.actionState isActive]) {
+            if (cell.state != ZASwipeStateCenter) {
                 return YES;
             }
         }
@@ -605,5 +622,81 @@
     return YES;
 }
 
+#pragma mark - Accessibility
+- (NSInteger)accessibilityElementCount {
+    if (self.state == ZASwipeStateCenter) {
+        return [super accessibilityElementCount];
+    }
+    return 1;
+}
+
+- (id)accessibilityElementAtIndex:(NSInteger)index {
+    if (self.state == ZASwipeStateCenter) {
+        return [super accessibilityElementAtIndex:index];
+    }
+    return self.actionsView;
+}
+
+- (NSInteger)indexOfAccessibilityElement:(id)element {
+    if (self.state == ZASwipeStateCenter) {
+        return [super indexOfAccessibilityElement:element];
+    }
+    return [element isKindOfClass:[ZASwipeActionsView class]] ? 0 : NSNotFound;
+}
+
+- (NSArray<UIAccessibilityCustomAction *> *)accessibilityCustomActions {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:self];
+    if (!indexPath) {
+        return [super accessibilityCustomActions];
+    }
+    
+    NSArray<ZASwipeAction *> *leftActions = [self.delegate tableView:self.tableView editActionsForRowAtIndexPath:indexPath forOrientation:ZASwipeActionsOrientationLeft];
+    NSArray<ZASwipeAction *> *rightActions = [self.delegate tableView:self.tableView editActionsForRowAtIndexPath:indexPath forOrientation:ZASwipeActionsOrientationRight];
+    
+    NSMutableArray<ZASwipeAction *> *actions = [NSMutableArray array];
+    [actions addObject:rightActions.firstObject];
+    [actions addObject:leftActions.firstObject];
+    for (ZASwipeAction *action in rightActions) {
+        if (action != rightActions.firstObject) {
+            [actions addObject:action];
+        }
+    }
+    for (ZASwipeAction *action in leftActions) {
+        if (action != leftActions.firstObject) {
+            [actions addObject:action];
+        }
+    }
+    
+    if (actions.count > 0) {
+        NSMutableArray<UIAccessibilityCustomAction *> *customActions = [NSMutableArray array];
+        for (ZASwipeAction *action in actions) {
+            ZASwipeAccessibilityCustomAction *customAction = [[ZASwipeAccessibilityCustomAction alloc] initWithAction:action indexPath:indexPath target:self selector:@selector(performAccessibilityCustomAction:)];
+            
+            [customActions addObject:customAction];
+        }
+        return [customActions copy];
+    }
+    else {
+        return [super accessibilityCustomActions];
+    }
+    
+}
+
+- (BOOL)performAccessibilityCustomAction:(ZASwipeAccessibilityCustomAction *)accessibilityCustomAction {
+    if (!self.tableView) {
+        return NO;
+    }
+    
+    ZASwipeAction *action = accessibilityCustomAction.action;
+    
+    if (action.handler) {
+        action.handler(action, accessibilityCustomAction.indexPath);
+    }
+    
+    if (action.style == ZASwipeActionStyleDestructive) {
+        [self.tableView deleteRowsAtIndexPaths:@[accessibilityCustomAction.indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    return YES;
+}
 
 @end

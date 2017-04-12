@@ -1,26 +1,29 @@
 //
-//  MailViewCell.m
+//  MailTableViewCell.m
 //  SwipeCellKit
 //
-//  Created by CPU11713 on 4/10/17.
+//  Created by CPU11713 on 4/11/17.
 //  Copyright © 2017 CPU11713. All rights reserved.
 //
 
-#import "MailViewCell.h"
+#import "MailTableViewCell.h"
 #import "IndicatorView.h"
 
-@implementation MailViewCell
-
-- (IBAction)touch:(id)sender {
-    NSLog(@"Touch");
-}
+@implementation MailTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.contentView.userInteractionEnabled = YES;
-    
+    // Initialization code
     [self setupIndicatorView];
-    
+}
+- (IBAction)tapped:(id)sender {
+    NSLog(@"Tapped");
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
 }
 
 - (void)setupIndicatorView {
@@ -49,8 +52,6 @@
         _indicatorView.transform = unread ? CGAffineTransformIdentity : CGAffineTransformMakeScale(0.001, 0.001);
     } completion:nil];
 }
-
-
 
 
 @end

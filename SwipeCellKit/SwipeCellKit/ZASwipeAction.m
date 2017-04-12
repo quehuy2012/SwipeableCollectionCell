@@ -17,6 +17,8 @@
         _style = style;
         _title = title;
         _handler = handler;
+        
+        _hideWhenSelected = NO;
     }
     return self;
 }

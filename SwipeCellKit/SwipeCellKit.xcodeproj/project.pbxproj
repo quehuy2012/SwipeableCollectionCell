@@ -7,16 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C80694241E9B67CE00800DD8 /* ZAScaleTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = C80694231E9B67CE00800DD8 /* ZAScaleTransition.m */; };
+		C83F72681E9C843500EA3748 /* ZASwipeAccessibilityCustomAction.m in Sources */ = {isa = PBXBuildFile; fileRef = C83F72671E9C843500EA3748 /* ZASwipeAccessibilityCustomAction.m */; };
+		C83F726A1E9CBE1C00EA3748 /* MailStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C83F72691E9CBE1C00EA3748 /* MailStoryboard.storyboard */; };
+		C83F726D1E9CC19700EA3748 /* TestSwipeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C83F726C1E9CC19700EA3748 /* TestSwipeCell.m */; };
+		C83F72701E9CC8BF00EA3748 /* MailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C83F726F1E9CC8BF00EA3748 /* MailTableViewController.m */; };
+		C83F72751E9CDB1400EA3748 /* MailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C83F72731E9CDB1400EA3748 /* MailTableViewCell.m */; };
+		C83F72761E9CDB1400EA3748 /* MailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C83F72741E9CDB1400EA3748 /* MailTableViewCell.xib */; };
+		C84522981E9DD70700CB650C /* ZADragTransitionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C84522971E9DD70700CB650C /* ZADragTransitionLayout.m */; };
+		C845229B1E9DD90300CB650C /* ZARevealTransitionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C845229A1E9DD90300CB650C /* ZARevealTransitionLayout.m */; };
 		C8619B0F1E9B2618001CD425 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B0E1E9B2618001CD425 /* main.m */; };
 		C8619B121E9B2618001CD425 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B111E9B2618001CD425 /* AppDelegate.m */; };
 		C8619B151E9B2618001CD425 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B141E9B2618001CD425 /* ViewController.m */; };
-		C8619B181E9B2618001CD425 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8619B161E9B2618001CD425 /* Main.storyboard */; };
 		C8619B1A1E9B2618001CD425 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8619B191E9B2618001CD425 /* Assets.xcassets */; };
 		C8619B1D1E9B2618001CD425 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8619B1B1E9B2618001CD425 /* LaunchScreen.storyboard */; };
 		C8619B281E9B2618001CD425 /* SwipeCellKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B271E9B2618001CD425 /* SwipeCellKitTests.m */; };
 		C8619B371E9B26CC001CD425 /* UIPanGestureRecognizer+SwipeCellKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B341E9B26CC001CD425 /* UIPanGestureRecognizer+SwipeCellKit.m */; };
 		C8619B381E9B26CC001CD425 /* UITableView+SwipeCellKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B361E9B26CC001CD425 /* UITableView+SwipeCellKit.m */; };
-		C8619B5F1E9B26DF001CD425 /* ZASwipeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B3C1E9B26DF001CD425 /* ZASwipeViewCell.m */; };
 		C8619B601E9B26DF001CD425 /* ZASwipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B3E1E9B26DF001CD425 /* ZASwipeTableViewCell.m */; };
 		C8619B611E9B26DF001CD425 /* ZAActionsViewLayoutContext.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B401E9B26DF001CD425 /* ZAActionsViewLayoutContext.m */; };
 		C8619B621E9B26DF001CD425 /* ZABorderTranstionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B421E9B26DF001CD425 /* ZABorderTranstionLayout.m */; };
@@ -27,7 +34,6 @@
 		C8619B671E9B26DF001CD425 /* ZASwipeExpansionStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B4C1E9B26DF001CD425 /* ZASwipeExpansionStyle.m */; };
 		C8619B681E9B26DF001CD425 /* ZASwipeExpansionTrigger.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B4E1E9B26DF001CD425 /* ZASwipeExpansionTrigger.m */; };
 		C8619B691E9B26DF001CD425 /* ZASwipeExpansionTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B501E9B26DF001CD425 /* ZASwipeExpansionTarget.m */; };
-		C8619B6A1E9B26DF001CD425 /* ZASwipeActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B521E9B26DF001CD425 /* ZASwipeActionState.m */; };
 		C8619B6B1E9B26DF001CD425 /* ZASwipeAction.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B531E9B26DF001CD425 /* ZASwipeAction.m */; };
 		C8619B6C1E9B26DF001CD425 /* ZASwipeActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B561E9B26DF001CD425 /* ZASwipeActionButton.m */; };
 		C8619B6D1E9B26DF001CD425 /* ZASwipeCellOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B581E9B26DF001CD425 /* ZASwipeCellOptions.m */; };
@@ -38,7 +44,6 @@
 		C8A7019E1E9B2C270030E851 /* MailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A7019D1E9B2C270030E851 /* MailViewCell.m */; };
 		C8A701A11E9B2CFF0030E851 /* IndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A701A01E9B2CFF0030E851 /* IndicatorView.m */; };
 		C8A701A61E9B35060030E851 /* ActionDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A701A51E9B35060030E851 /* ActionDescriptor.m */; };
-		C8A701A91E9B3BB30030E851 /* MailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A701A81E9B3BB30030E851 /* MailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,13 +57,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C80694221E9B67CE00800DD8 /* ZAScaleTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZAScaleTransition.h; sourceTree = "<group>"; };
+		C80694231E9B67CE00800DD8 /* ZAScaleTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZAScaleTransition.m; sourceTree = "<group>"; };
+		C83F72661E9C843500EA3748 /* ZASwipeAccessibilityCustomAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeAccessibilityCustomAction.h; sourceTree = "<group>"; };
+		C83F72671E9C843500EA3748 /* ZASwipeAccessibilityCustomAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwipeAccessibilityCustomAction.m; sourceTree = "<group>"; };
+		C83F72691E9CBE1C00EA3748 /* MailStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MailStoryboard.storyboard; path = SwipeCellKit/MailStoryboard.storyboard; sourceTree = "<group>"; };
+		C83F726B1E9CC19700EA3748 /* TestSwipeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSwipeCell.h; sourceTree = "<group>"; };
+		C83F726C1E9CC19700EA3748 /* TestSwipeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSwipeCell.m; sourceTree = "<group>"; };
+		C83F726E1E9CC8BF00EA3748 /* MailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MailTableViewController.h; path = SwipeCellKit/MailTableViewController.h; sourceTree = "<group>"; };
+		C83F726F1E9CC8BF00EA3748 /* MailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MailTableViewController.m; path = SwipeCellKit/MailTableViewController.m; sourceTree = "<group>"; };
+		C83F72721E9CDB1400EA3748 /* MailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailTableViewCell.h; sourceTree = "<group>"; };
+		C83F72731E9CDB1400EA3748 /* MailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailTableViewCell.m; sourceTree = "<group>"; };
+		C83F72741E9CDB1400EA3748 /* MailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MailTableViewCell.xib; sourceTree = "<group>"; };
+		C84522961E9DD70700CB650C /* ZADragTransitionLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZADragTransitionLayout.h; sourceTree = "<group>"; };
+		C84522971E9DD70700CB650C /* ZADragTransitionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZADragTransitionLayout.m; sourceTree = "<group>"; };
+		C84522991E9DD90200CB650C /* ZARevealTransitionLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZARevealTransitionLayout.h; sourceTree = "<group>"; };
+		C845229A1E9DD90300CB650C /* ZARevealTransitionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZARevealTransitionLayout.m; sourceTree = "<group>"; };
 		C8619B0A1E9B2618001CD425 /* SwipeCellKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipeCellKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8619B0E1E9B2618001CD425 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C8619B101E9B2618001CD425 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C8619B111E9B2618001CD425 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C8619B131E9B2618001CD425 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C8619B141E9B2618001CD425 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		C8619B171E9B2618001CD425 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C8619B191E9B2618001CD425 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8619B1C1E9B2618001CD425 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C8619B1E1E9B2618001CD425 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -70,8 +90,6 @@
 		C8619B351E9B26CC001CD425 /* UITableView+SwipeCellKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+SwipeCellKit.h"; sourceTree = "<group>"; };
 		C8619B361E9B26CC001CD425 /* UITableView+SwipeCellKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SwipeCellKit.m"; sourceTree = "<group>"; };
 		C8619B3A1E9B26DF001CD425 /* ZASwipeable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeable.h; sourceTree = "<group>"; };
-		C8619B3B1E9B26DF001CD425 /* ZASwipeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeViewCell.h; sourceTree = "<group>"; };
-		C8619B3C1E9B26DF001CD425 /* ZASwipeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwipeViewCell.m; sourceTree = "<group>"; };
 		C8619B3D1E9B26DF001CD425 /* ZASwipeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeTableViewCell.h; sourceTree = "<group>"; };
 		C8619B3E1E9B26DF001CD425 /* ZASwipeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwipeTableViewCell.m; sourceTree = "<group>"; };
 		C8619B3F1E9B26DF001CD425 /* ZAActionsViewLayoutContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZAActionsViewLayoutContext.h; sourceTree = "<group>"; };
@@ -92,8 +110,6 @@
 		C8619B4E1E9B26DF001CD425 /* ZASwipeExpansionTrigger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwipeExpansionTrigger.m; sourceTree = "<group>"; };
 		C8619B4F1E9B26DF001CD425 /* ZASwipeExpansionTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeExpansionTarget.h; sourceTree = "<group>"; };
 		C8619B501E9B26DF001CD425 /* ZASwipeExpansionTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwipeExpansionTarget.m; sourceTree = "<group>"; };
-		C8619B511E9B26DF001CD425 /* ZASwipeActionState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeActionState.h; sourceTree = "<group>"; };
-		C8619B521E9B26DF001CD425 /* ZASwipeActionState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwipeActionState.m; sourceTree = "<group>"; };
 		C8619B531E9B26DF001CD425 /* ZASwipeAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwipeAction.m; sourceTree = "<group>"; };
 		C8619B541E9B26DF001CD425 /* ZASwipeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeAction.h; sourceTree = "<group>"; };
 		C8619B551E9B26DF001CD425 /* ZASwipeActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeActionButton.h; sourceTree = "<group>"; };
@@ -115,8 +131,6 @@
 		C8A701A31E9B33790030E851 /* ZASwipeCellKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZASwipeCellKit.h; sourceTree = "<group>"; };
 		C8A701A41E9B35060030E851 /* ActionDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionDescriptor.h; sourceTree = "<group>"; };
 		C8A701A51E9B35060030E851 /* ActionDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionDescriptor.m; sourceTree = "<group>"; };
-		C8A701A71E9B3BB30030E851 /* MailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailViewController.h; sourceTree = "<group>"; };
-		C8A701A81E9B3BB30030E851 /* MailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,9 +151,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C83F72711E9CDAEC00EA3748 /* TestCell */ = {
+			isa = PBXGroup;
+			children = (
+				C83F72721E9CDB1400EA3748 /* MailTableViewCell.h */,
+				C83F72731E9CDB1400EA3748 /* MailTableViewCell.m */,
+				C83F72741E9CDB1400EA3748 /* MailTableViewCell.xib */,
+			);
+			name = TestCell;
+			sourceTree = "<group>";
+		};
+		C84522951E9DD6DD00CB650C /* TransistionLayout */ = {
+			isa = PBXGroup;
+			children = (
+				C8619B3F1E9B26DF001CD425 /* ZAActionsViewLayoutContext.h */,
+				C8619B401E9B26DF001CD425 /* ZAActionsViewLayoutContext.m */,
+				C8619B411E9B26DF001CD425 /* ZABorderTranstionLayout.h */,
+				C8619B421E9B26DF001CD425 /* ZABorderTranstionLayout.m */,
+				C84522961E9DD70700CB650C /* ZADragTransitionLayout.h */,
+				C84522971E9DD70700CB650C /* ZADragTransitionLayout.m */,
+				C84522991E9DD90200CB650C /* ZARevealTransitionLayout.h */,
+				C845229A1E9DD90300CB650C /* ZARevealTransitionLayout.m */,
+			);
+			name = TransistionLayout;
+			sourceTree = "<group>";
+		};
+		C845229C1E9DE4C500CB650C /* TransistionAction */ = {
+			isa = PBXGroup;
+			children = (
+				C8619B5D1E9B26DF001CD425 /* ZASwipeActionTransitioningContext.h */,
+				C8619B5E1E9B26DF001CD425 /* ZASwipeActionTransitioningContext.m */,
+				C80694221E9B67CE00800DD8 /* ZAScaleTransition.h */,
+				C80694231E9B67CE00800DD8 /* ZAScaleTransition.m */,
+			);
+			name = TransistionAction;
+			sourceTree = "<group>";
+		};
 		C8619B011E9B2618001CD425 = {
 			isa = PBXGroup;
 			children = (
+				C83F726E1E9CC8BF00EA3748 /* MailTableViewController.h */,
+				C83F726F1E9CC8BF00EA3748 /* MailTableViewController.m */,
+				C83F72691E9CBE1C00EA3748 /* MailStoryboard.storyboard */,
 				C8619B0C1E9B2618001CD425 /* SwipeCellKit */,
 				C8619B261E9B2618001CD425 /* SwipeCellKitTests */,
 				C8619B0B1E9B2618001CD425 /* Products */,
@@ -161,14 +214,9 @@
 				C8A7019B1E9B2BD00030E851 /* Views */,
 				C8619B711E9B2772001CD425 /* Data */,
 				C8619B321E9B261E001CD425 /* Sources */,
-				C8619B131E9B2618001CD425 /* ViewController.h */,
-				C8619B141E9B2618001CD425 /* ViewController.m */,
-				C8619B161E9B2618001CD425 /* Main.storyboard */,
 				C8619B0D1E9B2618001CD425 /* Supporting Files */,
 				C8A701A41E9B35060030E851 /* ActionDescriptor.h */,
 				C8A701A51E9B35060030E851 /* ActionDescriptor.m */,
-				C8A701A71E9B3BB30030E851 /* MailViewController.h */,
-				C8A701A81E9B3BB30030E851 /* MailViewController.m */,
 			);
 			path = SwipeCellKit;
 			sourceTree = "<group>";
@@ -176,6 +224,8 @@
 		C8619B0D1E9B2618001CD425 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C8619B131E9B2618001CD425 /* ViewController.h */,
+				C8619B141E9B2618001CD425 /* ViewController.m */,
 				C8619B101E9B2618001CD425 /* AppDelegate.h */,
 				C8619B111E9B2618001CD425 /* AppDelegate.m */,
 				C8619B191E9B2618001CD425 /* Assets.xcassets */,
@@ -226,10 +276,13 @@
 		C8A7019B1E9B2BD00030E851 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C83F72711E9CDAEC00EA3748 /* TestCell */,
 				C8A7019C1E9B2C270030E851 /* MailViewCell.h */,
 				C8A7019D1E9B2C270030E851 /* MailViewCell.m */,
 				C8A7019F1E9B2CFF0030E851 /* IndicatorView.h */,
 				C8A701A01E9B2CFF0030E851 /* IndicatorView.m */,
+				C83F726B1E9CC19700EA3748 /* TestSwipeCell.h */,
+				C83F726C1E9CC19700EA3748 /* TestSwipeCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -238,8 +291,6 @@
 			isa = PBXGroup;
 			children = (
 				C8619B3A1E9B26DF001CD425 /* ZASwipeable.h */,
-				C8619B3B1E9B26DF001CD425 /* ZASwipeViewCell.h */,
-				C8619B3C1E9B26DF001CD425 /* ZASwipeViewCell.m */,
 				C8619B3D1E9B26DF001CD425 /* ZASwipeTableViewCell.h */,
 				C8619B3E1E9B26DF001CD425 /* ZASwipeTableViewCell.m */,
 				C8619B571E9B26DF001CD425 /* ZASwipeCellOptions.h */,
@@ -289,16 +340,16 @@
 		C8A701AF1E9B481F0030E851 /* ZASwipeAction */ = {
 			isa = PBXGroup;
 			children = (
-				C8619B511E9B26DF001CD425 /* ZASwipeActionState.h */,
-				C8619B521E9B26DF001CD425 /* ZASwipeActionState.m */,
-				C8619B531E9B26DF001CD425 /* ZASwipeAction.m */,
 				C8619B541E9B26DF001CD425 /* ZASwipeAction.h */,
+				C8619B531E9B26DF001CD425 /* ZASwipeAction.m */,
 				C8619B591E9B26DF001CD425 /* ZASwipeActionsView.h */,
 				C8619B5A1E9B26DF001CD425 /* ZASwipeActionsView.m */,
 				C8619B551E9B26DF001CD425 /* ZASwipeActionButton.h */,
 				C8619B561E9B26DF001CD425 /* ZASwipeActionButton.m */,
 				C8619B5B1E9B26DF001CD425 /* ZASwipeActionButtonWrapperView.h */,
 				C8619B5C1E9B26DF001CD425 /* ZASwipeActionButtonWrapperView.m */,
+				C83F72661E9C843500EA3748 /* ZASwipeAccessibilityCustomAction.h */,
+				C83F72671E9C843500EA3748 /* ZASwipeAccessibilityCustomAction.m */,
 			);
 			name = ZASwipeAction;
 			sourceTree = "<group>";
@@ -306,12 +357,8 @@
 		C8A701B01E9B48570030E851 /* ZASwipeTransition */ = {
 			isa = PBXGroup;
 			children = (
-				C8619B5D1E9B26DF001CD425 /* ZASwipeActionTransitioningContext.h */,
-				C8619B5E1E9B26DF001CD425 /* ZASwipeActionTransitioningContext.m */,
-				C8619B3F1E9B26DF001CD425 /* ZAActionsViewLayoutContext.h */,
-				C8619B401E9B26DF001CD425 /* ZAActionsViewLayoutContext.m */,
-				C8619B411E9B26DF001CD425 /* ZABorderTranstionLayout.h */,
-				C8619B421E9B26DF001CD425 /* ZABorderTranstionLayout.m */,
+				C845229C1E9DE4C500CB650C /* TransistionAction */,
+				C84522951E9DD6DD00CB650C /* TransistionLayout */,
 			);
 			name = ZASwipeTransition;
 			sourceTree = "<group>";
@@ -412,9 +459,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C83F72761E9CDB1400EA3748 /* MailTableViewCell.xib in Resources */,
+				C83F726A1E9CBE1C00EA3748 /* MailStoryboard.storyboard in Resources */,
 				C8619B1D1E9B2618001CD425 /* LaunchScreen.storyboard in Resources */,
 				C8619B1A1E9B2618001CD425 /* Assets.xcassets in Resources */,
-				C8619B181E9B2618001CD425 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,29 +482,33 @@
 			files = (
 				C8619B631E9B26DF001CD425 /* ZASwipeExpansionAnimationTimingParameters.m in Sources */,
 				C8619B6B1E9B26DF001CD425 /* ZASwipeAction.m in Sources */,
+				C83F72751E9CDB1400EA3748 /* MailTableViewCell.m in Sources */,
 				C8A701A11E9B2CFF0030E851 /* IndicatorView.m in Sources */,
 				C8619B641E9B26DF001CD425 /* ZAScaleAndAlphaExpansion.m in Sources */,
 				C8619B6C1E9B26DF001CD425 /* ZASwipeActionButton.m in Sources */,
-				C8A701A91E9B3BB30030E851 /* MailViewController.m in Sources */,
+				C83F726D1E9CC19700EA3748 /* TestSwipeCell.m in Sources */,
 				C8619B691E9B26DF001CD425 /* ZASwipeExpansionTarget.m in Sources */,
+				C80694241E9B67CE00800DD8 /* ZAScaleTransition.m in Sources */,
 				C8619B151E9B2618001CD425 /* ViewController.m in Sources */,
 				C8619B671E9B26DF001CD425 /* ZASwipeExpansionStyle.m in Sources */,
 				C8619B611E9B26DF001CD425 /* ZAActionsViewLayoutContext.m in Sources */,
 				C8619B701E9B26DF001CD425 /* ZASwipeActionTransitioningContext.m in Sources */,
+				C83F72701E9CC8BF00EA3748 /* MailTableViewController.m in Sources */,
 				C8A7019E1E9B2C270030E851 /* MailViewCell.m in Sources */,
 				C8619B621E9B26DF001CD425 /* ZABorderTranstionLayout.m in Sources */,
 				C8619B681E9B26DF001CD425 /* ZASwipeExpansionTrigger.m in Sources */,
 				C8619B6F1E9B26DF001CD425 /* ZASwipeActionButtonWrapperView.m in Sources */,
 				C8619B601E9B26DF001CD425 /* ZASwipeTableViewCell.m in Sources */,
 				C8619B121E9B2618001CD425 /* AppDelegate.m in Sources */,
-				C8619B5F1E9B26DF001CD425 /* ZASwipeViewCell.m in Sources */,
+				C83F72681E9C843500EA3748 /* ZASwipeAccessibilityCustomAction.m in Sources */,
 				C8A701A61E9B35060030E851 /* ActionDescriptor.m in Sources */,
+				C84522981E9DD70700CB650C /* ZADragTransitionLayout.m in Sources */,
 				C8619B0F1E9B2618001CD425 /* main.m in Sources */,
+				C845229B1E9DD90300CB650C /* ZARevealTransitionLayout.m in Sources */,
 				C8619B6D1E9B26DF001CD425 /* ZASwipeCellOptions.m in Sources */,
 				C8619B6E1E9B26DF001CD425 /* ZASwipeActionsView.m in Sources */,
 				C8619B741E9B2787001CD425 /* Email.m in Sources */,
 				C8619B661E9B26DF001CD425 /* ZAFillOption.m in Sources */,
-				C8619B6A1E9B26DF001CD425 /* ZASwipeActionState.m in Sources */,
 				C8619B381E9B26CC001CD425 /* UITableView+SwipeCellKit.m in Sources */,
 				C8619B371E9B26CC001CD425 /* UIPanGestureRecognizer+SwipeCellKit.m in Sources */,
 				C8619B651E9B26DF001CD425 /* ZACompletionAnimation.m in Sources */,
@@ -482,14 +534,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C8619B161E9B2618001CD425 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C8619B171E9B2618001CD425 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C8619B1B1E9B2618001CD425 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

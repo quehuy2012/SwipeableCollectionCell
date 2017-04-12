@@ -12,7 +12,6 @@
 @class ZASwipeExpansionAnimationTimingParameters;
 @class ZAActionsViewLayoutContext;
 @class ZASwipeActionsView;
-@class ZASwipeActionState;
 
 typedef NS_ENUM(NSInteger, ZASwipeTransitionStyle) {
     ZASwipeTransitionStyleBorder,
@@ -29,6 +28,13 @@ typedef NS_ENUM(NSInteger, ZASwipeActionsOrientation) {
 typedef NS_ENUM(NSInteger, ZASwipeVerticalAligment) {
     ZASwipeVerticalAligmentCenterFirstBaseLine,
     ZASwipeVerticalAligmentCenter
+};
+
+typedef NS_ENUM(NSInteger, ZASwipeState) {
+    ZASwipeStateCenter,
+    ZASwipeStateLeft,
+    ZASwipeStateRight,
+    ZASwipeStateAnimatingToCenter
 };
 
 @protocol ZASwipeExpanding <NSObject>
@@ -51,7 +57,8 @@ typedef NS_ENUM(NSInteger, ZASwipeVerticalAligment) {
 @protocol ZASwipeable <NSObject>
 
 @property (nonatomic, readonly) ZASwipeActionsView *actionsView;
-@property (nonatomic, readonly) ZASwipeActionState *actionState;
-@property (nonatomic, readonly) CGRect frame;
+@property (nonatomic, readonly) ZASwipeState state;
+@property (nonatomic, readonly) CGRect swipeViewFrame;
+//- (CGRect)swipeCellFrame;
 
 @end

@@ -1,22 +1,20 @@
 //
-//  ViewController.m
+//  MailTableViewController.m
 //  SwipeCellKit
 //
-//  Created by CPU11713 on 4/10/17.
+//  Created by CPU11713 on 4/11/17.
 //  Copyright © 2017 CPU11713. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MailTableViewController.h"
 #import "ZASwipeCellKit.h"
 #import "Email.h"
 #import "MailViewCell.h"
 #import "ActionDescriptor.h"
 
-#import "TestSwipeCell.h"
+#import "MailTableViewCell.h"
 
-@interface ViewController () <UITableViewDataSource, UITableViewDelegate, ZASwipeViewCellDelegate>
-
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@interface MailTableViewController () <ZASwipeViewCellDelegate>
 
 @property (nonatomic, readwrite) NSMutableArray<Email *> *emails;
 @property (nonatomic, readwrite) ZASwipeCellOptions *defaultOptions;
@@ -27,46 +25,55 @@
 
 @end
 
-@implementation ViewController
+@implementation MailTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
+    
+    // Test xib
+    [self.tableView registerNib:[UINib nibWithNibName:@"MailTableViewCell" bundle:nil] forCellReuseIdentifier:@"testCell"];
+    
+    
     self.tableView.allowsSelection = YES;
     self.tableView.allowsMultipleSelectionDuringEditing = YES;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 120;
+//    self.tableView.rowHeight = UITableViewAutomaticDimension;
+//    self.tableView.estimatedRowHeight = 120;
     self.tableView.userInteractionEnabled = YES;
     
-    self.automaticallyAdjustsScrollViewInsets = NO;
+//    /self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-//    UIEdgeInsets margin = self.view.layoutMargins;
-//    margin.left = 32;
-//    self.view.layoutMargins = margin;
-    
+
     self.buttonDisplayMode = ButtonDisplayModeTitleAndImage;
     self.buttonStyle = ButtonStyleBackgroundColor;
     self.isSwipeRightEnable = YES;
     self.defaultOptions = [[ZASwipeCellOptions alloc] init];
     
     [self resetData];
+
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.emails count];
+    return [self.emails count];;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MailViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    //MailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"testCell" forIndexPath:indexPath];
     
     cell.delegate = self;
-    //cell.selectedBackgroundView = [self createSelectedBackgroundView];
+    cell.selectedBackgroundView = [self createSelectedBackgroundView];
     
     Email *email = self.emails[indexPath.row];
     cell.fromLabel.text = email.from;
@@ -76,24 +83,28 @@
     cell.unread = email.unread;
     
     
-//    for (UIGestureRecognizer *gesture in cell.gestureRecognizers) {
-//        NSLog(@"Gesture: %@ enable: %d",gesture, gesture.isEnabled);
-//    }
+    //    for (UIGestureRecognizer *gesture in cell.gestureRecognizers) {
+    //        NSLog(@"Gesture: %@ enable: %d",gesture, gesture.isEnabled);
+    //    }
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    CGRect frame = cell.frame;
-//    NSLog(@"Cell frame: x(%.2f),y(%.2f),width(%.2f),height(%.2f)", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
-//    CGRect rectOfCell = [tableView rectForRowAtIndexPath:indexPath];
-//    NSLog(@"Table cell frame: x(%.2f),y(%.2f),width(%.2f),height(%.2f)", rectOfCell.origin.x, rectOfCell.origin.y, rectOfCell.size.width, rectOfCell.size.height);
+        CGRect frame = cell.frame;
+        NSLog(@"Cell at indexpath:%ld  frame: x(%.2f),y(%.2f),width(%.2f),height(%.2f)",(long)indexPath.row, frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
+    //    CGRect rectOfCell = [tableView rectForRowAtIndexPath:indexPath];
+    //    NSLog(@"Table cell frame: x(%.2f),y(%.2f),width(%.2f),height(%.2f)", rectOfCell.origin.x, rectOfCell.origin.y, rectOfCell.size.width, rectOfCell.size.height);
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 140.0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    MailViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-//    CGRect frame = cell.frame;
-//    NSLog(@"Cell frame: x(%.2f),y(%.2f),width(%.2f),height(%.2f)", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
+    MailViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    CGRect frame = cell.frame;
+    NSLog(@"Cell frame: x(%.2f),y(%.2f),width(%.2f),height(%.2f)", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
 }
 
 - (UIView *)createSelectedBackgroundView {
@@ -108,8 +119,8 @@
                             [[Email alloc] initWithSubject:@"[Pragmatic Bookstore] Your eBook 'Swift Style' is ready for download" from:@"The Pragmatic Bookstore" body:@"Hello, The gerbils at the Pragmatic Bookstore have just finished hand-crafting your eBook of Swift Style. It's available for download at the following URL:" date:[NSDate date]],
                             [[Email alloc] initWithSubject:@"Video: Operators and Strong Opinions with Erica Sadun" from:@"Realm" body:@"Swift operators are flexible and powerful. They’re symbols that behave like functions, adopting a natural mathematical syntax, for example 1 + 2 versus add(1, 2). So why is it so important that you treat them like potential Swift Kryptonite? Erica Sadun discusses why your operators should be few, well-chosen, and heavily used. There’s even a fun interactive quiz! Play along with “Name That Operator!” and learn about an essential Swift best practice." date:[NSDate date]],
                             [[Email alloc] initWithSubject:@"[Pragmatic Bookstore] Your eBook 'Swift Style' is ready for download" from:@"The Pragmatic Bookstore" body:@"Hello, The gerbils at the Pragmatic Bookstore have just finished hand-crafting your eBook of Swift Style. It's available for download at the following URL:" date:[NSDate date]],
-                             [[Email alloc] initWithSubject:@"Video: Operators and Strong Opinions with Erica Sadun" from:@"Realm" body:@"Swift operators are flexible and powerful. They’re symbols that behave like functions, adopting a natural mathematical syntax, for example 1 + 2 versus add(1, 2). So why is it so important that you treat them like potential Swift Kryptonite? Erica Sadun discusses why your operators should be few, well-chosen, and heavily used. There’s even a fun interactive quiz! Play along with “Name That Operator!” and learn about an essential Swift best practice." date:[NSDate date]],
-                             [[Email alloc] initWithSubject:@"Video: Operators and Strong Opinions with Erica Sadun" from:@"Realm" body:@"Swift operators are flexible and powerful. They’re symbols that behave like functions, adopting a natural mathematical syntax, for example 1 + 2 versus add(1, 2). So why is it so important that you treat them like potential Swift Kryptonite? Erica Sadun discusses why your operators should be few, well-chosen, and heavily used. There’s even a fun interactive quiz! Play along with “Name That Operator!” and learn about an essential Swift best practice." date:[NSDate date]]
+                            [[Email alloc] initWithSubject:@"Video: Operators and Strong Opinions with Erica Sadun" from:@"Realm" body:@"Swift operators are flexible and powerful. They’re symbols that behave like functions, adopting a natural mathematical syntax, for example 1 + 2 versus add(1, 2). So why is it so important that you treat them like potential Swift Kryptonite? Erica Sadun discusses why your operators should be few, well-chosen, and heavily used. There’s even a fun interactive quiz! Play along with “Name That Operator!” and learn about an essential Swift best practice." date:[NSDate date]],
+                            [[Email alloc] initWithSubject:@"Video: Operators and Strong Opinions with Erica Sadun" from:@"Realm" body:@"Swift operators are flexible and powerful. They’re symbols that behave like functions, adopting a natural mathematical syntax, for example 1 + 2 versus add(1, 2). So why is it so important that you treat them like potential Swift Kryptonite? Erica Sadun discusses why your operators should be few, well-chosen, and heavily used. There’s even a fun interactive quiz! Play along with “Name That Operator!” and learn about an essential Swift best practice." date:[NSDate date]]
                             ];
     
     self.emails = [NSMutableArray arrayWithArray:mockEmails];
@@ -157,7 +168,7 @@
         ZASwipeAction *deleteAction = [[ZASwipeAction alloc] initWithStyle:ZASwipeActionStyleDestructive title:nil handler:^(ZASwipeAction *action, NSIndexPath *indexPath) {
             [weakSelf.emails removeObjectAtIndex:indexPath.row];
         }];
-        [self configureAction:deleteAction withDescriptor:[ActionDescriptor type:ActionDescriptorTypeMore]];
+        [self configureAction:deleteAction withDescriptor:[ActionDescriptor type:ActionDescriptorTypeTrash]];
         return @[deleteAction, flagAction];
     }
 }
@@ -197,4 +208,6 @@
             break;
     }
 }
+
+
 @end

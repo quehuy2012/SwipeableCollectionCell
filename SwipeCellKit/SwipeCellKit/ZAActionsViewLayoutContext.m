@@ -7,6 +7,7 @@
 //
 
 #import "ZAActionsViewLayoutContext.h"
+#import "ZASwipeActionsView.h"
 
 @implementation ZAActionsViewLayoutContext
 

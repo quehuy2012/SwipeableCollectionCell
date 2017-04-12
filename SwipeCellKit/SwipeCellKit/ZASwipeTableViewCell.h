@@ -11,7 +11,6 @@
 
 @class ZASwipeAction;
 @class ZASwipeActionsView;
-@class ZASwipeActionState;
 @class ZASwipeCellOptions;
 
 @protocol ZASwipeViewCellDelegate <NSObject>
@@ -57,7 +56,7 @@ editActionsOptionsForRowAtIndexPath:(NSIndexPath *)indexPath
 
 @property (nonatomic, readwrite, weak) id<ZASwipeViewCellDelegate> delegate;
 
-@property (nonatomic, readwrite) ZASwipeActionState *actionState;
+@property (nonatomic, readwrite) ZASwipeState state;
 @property (nonatomic, readwrite) CGFloat originalCenter;
 
 @property (nonatomic, readwrite, weak) UITableView *tableView;

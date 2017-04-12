@@ -7,14 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ZASwipeCellOptions.h"
 
-typedef NS_ENUM(NSInteger, ZASwipeState) {
-    ZASwipeStateCenter,
-    ZASwipeStateLeft,
-    ZASwipeStateRight,
-    ZASwipeStateAnimatingToCenter
-};
+//typedef NS_ENUM(NSInteger, ZASwipeState) {
+//    ZASwipeStateCenter,
+//    ZASwipeStateLeft,
+//    ZASwipeStateRight,
+//    ZASwipeStateAnimatingToCenter
+//};
 
 @interface ZASwipeActionState : NSObject
 

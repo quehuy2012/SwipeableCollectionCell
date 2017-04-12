@@ -57,7 +57,7 @@ typedef NS_ENUM(NSInteger, ZAExpansionFulfillmentStyle) {
  */
 @property (nonatomic, readwrite) UIImage *hightlightedImage;
 
-@property (nonatomic, assign) ZASwipeActionStyle style;
+@property (nonatomic, readwrite) ZASwipeActionStyle style;
 
 /**
  The object that is notified as a transitioning occusrs

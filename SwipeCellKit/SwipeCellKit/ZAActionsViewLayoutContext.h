@@ -8,15 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "ZASwipeable.h"
-#import "ZASwipeActionsView.h"
+
+@class ZASwipeActionsView;
 
 @interface ZAActionsViewLayoutContext : NSObject
 
-@property (nonatomic, assign) NSInteger numberOfActions;
-@property (nonatomic, assign) ZASwipeActionsOrientation orientation;
-@property (nonatomic, assign) CGSize contentSize;
-@property (nonatomic, assign) CGFloat visibleWidth;
-@property (nonatomic, assign) CGFloat minimumButtonWidth;
+@property (nonatomic, readonly) NSInteger numberOfActions;
+@property (nonatomic, readonly) ZASwipeActionsOrientation orientation;
+@property (nonatomic, readonly) CGSize contentSize;
+@property (nonatomic, readonly) CGFloat visibleWidth;
+@property (nonatomic, readonly) CGFloat minimumButtonWidth;
 
 - (instancetype)initWithNumberOfActions:(NSInteger)numberOfActions
                             orientation:(ZASwipeActionsOrientation)orientation;

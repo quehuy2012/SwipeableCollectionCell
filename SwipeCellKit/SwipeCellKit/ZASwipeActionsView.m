@@ -12,6 +12,8 @@
 #import "ZASwipeActionButton.h"
 #import "ZASwipeCellOptions.h"
 #import "ZABorderTranstionLayout.h"
+#import "ZARevealTransitionLayout.h"
+#import "ZADragTransitionLayout.h"
 #import "ZASwipeActionTransitioningContext.h"
 #import "ZAActionsViewLayoutContext.h"
 #import "ZAScaleAndAlphaExpansion.h"
@@ -32,7 +34,7 @@
 - (CGFloat)maximumImageHeight {
     CGFloat maximum = 0;
     for (ZASwipeAction *action in self.actions) {
-        maximum = MAX(maximum, action.image.size.height ? action.image.size.height : 0);
+        maximum = MAX(maximum, action.image ? action.image.size.height : 0);
     }
     return maximum;
 }
@@ -76,6 +78,8 @@
         
         ZASwipeExpansionAnimationTimingParameters *timingParameters = [self.expansionDelegate animationTimingParametersForButtons:[[self.buttons reverseObjectEnumerator] allObjects] expanding:_expanded];
         
+#warning stop expansion animator
+        
         double duration = timingParameters.duration > 0 ? timingParameters.duration : 0.6;
         double delay = timingParameters.delay > 0 ? timingParameters.delay : 0;
         
@@ -103,8 +107,11 @@
             case ZASwipeTransitionStyleBorder:
                 _transitionLayout = [[ZABorderTranstionLayout alloc] init];
                 break;
-            //TODO : Reveal, Drag
+            case ZASwipeTransitionStyleReveal:
+                _transitionLayout = [[ZARevealTransitionLayout alloc] init];
+                break;
             default:
+                _transitionLayout = [[ZADragTransitionLayout alloc] init];
                 break;
         }
         
@@ -183,11 +190,11 @@
         [oldWidths enumerateObjectsUsingBlock:^(NSNumber * _Nonnull oldWidth, NSUInteger index, BOOL * _Nonnull stop) {
             NSNumber *newWidth = newWidths[index];
             
-            if ([oldWidth floatValue] != [newWidth floatValue]) {
+            if ([oldWidth doubleValue] != [newWidth doubleValue]) {
                 ZASwipeActionTransitioningContext *context = [[ZASwipeActionTransitioningContext alloc] initWithActionIdentifier:strongSelf.actions[index].identifier
                                                                                                                           button:strongSelf.buttons[index]
-                                                                                                               newPercentVisible:[newWidth floatValue] / strongSelf.minimumButtonWidth
-                                                                                                               oldPercentVisible:[oldWidth floatValue] / strongSelf.minimumButtonWidth
+                                                                                                               newPercentVisible:[newWidth doubleValue] / strongSelf.minimumButtonWidth
+                                                                                                               oldPercentVisible:[oldWidth doubleValue] / strongSelf.minimumButtonWidth
                                                                                                                      wrapperView:strongSelf.subviews[index]];
                 
                 [self.actions[index].transitionDelgate didTransitionWithContext:context];
@@ -209,8 +216,9 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
+    __weak typeof(self) weakSelf = self;
     [self.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull subview, NSUInteger index, BOOL * _Nonnull stop) {
-        [self.transitionLayout layoutView:subview atIndex:index withContext:self.layoutContext];
+        [weakSelf.transitionLayout layoutView:subview atIndex:index withContext:weakSelf.layoutContext];
     }];
     
     if (self.expanded) {

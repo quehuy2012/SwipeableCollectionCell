@@ -9,12 +9,12 @@
 #import "MailViewController.h"
 #import "ZASwipeCellKit.h"
 #import "Email.h"
-#import "MailViewCell.m"
+#import "MailViewCell.h"
 #import "ActionDescriptor.h"
 
 @interface MailViewController () <ZASwipeViewCellDelegate>
 
-@property (nonatomic, readwrite) NSArray<Email *> *emails;
+@property (nonatomic, readwrite) NSMutableArray<Email *> *emails;
 @property (nonatomic, readwrite) ZASwipeCellOptions *defaultOptions;
 @property (nonatomic, readwrite) ButtonDisplayMode buttonDisplayMode;
 @property (nonatomic, readwrite) ButtonStyle buttonStyle;
@@ -55,7 +55,6 @@
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
     return [self.emails count];
 }
 
@@ -83,13 +82,14 @@
 }
 
 - (void)resetData {
-    self.emails = @[
+    NSArray *mockEmails = @[
                 [[Email alloc] initWithSubject:@"Video: Operators and Strong Opinions with Erica Sadun" from:@"Realm" body:@"Swift operators are flexible and powerful. They’re symbols that behave like functions, adopting a natural mathematical syntax, for example 1 + 2 versus add(1, 2). So why is it so important that you treat them like potential Swift Kryptonite? Erica Sadun discusses why your operators should be few, well-chosen, and heavily used. There’s even a fun interactive quiz! Play along with “Name That Operator!” and learn about an essential Swift best practice." date:[NSDate date]],
                 [[Email alloc] initWithSubject:@"[Pragmatic Bookstore] Your eBook 'Swift Style' is ready for download" from:@"The Pragmatic Bookstore" body:@"Hello, The gerbils at the Pragmatic Bookstore have just finished hand-crafting your eBook of Swift Style. It's available for download at the following URL:" date:[NSDate date]],
                 [[Email alloc] initWithSubject:@"Video: Operators and Strong Opinions with Erica Sadun" from:@"Realm" body:@"Swift operators are flexible and powerful. They’re symbols that behave like functions, adopting a natural mathematical syntax, for example 1 + 2 versus add(1, 2). So why is it so important that you treat them like potential Swift Kryptonite? Erica Sadun discusses why your operators should be few, well-chosen, and heavily used. There’s even a fun interactive quiz! Play along with “Name That Operator!” and learn about an essential Swift best practice." date:[NSDate date]],
                 [[Email alloc] initWithSubject:@"[Pragmatic Bookstore] Your eBook 'Swift Style' is ready for download" from:@"The Pragmatic Bookstore" body:@"Hello, The gerbils at the Pragmatic Bookstore have just finished hand-crafting your eBook of Swift Style. It's available for download at the following URL:" date:[NSDate date]]
                     ];
     
+    self.emails = [NSMutableArray arrayWithArray:mockEmails];
     for (Email *email in self.emails) {
         email.unread = NO;
     }
@@ -120,11 +120,40 @@
         ActionDescriptorType type = email.unread ? ActionDescriptorTypeRead : ActionDescriptorTypeUnread;
         ActionDescriptor *descriptor = [ActionDescriptor type:type];
         [self configureAction:readAction withDescriptor:descriptor];
-        
+        return @[readAction];
     }
     else {
         
+        ZASwipeAction *flagAction = [[ZASwipeAction alloc] initWithStyle:ZASwipeActionStyleDefault title:nil handler:nil];
+        
+        flagAction.hideWhenSelected = YES;
+        [self configureAction:flagAction withDescriptor:[ActionDescriptor type:ActionDescriptorTypeFlag]];
+        
+        __weak typeof(self) weakSelf = self;
+        ZASwipeAction *deleteAction = [[ZASwipeAction alloc] initWithStyle:ZASwipeActionStyleDestructive title:nil handler:^(ZASwipeAction *action, NSIndexPath *indexPath) {
+            [weakSelf.emails removeObjectAtIndex:indexPath.row];
+        }];
+        [self configureAction:deleteAction withDescriptor:[ActionDescriptor type:ActionDescriptorTypeMore]];
+        return @[deleteAction, flagAction];
     }
+}
+
+- (ZASwipeCellOptions *)tableView:(UITableView *)tableView editActionsOptionsForRowAtIndexPath:(NSIndexPath *)indexPath forOrientation:(ZASwipeActionsOrientation)orientation {
+    ZASwipeCellOptions *options = [[ZASwipeCellOptions alloc] init];
+    options.expansionStyle = orientation == ZASwipeActionsOrientationLeft ? [ZASwipeExpansionStyle selection] : [ZASwipeExpansionStyle destructive];
+    options.transitionStyle = self.defaultOptions.transitionStyle;
+    
+    options.buttonSpacing = 4;
+    
+    return options;
+}
+
+- (void)tableView:(UITableView *)tableView didEndEdittingRowAtIndexPath:(NSIndexPath *)indexPath forOrientation:(ZASwipeActionsOrientation)orientation {
+    NSLog(@"End editting row at index path %d", indexPath.row);
+}
+
+- (void)tableView:(UITableView *)tableView willBeginEdittingRowAtIndexPath:(NSIndexPath *)indexPath forOrientation:(ZASwipeActionsOrientation)orientation {
+    NSLog(@"End editting row at index path %d", indexPath.row);
 }
 
 - (void)configureAction:(ZASwipeAction *)action withDescriptor:(ActionDescriptor *)descriptor {
@@ -138,8 +167,8 @@
         case ButtonStyleCircular:
             action.backgroundColor = [UIColor clearColor];
             action.textColor = descriptor.color;
-            action.font = [UIFont systemFontOfSize:13]
-            action.transitionDelgate =
+            action.font = [UIFont systemFontOfSize:13];
+            action.transitionDelgate = [ZAScaleTransition defaultTransition];
         default:
             break;
     }

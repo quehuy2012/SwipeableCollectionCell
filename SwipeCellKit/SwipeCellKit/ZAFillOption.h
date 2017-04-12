@@ -16,9 +16,9 @@
  - ZAHandlerInvocationTimingAfter: the action handler is invoked adter the fll animation completes
  */
 typedef NS_ENUM(NSInteger, ZAHandlerInvocationTiming) {
+    ZAHandlerInvocationTimingNone,
     ZAHandlerInvocationTimingWith,
     ZAHandlerInvocationTimingAfter,
-    ZAHandlerInvocationTimingNone
 };
 
 @interface ZAFillOption : NSObject

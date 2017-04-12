@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ZASwipeExpansionTarget.h"
-#import "ZASwipeExpansionTrigger.h"
-#import "ZACompletionAnimation.h"
 #import "ZASwipeable.h"
+#import "ZACompletionAnimation.h"
 
+@class ZASwipeExpansionTarget;
+@class ZASwipeExpansionTrigger;
 
 /**
  Describes the expansion behavior when the cell is swiped past threshold

@@ -9,6 +9,8 @@
 #import "ZASwipeExpansionStyle.h"
 #import "ZASwipeActionsView.h"
 #import "ZASwipeExpansionTrigger.h"
+#import "ZASwipeExpansionTarget.h"
+#import "ZACompletionAnimation.h"
 
 @implementation ZASwipeExpansionStyle
 
@@ -40,7 +42,7 @@
         return NO;
     }
     
-    CGFloat viewFrameMinX = CGRectGetMinX(view.frame);
+    CGFloat viewFrameMinX = CGRectGetMinX([view swipeViewFrame]);
     if (fabs(viewFrameMinX) < view.actionsView.preferredWidth) {
         return NO;
     }
