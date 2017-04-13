@@ -12,13 +12,12 @@
 
 @interface ZAScaleAndAlphaExpansion : NSObject <ZASwipeExpanding>
 
-@property (nonatomic, assign) double duration;
-@property (nonatomic, assign) double interButtonDelay;
+@property (nonatomic, readonly) double duration;
+@property (nonatomic, readonly) double interButtonDelay;
 
-@property (nonatomic, assign) CGFloat scale;
+@property (nonatomic, readonly) CGFloat scale;
 
 - (instancetype)initWithDuration:(double)duration interButtonDelay:(double)interButtonDelay scale:(CGFloat)scale;
-
 
 + (instancetype)expansion;
 @end

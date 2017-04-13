@@ -30,17 +30,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Test xib
-    [self.tableView registerNib:[UINib nibWithNibName:@"MailTableViewCell" bundle:nil] forCellReuseIdentifier:@"testCell"];
-    
-    
     self.tableView.allowsSelection = YES;
     self.tableView.allowsMultipleSelectionDuringEditing = YES;
-//    self.tableView.rowHeight = UITableViewAutomaticDimension;
-//    self.tableView.estimatedRowHeight = 120;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 150;
     self.tableView.userInteractionEnabled = YES;
     
-//    /self.automaticallyAdjustsScrollViewInsets = NO;
+//    self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
@@ -49,13 +45,87 @@
     self.isSwipeRightEnable = YES;
     self.defaultOptions = [[ZASwipeCellOptions alloc] init];
     
+
+    
     [self resetData];
 
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - Action
+
+- (IBAction)optionTapped:(id)sender {
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Swipe Transition Style" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    __weak typeof(self) weakSelf = self;
+    [controller addAction:[UIAlertAction actionWithTitle:@"Border" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        weakSelf.defaultOptions.transitionStyle = ZASwipeTransitionStyleBorder;
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"Drag" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        weakSelf.defaultOptions.transitionStyle = ZASwipeTransitionStyleDrag;
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"Reveal" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        weakSelf.defaultOptions.transitionStyle = ZASwipeTransitionStyleReveal;
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"(%@) Swipe Right", self.isSwipeRightEnable ? @"Disable" : @"Enable"] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        weakSelf.isSwipeRightEnable = !weakSelf.isSwipeRightEnable;
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"Button Display Mode" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [weakSelf buttonDisplayModeTapped];
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"Button Style" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [weakSelf buttonStyleTapped];
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"Reset" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [weakSelf resetData];
+    }]];
+    
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)buttonDisplayModeTapped {
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Button Display Mode" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    __weak typeof(self) weakSelf = self;
+    [controller addAction:[UIAlertAction actionWithTitle:@"Image + Tittle" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        weakSelf.buttonDisplayMode = ButtonDisplayModeTitleAndImage;
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"Image Only" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        weakSelf.buttonDisplayMode = ButtonDisplayModeImageOnly;
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"Tittle Only" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        weakSelf.buttonDisplayMode = ButtonDisplayModeTitleOnly;
+    }]];
+    
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)buttonStyleTapped {
+    UIAlertController *controller= [UIAlertController alertControllerWithTitle:@"Button Style" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    __weak typeof(self) weakSelf = self;
+    [controller addAction:[UIAlertAction actionWithTitle:@"Background Color" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        weakSelf.buttonStyle = ButtonStyleBackgroundColor;
+        weakSelf.defaultOptions.transitionStyle = ZASwipeTransitionStyleBorder;
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"Circular" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        weakSelf.buttonStyle = ButtonStyleCircular;
+        weakSelf.defaultOptions.transitionStyle = ZASwipeTransitionStyleReveal;
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"Cancle" style:UIAlertActionStyleCancel handler:nil]];
+    
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 #pragma mark - Table view data source
@@ -70,8 +140,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MailViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    //MailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"testCell" forIndexPath:indexPath];
-    
     cell.delegate = self;
     cell.selectedBackgroundView = [self createSelectedBackgroundView];
     
@@ -82,29 +150,7 @@
     cell.bodyLabel.text = email.body;
     cell.unread = email.unread;
     
-    
-    //    for (UIGestureRecognizer *gesture in cell.gestureRecognizers) {
-    //        NSLog(@"Gesture: %@ enable: %d",gesture, gesture.isEnabled);
-    //    }
-    
     return cell;
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-        CGRect frame = cell.frame;
-        NSLog(@"Cell at indexpath:%ld  frame: x(%.2f),y(%.2f),width(%.2f),height(%.2f)",(long)indexPath.row, frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
-    //    CGRect rectOfCell = [tableView rectForRowAtIndexPath:indexPath];
-    //    NSLog(@"Table cell frame: x(%.2f),y(%.2f),width(%.2f),height(%.2f)", rectOfCell.origin.x, rectOfCell.origin.y, rectOfCell.size.width, rectOfCell.size.height);
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 140.0;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    MailViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    CGRect frame = cell.frame;
-    NSLog(@"Cell frame: x(%.2f),y(%.2f),width(%.2f),height(%.2f)", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
 }
 
 - (UIView *)createSelectedBackgroundView {
@@ -117,7 +163,7 @@
     NSArray *mockEmails = @[
                             [[Email alloc] initWithSubject:@"Video: Operators and Strong Opinions with Erica Sadun" from:@"Realm" body:@"Swift operators are flexible and powerful. They’re symbols that behave like functions, adopting a natural mathematical syntax, for example 1 + 2 versus add(1, 2). So why is it so important that you treat them like potential Swift Kryptonite? Erica Sadun discusses why your operators should be few, well-chosen, and heavily used. There’s even a fun interactive quiz! Play along with “Name That Operator!” and learn about an essential Swift best practice." date:[NSDate date]],
                             [[Email alloc] initWithSubject:@"[Pragmatic Bookstore] Your eBook 'Swift Style' is ready for download" from:@"The Pragmatic Bookstore" body:@"Hello, The gerbils at the Pragmatic Bookstore have just finished hand-crafting your eBook of Swift Style. It's available for download at the following URL:" date:[NSDate date]],
-                            [[Email alloc] initWithSubject:@"Video: Operators and Strong Opinions with Erica Sadun" from:@"Realm" body:@"Swift operators are flexible and powerful. They’re symbols that behave like functions, adopting a natural mathematical syntax, for example 1 + 2 versus add(1, 2). So why is it so important that you treat them like potential Swift Kryptonite? Erica Sadun discusses why your operators should be few, well-chosen, and heavily used. There’s even a fun interactive quiz! Play along with “Name That Operator!” and learn about an essential Swift best practice." date:[NSDate date]],
+                            [[Email alloc] initWithSubject:@"Video: O321perators and Strong Opinions with Erica Sadun" from:@"Realm" body:@"Swift operators are flexible and powerful. They’re symbols that behave like functions, adopting a natural mathematical syntax, for example 1 + 2 versus add(1, 2). So why is it so important that you treat them like potential Swift Kryptonite? Erica Sadun discusses why your operators should be few, well-chosen, and heavily used. There’s even a fun interactive quiz! Play along with “Name That Operator!” and learn about an essential Swift best practice." date:[NSDate date]],
                             [[Email alloc] initWithSubject:@"[Pragmatic Bookstore] Your eBook 'Swift Style' is ready for download" from:@"The Pragmatic Bookstore" body:@"Hello, The gerbils at the Pragmatic Bookstore have just finished hand-crafting your eBook of Swift Style. It's available for download at the following URL:" date:[NSDate date]],
                             [[Email alloc] initWithSubject:@"Video: Operators and Strong Opinions with Erica Sadun" from:@"Realm" body:@"Swift operators are flexible and powerful. They’re symbols that behave like functions, adopting a natural mathematical syntax, for example 1 + 2 versus add(1, 2). So why is it so important that you treat them like potential Swift Kryptonite? Erica Sadun discusses why your operators should be few, well-chosen, and heavily used. There’s even a fun interactive quiz! Play along with “Name That Operator!” and learn about an essential Swift best practice." date:[NSDate date]],
                             [[Email alloc] initWithSubject:@"Video: Operators and Strong Opinions with Erica Sadun" from:@"Realm" body:@"Swift operators are flexible and powerful. They’re symbols that behave like functions, adopting a natural mathematical syntax, for example 1 + 2 versus add(1, 2). So why is it so important that you treat them like potential Swift Kryptonite? Erica Sadun discusses why your operators should be few, well-chosen, and heavily used. There’s even a fun interactive quiz! Play along with “Name That Operator!” and learn about an essential Swift best practice." date:[NSDate date]]
@@ -128,6 +174,11 @@
         email.unread = NO;
     }
     [self.tableView reloadData];
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    CGRect rect = cell.frame;
+    NSLog(@"Cell frame: (%f, %f, %f, %f)", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
 }
 
 #pragma mark - ZASwipeTalbeViewCellDelegate
@@ -175,20 +226,20 @@
 
 - (ZASwipeCellOptions *)tableView:(UITableView *)tableView editActionsOptionsForRowAtIndexPath:(NSIndexPath *)indexPath forOrientation:(ZASwipeActionsOrientation)orientation {
     ZASwipeCellOptions *options = [[ZASwipeCellOptions alloc] init];
+    
     options.expansionStyle = orientation == ZASwipeActionsOrientationLeft ? [ZASwipeExpansionStyle selection] : [ZASwipeExpansionStyle destructive];
     options.transitionStyle = self.defaultOptions.transitionStyle;
-    
     options.buttonSpacing = 4;
     
     return options;
 }
 
 - (void)tableView:(UITableView *)tableView didEndEdittingRowAtIndexPath:(NSIndexPath *)indexPath forOrientation:(ZASwipeActionsOrientation)orientation {
-    NSLog(@"End editting row at index path %ld", (long)indexPath.row);
+    //NSLog(@"End editting row at index path %ld", (long)indexPath.row);
 }
 
 - (void)tableView:(UITableView *)tableView willBeginEdittingRowAtIndexPath:(NSIndexPath *)indexPath forOrientation:(ZASwipeActionsOrientation)orientation {
-    NSLog(@"Begin editting row at index path %ld", (long)indexPath.row);
+    //NSLog(@"Begin editting row at index path %ld", (long)indexPath.row);
 }
 
 - (void)configureAction:(ZASwipeAction *)action withDescriptor:(ActionDescriptor *)descriptor {
@@ -204,6 +255,7 @@
             action.textColor = descriptor.color;
             action.font = [UIFont systemFontOfSize:13];
             action.transitionDelgate = [ZAScaleTransition defaultTransition];
+            break;
         default:
             break;
     }

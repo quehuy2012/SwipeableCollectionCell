@@ -16,15 +16,11 @@
 
 @interface ZASwipeTableViewCell () <ZASwipeActionsViewDelegate, ZASwipeable, UIGestureRecognizerDelegate>
 
-- (void)handlePanGesture:(UIPanGestureRecognizer *)gesture;
-
 @end
 
 @implementation ZASwipeTableViewCell
 
-@synthesize actionsView = _actionsView;
-@synthesize state = _state;
-@synthesize swipeViewFrame = _frame;
+//@synthesize swipeViewFrame = _frame;
 @synthesize layoutMargins = _layoutMargins;
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -33,9 +29,10 @@
     // Configure the view for the selected state
 }
 
-//- (CGRect)swipeCellFrame {
-//    return self.frame;
-//}
+- (UIEdgeInsets)layoutMargins {
+    return self.frame.origin.x != 0 ? _originalLayoutMargins : [super layoutMargins];
+}
+
 
 #pragma mark - Life cycle
 
@@ -75,10 +72,8 @@
     _state = ZASwipeStateCenter;
     _originalLayoutMargins = UIEdgeInsetsZero;
     _originalCenter = 0;
-    _elasticScrollRatio = 0.4;
+    _elasticScrollRatio = 1.0;
     _scrollRatio = 1.0;
-    
-    self.clipsToBounds = NO;
     
     _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
     _tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
@@ -88,26 +83,24 @@
     
     [self addGestureRecognizer:_panGestureRecognizer];
     [self addGestureRecognizer:_tapGestureRecognizer];
+    self.clipsToBounds = NO;
     
     self.userInteractionEnabled = YES;
     
-    //[self addObserver:self forKeyPath:@"center" options:NSKeyValueObservingOptionNew context:nil];
+    [self addObserver:self forKeyPath:@"center" options:NSKeyValueObservingOptionNew context:nil];
 }
 
-//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-//    if ([@"center" compare:keyPath] == NSOrderedSame) {
-//        CGPoint newCenter = [change[NSKeyValueChangeNewKey] CGPointValue];
-//        NSLog(@"New center: (%f, %f)", newCenter.x, newCenter.y);
-//        
-//        self.actionsView.visibleWidth = fabs(CGRectGetMinX(self.frame));
-//    }
-//}
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if ([@"center" compare:keyPath] == NSOrderedSame) {
+        self.actionsView.visibleWidth = fabs(CGRectGetMinX(self.frame));
+    }
+}
 
 - (void)didMoveToSuperview {
     [super didMoveToSuperview];
     
     UIView *view = self;
-    while (view.superview) {
+    while (view) {
         view = view.superview;
         if ([view isKindOfClass:[UITableView class]]) {
             UITableView *tableView = (UITableView *)view;
@@ -131,7 +124,10 @@
 
 #pragma mark - Gesture
 - (void)handlePanGesture:(UIPanGestureRecognizer *)gesture {
-    NSLog(@"Panning");
+//    CGPoint location = [gesture locationInView:self.tableView];
+//    NSLog(@"Pan position: (%f, %f)", location.x, location.y);
+   
+    
     if (self.editing == YES || gesture.view == nil) {
         return;
     }
@@ -139,9 +135,10 @@
     UIView *target = gesture.view;
     
     switch (gesture.state) {
-        case UIGestureRecognizerStateBegan:
-            //TODO: stopAnimatorIfNeeded
-            
+        case UIGestureRecognizerStateBegan: {
+            UITableViewCell *cell = gesture.view;
+            NSIndexPath *cellIndex = [self.tableView indexPathForCell:cell];
+            NSLog(@"Panning Cell At Index: %d", cellIndex.row);
             self.originalCenter = self.center.x;
             
             if (self.state == ZASwipeStateCenter || self.state == ZASwipeStateAnimatingToCenter) {
@@ -150,7 +147,7 @@
                 [self showActionsViewForOrientation:orientation];
             }
             break;
-        
+        }
         case UIGestureRecognizerStateChanged:
             if (!self.actionsView) {
                 return;
@@ -160,8 +157,7 @@
             self.scrollRatio = 1.0;
             
             // Check if dragging past the center of the oppsite direction of action view
-#warning debug antionView.orientation
-            if ( (translation + self.originalCenter - CGRectGetMidX(self.bounds)) * self.actionsView.orientation) {
+            if ( (translation + self.originalCenter - CGRectGetMidX(self.bounds)) * self.actionsView.orientation > 0) {
                 CGPoint center = target.center;
                 center.x = [gesture elasticTranslationInView:target withLimit:CGSizeZero fromOriginalCenter:CGPointMake(self.originalCenter, 0)].x;
                 target.center = center;
@@ -179,7 +175,7 @@
                 if (expanded && !self.actionsView.expanded && targetOffset > currentOffset) {
                     CGFloat centerForTranslationToEdge = CGRectGetMidX(self.bounds) - targetOffset * self.actionsView.orientation;
                     CGFloat delta = centerForTranslationToEdge - self.originalCenter;
-#warning animateToOffset
+                    
                     // [self animateToOffset: centerForTranslationToEdge];
                     [self animateWithDuration:0.7 toOffset:centerForTranslationToEdge withInitialVelocity:0 completion:nil];
                     [gesture setTranslation:CGPointMake(delta, 0) inView:self.superview];
@@ -221,8 +217,7 @@
                 CGFloat targetOffset = [self targetCenterActive:(self.state != ZASwipeStateCenter)];
                 CGFloat distance = targetOffset - self.center.x;
                 CGFloat normalizedVelocity = velocity.x * self.scrollRatio / distance;
-#warning animate
-                //[self animateToOffset:targetOffset withInitialVelocity:normalizedVelocity];
+
                 __weak typeof(self) weakSelf = self;
                 [self animateWithDuration:0.7 toOffset:targetOffset withInitialVelocity:normalizedVelocity completion:^{
                     if (weakSelf.state == ZASwipeStateCenter) {
@@ -333,15 +328,12 @@
 }
 
 - (void)animateWithDuration:(double)duration toOffset:(CGFloat)offset withInitialVelocity:(CGFloat)velocity completion:(void (^)())completion {
-    
-    //stopAnimatorIfNeeded
-    
     [self layoutIfNeeded];
     
-#warning sua animator thanh animate de support ios 9
     __weak typeof(self) weakSelf = self;
-    [UIView animateWithDuration:duration delay:0.0 usingSpringWithDamping:1.0 initialSpringVelocity:velocity options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        weakSelf.center = CGPointMake(offset, weakSelf.center.y);
+    [UIView animateWithDuration:duration delay:0.0 usingSpringWithDamping:0.9 initialSpringVelocity:velocity options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        CGPoint newCenter = CGPointMake(offset, weakSelf.center.y);
+        weakSelf.center = newCenter;
         [weakSelf layoutIfNeeded];
     } completion:^(BOOL finished) {
         if (completion) {
@@ -353,8 +345,6 @@
 - (void)animateToOffset:(CGFloat)offset completion:(void (^)())completion {
     [self animateWithDuration:0.7 toOffset:offset withInitialVelocity:0 completion:completion];
 }
-
-//TODO: stopAnimatorIfNeeded
 
 // This is required to detect touches on the ZASwipeActionView sitting along the ZASwipeTableCell
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
@@ -380,15 +370,6 @@
     if (self.state == ZASwipeStateCenter) {
         [super setHighlighted:highlighted animated:animated];
     }
-}
-
-#warning override super property with getter
-- (UIEdgeInsets)layoutMargins {
-    return self.frame.origin.x != 0 ? _originalLayoutMargins : [super layoutMargins];
-}
-
-- (void)setLayoutMargins:(UIEdgeInsets)layoutMargins {
-    [super setLayoutMargins:layoutMargins];
 }
 
 #pragma mark - Swipe state

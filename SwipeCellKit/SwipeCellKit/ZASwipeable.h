@@ -19,7 +19,6 @@ typedef NS_ENUM(NSInteger, ZASwipeTransitionStyle) {
     ZASwipeTransitionStyleReveal
 };
 
-//WARNING: orientation 
 typedef NS_ENUM(NSInteger, ZASwipeActionsOrientation) {
     ZASwipeActionsOrientationLeft = -1,
     ZASwipeActionsOrientationRight = 1
@@ -58,7 +57,11 @@ typedef NS_ENUM(NSInteger, ZASwipeState) {
 
 @property (nonatomic, readonly) ZASwipeActionsView *actionsView;
 @property (nonatomic, readonly) ZASwipeState state;
-@property (nonatomic, readonly) CGRect swipeViewFrame;
+@property (nonatomic, readonly) CGRect frame;
+
+
+
+//@property (nonatomic, readonly) CGRect swipeViewFrame;
 //- (CGRect)swipeCellFrame;
 
 @end

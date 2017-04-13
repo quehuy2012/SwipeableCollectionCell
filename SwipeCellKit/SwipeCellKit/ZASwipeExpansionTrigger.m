@@ -32,7 +32,7 @@
             break;
         }
         case ZAExpansionTriggerOverscroll:
-            return fabs(CGRectGetMinX([view swipeViewFrame])) > (view.actionsView.preferredWidth + self.threshold);
+            return fabs(CGRectGetMinX(view.frame)) > (view.actionsView.preferredWidth + self.threshold);
             break;
         default:
             break;

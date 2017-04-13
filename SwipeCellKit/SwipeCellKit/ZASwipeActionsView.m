@@ -208,7 +208,6 @@
     if (expandedButton) {
         NSMutableArray *otherButtons = [NSMutableArray arrayWithArray:self.buttons];
         [otherButtons removeLastObject];
-#warning bên swift dùng buttons.droplast.reversed ko chắc thằng buttons có reverse không
         [self.expansionDelegate actionButton:expandedButton didChange:expanded otherActionButtons:[[otherButtons reverseObjectEnumerator] allObjects]];
     }
 }

@@ -17,12 +17,12 @@
 /**
  The duration of the expansion animation
  */
-@property (nonatomic, assign) double duration;
+@property (nonatomic, readwrite) double duration;
 
 /**
  The delay before starting th expansion animation
  */
-@property (nonatomic, assign) double delay;
+@property (nonatomic, readwrite) double delay;
 
 - (instancetype)init;
 - (instancetype)initWithDuration:(double)duration;

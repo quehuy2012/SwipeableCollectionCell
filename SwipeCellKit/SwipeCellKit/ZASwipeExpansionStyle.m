@@ -37,12 +37,14 @@
     return self;
 }
 
-- (BOOL)shouldExpandView:(NSObject<ZASwipeable> *)view ByGesture:(UIPanGestureRecognizer *)gesture inSuperView:(UIView *)superview {
+- (BOOL)shouldExpandView:(UIView<ZASwipeable> *)view ByGesture:(UIPanGestureRecognizer *)gesture inSuperView:(UIView *)superview {
     if (!view.actionsView) {
         return NO;
     }
     
-    CGFloat viewFrameMinX = CGRectGetMinX([view swipeViewFrame]);
+    CGFloat viewFrameMinX = CGRectGetMinX([view frame]);
+
+    //NSLog(@"Min X Frame: %f", fabs(viewFrameMinX));
     if (fabs(viewFrameMinX) < view.actionsView.preferredWidth) {
         return NO;
     }

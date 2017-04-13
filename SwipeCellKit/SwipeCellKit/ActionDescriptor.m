@@ -92,10 +92,13 @@
             break;
         case ActionDescriptorTypeMore:
             color = [UIColor colorWithRed:0.7803494334 green:0.7761332393 blue:0.7967314124 alpha:1];
+            break;
         case ActionDescriptorTypeFlag:
             color = [UIColor colorWithRed:1 green:0.5803921569 blue:0 alpha:1];
+            break;
         case ActionDescriptorTypeTrash:
             color = [UIColor colorWithRed:1 green:0.2352941176 blue:0.1882352941 alpha:1];
+            break;
         default:
             break;
     }

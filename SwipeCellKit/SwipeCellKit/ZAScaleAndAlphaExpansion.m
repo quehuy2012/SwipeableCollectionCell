@@ -38,9 +38,10 @@
 - (void)actionButton:(UIButton *)button didChange:(BOOL)expanding otherActionButtons:(NSArray<UIButton *> *)otherActionButtons {
     NSArray<UIButton *> *buttons = expanding ? otherActionButtons : [[otherActionButtons reverseObjectEnumerator] allObjects];
     
+    __weak typeof(self) weakSelf = self;
     [buttons enumerateObjectsUsingBlock:^(UIButton * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [UIView animateWithDuration:self.duration delay:self.interButtonDelay * (expanding ? idx : idx +1)  options:UIViewAnimationOptionTransitionNone animations:^{
-            obj.transform = expanding ? CGAffineTransformMakeScale(self.scale, self.scale) : CGAffineTransformIdentity;
+        [UIView animateWithDuration:weakSelf.duration delay:weakSelf.interButtonDelay * (expanding ? idx : idx +1)  options:UIViewAnimationOptionTransitionNone animations:^{
+            obj.transform = expanding ? CGAffineTransformMakeScale(weakSelf.scale, weakSelf.scale) : CGAffineTransformIdentity;
             obj.alpha = expanding ? 0.0 : 1.0;
         } completion:nil];
     }];

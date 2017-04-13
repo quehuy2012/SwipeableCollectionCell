@@ -45,6 +45,7 @@
             break;
         case ZAExpansionTargetPercentage:
             offset = superview.bounds.size.width * self.threshold;
+            break;
         default:
             break;
     }

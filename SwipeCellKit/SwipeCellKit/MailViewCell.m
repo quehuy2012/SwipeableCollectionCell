@@ -11,16 +11,10 @@
 
 @implementation MailViewCell
 
-- (IBAction)touch:(id)sender {
-    NSLog(@"Touch");
-}
-
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.contentView.userInteractionEnabled = YES;
     
     [self setupIndicatorView];
-    
 }
 
 - (void)setupIndicatorView {

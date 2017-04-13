@@ -19,7 +19,6 @@
             [cells addObject:cell];
         }
     }];
-    
     return cells;
 }
 
