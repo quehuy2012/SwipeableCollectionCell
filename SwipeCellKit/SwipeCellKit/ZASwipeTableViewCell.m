@@ -14,14 +14,18 @@
 #import "UIPanGestureRecognizer+SwipeCellKit.h"
 #import "UITableView+SwipeCellKit.h"
 
-@interface ZASwipeTableViewCell () <ZASwipeActionsViewDelegate, ZASwipeable, UIGestureRecognizerDelegate>
+@interface ZASwipeTableViewCell () <ZASwipeActionsViewDelegate, UIGestureRecognizerDelegate>
+
+@property (nonatomic, readwrite) UIPanGestureRecognizer *panGestureRecognizer;
+@property (nonatomic, readwrite) UITapGestureRecognizer *tapGestureRecognizer;
 
 @end
 
 @implementation ZASwipeTableViewCell
 
-//@synthesize swipeViewFrame = _frame;
-@synthesize layoutMargins = _layoutMargins;
+- (CGRect)cellFrame {
+    return self.frame;
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -32,6 +36,22 @@
 - (UIEdgeInsets)layoutMargins {
     return self.frame.origin.x != 0 ? _originalLayoutMargins : [super layoutMargins];
 }
+
+//- (UIPanGestureRecognizer *)panGestureRecognizer {
+//    if (!_panGestureRecognizer) {
+//        _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
+//        _panGestureRecognizer.delegate = self;
+//    }
+//    return _panGestureRecognizer;
+//}
+//
+//- (UITapGestureRecognizer *)tapGestureRecognizer {
+//    if (!_tapGestureRecognizer) {
+//        _tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
+//        _tapGestureRecognizer.delegate = self;
+//    }
+//    return _tapGestureRecognizer;
+//}
 
 
 #pragma mark - Life cycle
@@ -44,13 +64,6 @@
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self setUp];
-    }
-    return self;
-}
-
-- (instancetype)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
         [self setUp];
     }
     return self;
@@ -72,22 +85,30 @@
     _state = ZASwipeStateCenter;
     _originalLayoutMargins = UIEdgeInsetsZero;
     _originalCenter = 0;
-    _elasticScrollRatio = 1.0;
+    _elasticScrollRatio = 0.4;
     _scrollRatio = 1.0;
     
     _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
     _tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
+    [self addGestureRecognizer:self.panGestureRecognizer];
+    [self addGestureRecognizer:self.tapGestureRecognizer];
+    
     
     _panGestureRecognizer.delegate = self;
     _tapGestureRecognizer.delegate = self;
     
-    [self addGestureRecognizer:_panGestureRecognizer];
-    [self addGestureRecognizer:_tapGestureRecognizer];
     self.clipsToBounds = NO;
     
-    self.userInteractionEnabled = YES;
+    //[self addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(testPanGesture:)]];
     
     [self addObserver:self forKeyPath:@"center" options:NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)testPanGesture:(UIPanGestureRecognizer *)gesture {
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:self];
+        NSLog(@"Panning Cell(%@) At Index: %ld",gesture.view, (long)indexPath.row);
+    }
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
@@ -136,10 +157,11 @@
     
     switch (gesture.state) {
         case UIGestureRecognizerStateBegan: {
-            UITableViewCell *cell = gesture.view;
+            UITableViewCell *cell = (ZASwipeTableViewCell *)gesture.view;
             NSIndexPath *cellIndex = [self.tableView indexPathForCell:cell];
-            NSLog(@"Panning Cell At Index: %d", cellIndex.row);
+            NSLog(@"Panning Cell(%@) At Index: %ld",cell, (long)cellIndex.row);
             self.originalCenter = self.center.x;
+            
             
             if (self.state == ZASwipeStateCenter || self.state == ZASwipeStateAnimatingToCenter) {
                 CGPoint velocity = [gesture velocityInView:target];
@@ -237,7 +259,9 @@
 }
 
 - (void)handleTapGesture:(UIGestureRecognizer *)gesture {
-    NSLog(@"Tapping");
+    UITableViewCell *cell = (ZASwipeTableViewCell *)gesture.view;
+    NSIndexPath *cellIndex = [self.tableView indexPathForCell:cell];
+    NSLog(@"Tapping Cell(%@) At Index: %ld",cell, (long)cellIndex.row);
     [self hideSwipeWithAnimation:YES];
 }
 
@@ -350,6 +374,8 @@
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
     CGPoint pointInSuperView = [self convertPoint:point toView:self.superview];
     
+//    NSLog(@"Point In SuperView: (%f %f)", pointInSuperView.x, pointInSuperView.y);
+    
     if (!UIAccessibilityIsVoiceOverRunning()) {
         for (ZASwipeTableViewCell *cell in self.tableView.swipeCells) {
             if ((cell.state == ZASwipeStateLeft || cell.state == ZASwipeStateRight) && ![cell containsPoint:pointInSuperView]) {
@@ -363,7 +389,7 @@
 }
 
 - (BOOL)containsPoint:(CGPoint)point {
-    return point.y > CGRectGetMinY(self.frame) && point.y < CGRectGetMaxX(self.frame);
+    return point.y > CGRectGetMinY(self.frame) && point.y < CGRectGetMaxY(self.frame);
 }
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
@@ -385,6 +411,7 @@
             break;
         case ZASwipeActionsOrientationRight:
             return (velocity.x > 0 && !self.actionsView.expanded) ? ZASwipeStateCenter: ZASwipeStateRight;
+            break;
         default:
             break;
     }
@@ -530,7 +557,10 @@
                 [weakSelf.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
                 
                 [UIView animateWithDuration:0.3 animations:^{
-                    weakSelf.center = CGPointMake(newCenter, weakSelf.center.y);
+                    CGPoint center = weakSelf.center;
+                    center.x = newCenter;
+                    weakSelf.center = center;
+                    
                     CGRect maskFrame = mask.frame;
                     maskFrame.size.height = 0;
                     mask.frame = maskFrame;
@@ -563,7 +593,7 @@
         }
     };
     
-    [weakSelf animateWithDuration:0.3 toOffset:newCenter withInitialVelocity:0.0 completion:^{
+    [self animateWithDuration:0.3 toOffset:newCenter withInitialVelocity:0.0 completion:^{
         if (fillOption.timming == ZAHandlerInvocationTimingAfter) {
             invokeAction();
         }
@@ -576,6 +606,7 @@
 
 
 #pragma mark - UIGestureRecognizerDelegate
+
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
     if (gestureRecognizer == self.tapGestureRecognizer) {
         if (UIAccessibilityIsVoiceOverRunning()) {
@@ -592,7 +623,7 @@
         return NO;
     }
     
-    if (gestureRecognizer == self.panGestureRecognizer) {
+    if (gestureRecognizer == self.panGestureRecognizer && gestureRecognizer.view && [gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
         UIView *view = gestureRecognizer.view;
         UIPanGestureRecognizer *panGesture = (UIPanGestureRecognizer *)gestureRecognizer;
         

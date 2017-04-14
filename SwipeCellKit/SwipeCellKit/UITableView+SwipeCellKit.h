@@ -12,9 +12,12 @@
 
 @interface UITableView (SwipeCellKit)
 
+@property (nonatomic, readwrite) UIPanGestureRecognizer *swipeCellKitGesture;
+
 - (NSArray<ZASwipeTableViewCell *> *)swipeCells;
 
 - (void)hideSwipeCell;
 
 - (void)setGestureEnabled:(BOOL)enabled;
+
 @end

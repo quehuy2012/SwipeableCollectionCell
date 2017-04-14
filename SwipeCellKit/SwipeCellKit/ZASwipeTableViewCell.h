@@ -52,7 +52,7 @@ editActionsOptionsForRowAtIndexPath:(NSIndexPath *)indexPath
 
 @end
 
-@interface ZASwipeTableViewCell : UITableViewCell
+@interface ZASwipeTableViewCell : UITableViewCell <ZASwipeable>
 
 @property (nonatomic, readwrite, weak) id<ZASwipeViewCellDelegate> delegate;
 
@@ -65,13 +65,12 @@ editActionsOptionsForRowAtIndexPath:(NSIndexPath *)indexPath
 
 @property (nonatomic, readwrite) UIEdgeInsets originalLayoutMargins;
 
-@property (nonatomic, readonly) UIPanGestureRecognizer *panGestureRecognizer;
-@property (nonatomic, readonly) UITapGestureRecognizer *tapGestureRecognizer;
-
 @property (nonatomic, readonly) CGFloat elasticScrollRatio;
 @property (nonatomic, readwrite) CGFloat scrollRatio;
 
 @property (nonatomic, readwrite) UIEdgeInsets layoutMargins;
+
+
 
 - (void)hideSwipeWithAnimation:(BOOL)animated;
 @end

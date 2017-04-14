@@ -30,7 +30,7 @@ typedef NS_ENUM(NSInteger, ZASwipeVerticalAligment) {
 };
 
 typedef NS_ENUM(NSInteger, ZASwipeState) {
-    ZASwipeStateCenter,
+    ZASwipeStateCenter = 0,
     ZASwipeStateLeft,
     ZASwipeStateRight,
     ZASwipeStateAnimatingToCenter
@@ -55,10 +55,13 @@ typedef NS_ENUM(NSInteger, ZASwipeState) {
 
 @protocol ZASwipeable <NSObject>
 
-@property (nonatomic, readonly) ZASwipeActionsView *actionsView;
-@property (nonatomic, readonly) ZASwipeState state;
-@property (nonatomic, readonly) CGRect frame;
+//@property (nonatomic, readonly) ZASwipeActionsView *actionsView;
+//@property (nonatomic, readonly) ZASwipeState state;
+//@property (nonatomic, readonly) CGRect frame;
 
+- (ZASwipeActionsView *)actionsView;
+- (ZASwipeState) state;
+- (CGRect)cellFrame;
 
 
 //@property (nonatomic, readonly) CGRect swipeViewFrame;

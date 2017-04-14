@@ -1,18 +1,22 @@
 //
-//  MailTableViewController.m
+//  ViewController.m
 //  SwipeCellKit
 //
-//  Created by CPU11713 on 4/11/17.
+//  Created by CPU11713 on 4/13/17.
 //  Copyright © 2017 CPU11713. All rights reserved.
 //
 
-#import "MailTableViewController.h"
+#import "ViewController.h"
+
 #import "ZASwipeCellKit.h"
 #import "Email.h"
 #import "MailViewCell.h"
 #import "ActionDescriptor.h"
+#import "SubtitleCell.h"
 
-@interface MailTableViewController () <ZASwipeViewCellDelegate>
+@interface ViewController () <UITableViewDataSource, UITableViewDelegate, ZASwipeViewCellDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, readwrite) NSMutableArray<Email *> *emails;
 @property (nonatomic, readwrite) ZASwipeCellOptions *defaultOptions;
@@ -23,7 +27,7 @@
 
 @end
 
-@implementation MailTableViewController
+@implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,21 +35,24 @@
     self.tableView.allowsSelection = YES;
     self.tableView.allowsMultipleSelectionDuringEditing = YES;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 100;
+    self.tableView.estimatedRowHeight = 150;
+    self.tableView.userInteractionEnabled = YES;
+    
+    //    self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
-
+    
     self.buttonDisplayMode = ButtonDisplayModeTitleAndImage;
     self.buttonStyle = ButtonStyleBackgroundColor;
     self.isSwipeRightEnable = YES;
     self.defaultOptions = [[ZASwipeCellOptions alloc] init];
     
-    UIEdgeInsets margins = self.view.layoutMargins;
-    margins.left = 32;
-    self.view.layoutMargins = margins;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
     
     [self resetData];
-
+    
 }
 
 #pragma mark - Action
@@ -127,26 +134,30 @@
 
 #pragma mark - Table view data source
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 150;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.emails count];;
+    return 20;;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MailViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    SubtitleCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.delegate = self;
     cell.selectedBackgroundView = [self createSelectedBackgroundView];
     
-    Email *email = self.emails[indexPath.row];
-    cell.fromLabel.text = email.from;
-    cell.dateLabel.text = [email relativeDateString];
-    cell.subjectLabel.text = email.subject;
-    cell.bodyLabel.text = email.body;
-    cell.unread = email.unread;
-    
+//    Email *email = self.emails[indexPath.row];
+//    cell.fromLabel.text = email.from;
+//    cell.dateLabel.text = [email relativeDateString];
+//    cell.subjectLabel.text = email.subject;
+//    cell.bodyLabel.text = email.body;
+//    cell.unread = email.unread;
+//    
     return cell;
 }
 
@@ -190,11 +201,11 @@
         
         __weak typeof(self) weakSelf = self;
         ZASwipeAction *readAction = [[ZASwipeAction alloc] initWithStyle:ZASwipeActionStyleDefault title:nil handler:^(ZASwipeAction *action, NSIndexPath *indexPath) {
-            BOOL updatedStatus = !email.unread;
-            email.unread = updatedStatus;
-            
-            MailViewCell *cell = [weakSelf.tableView cellForRowAtIndexPath:indexPath];
-            cell.unread = updatedStatus;
+//            BOOL updatedStatus = !email.unread;
+//            email.unread = updatedStatus;
+//            
+//            MailViewCell *cell = [weakSelf.tableView cellForRowAtIndexPath:indexPath];
+//            cell.unread = updatedStatus;
         }];
         
         readAction.hideWhenSelected = YES;
@@ -214,7 +225,7 @@
         
         __weak typeof(self) weakSelf = self;
         ZASwipeAction *deleteAction = [[ZASwipeAction alloc] initWithStyle:ZASwipeActionStyleDestructive title:nil handler:^(ZASwipeAction *action, NSIndexPath *indexPath) {
-            [weakSelf.emails removeObjectAtIndex:indexPath.row];
+//            [weakSelf.emails removeObjectAtIndex:indexPath.row];
         }];
         [self configureAction:deleteAction withDescriptor:[ActionDescriptor type:ActionDescriptorTypeTrash]];
         return @[deleteAction, flagAction];
@@ -238,6 +249,7 @@
 - (void)tableView:(UITableView *)tableView willBeginEdittingRowAtIndexPath:(NSIndexPath *)indexPath forOrientation:(ZASwipeActionsOrientation)orientation {
     //NSLog(@"Begin editting row at index path %ld", (long)indexPath.row);
 }
+
 
 - (void)configureAction:(ZASwipeAction *)action withDescriptor:(ActionDescriptor *)descriptor {
     action.title = [descriptor titleForDisplayMode:self.buttonDisplayMode];

@@ -8,7 +8,9 @@
 
 #import "UITableView+SwipeCellKit.h"
 #import "ZASwipeTableViewCell.h"
+#import <objc/runtime.h>
 
+static void *swipeCellKitGestureKey = &swipeCellKitGestureKey;
 @implementation UITableView (SwipeCellKit)
 
 - (NSArray<ZASwipeTableViewCell *> *)swipeCells {
@@ -34,6 +36,14 @@
             [gesture setEnabled:enabled];
         }
     }
+}
+
+- (UIPanGestureRecognizer *)swipeCellKitGesture {
+    return objc_getAssociatedObject(self, swipeCellKitGestureKey);
+}
+
+- (void)setSwipeCellKitGesture:(UIPanGestureRecognizer *)swipeCellKitGesture {
+    objc_setAssociatedObject(self, swipeCellKitGestureKey, swipeCellKitGesture, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end

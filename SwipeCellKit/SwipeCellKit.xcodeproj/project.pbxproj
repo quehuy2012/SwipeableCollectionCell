@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C8021CF01E9F817400D32BD3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8021CEF1E9F817400D32BD3 /* ViewController.m */; };
 		C80694241E9B67CE00800DD8 /* ZAScaleTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = C80694231E9B67CE00800DD8 /* ZAScaleTransition.m */; };
 		C83F72681E9C843500EA3748 /* ZASwipeAccessibilityCustomAction.m in Sources */ = {isa = PBXBuildFile; fileRef = C83F72671E9C843500EA3748 /* ZASwipeAccessibilityCustomAction.m */; };
 		C83F726A1E9CBE1C00EA3748 /* MailStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C83F72691E9CBE1C00EA3748 /* MailStoryboard.storyboard */; };
-		C83F726D1E9CC19700EA3748 /* TestSwipeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C83F726C1E9CC19700EA3748 /* TestSwipeCell.m */; };
 		C83F72701E9CC8BF00EA3748 /* MailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C83F726F1E9CC8BF00EA3748 /* MailTableViewController.m */; };
-		C83F72751E9CDB1400EA3748 /* MailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C83F72731E9CDB1400EA3748 /* MailTableViewCell.m */; };
-		C83F72761E9CDB1400EA3748 /* MailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C83F72741E9CDB1400EA3748 /* MailTableViewCell.xib */; };
 		C84522981E9DD70700CB650C /* ZADragTransitionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C84522971E9DD70700CB650C /* ZADragTransitionLayout.m */; };
 		C845229B1E9DD90300CB650C /* ZARevealTransitionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C845229A1E9DD90300CB650C /* ZARevealTransitionLayout.m */; };
 		C8619B0F1E9B2618001CD425 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B0E1E9B2618001CD425 /* main.m */; };
@@ -40,6 +38,7 @@
 		C8619B6F1E9B26DF001CD425 /* ZASwipeActionButtonWrapperView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B5C1E9B26DF001CD425 /* ZASwipeActionButtonWrapperView.m */; };
 		C8619B701E9B26DF001CD425 /* ZASwipeActionTransitioningContext.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B5E1E9B26DF001CD425 /* ZASwipeActionTransitioningContext.m */; };
 		C8619B741E9B2787001CD425 /* Email.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B731E9B2787001CD425 /* Email.m */; };
+		C86717811EA0AD0C00ABEDA9 /* SubtitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C86717801EA0AD0C00ABEDA9 /* SubtitleCell.m */; };
 		C8A7019E1E9B2C270030E851 /* MailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A7019D1E9B2C270030E851 /* MailViewCell.m */; };
 		C8A701A11E9B2CFF0030E851 /* IndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A701A01E9B2CFF0030E851 /* IndicatorView.m */; };
 		C8A701A61E9B35060030E851 /* ActionDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A701A51E9B35060030E851 /* ActionDescriptor.m */; };
@@ -56,18 +55,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C8021CEE1E9F817400D32BD3 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C8021CEF1E9F817400D32BD3 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C80694221E9B67CE00800DD8 /* ZAScaleTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZAScaleTransition.h; sourceTree = "<group>"; };
 		C80694231E9B67CE00800DD8 /* ZAScaleTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZAScaleTransition.m; sourceTree = "<group>"; };
 		C83F72661E9C843500EA3748 /* ZASwipeAccessibilityCustomAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeAccessibilityCustomAction.h; sourceTree = "<group>"; };
 		C83F72671E9C843500EA3748 /* ZASwipeAccessibilityCustomAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwipeAccessibilityCustomAction.m; sourceTree = "<group>"; };
 		C83F72691E9CBE1C00EA3748 /* MailStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MailStoryboard.storyboard; path = SwipeCellKit/MailStoryboard.storyboard; sourceTree = "<group>"; };
-		C83F726B1E9CC19700EA3748 /* TestSwipeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSwipeCell.h; sourceTree = "<group>"; };
-		C83F726C1E9CC19700EA3748 /* TestSwipeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSwipeCell.m; sourceTree = "<group>"; };
 		C83F726E1E9CC8BF00EA3748 /* MailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MailTableViewController.h; path = SwipeCellKit/MailTableViewController.h; sourceTree = "<group>"; };
 		C83F726F1E9CC8BF00EA3748 /* MailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MailTableViewController.m; path = SwipeCellKit/MailTableViewController.m; sourceTree = "<group>"; };
-		C83F72721E9CDB1400EA3748 /* MailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailTableViewCell.h; sourceTree = "<group>"; };
-		C83F72731E9CDB1400EA3748 /* MailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailTableViewCell.m; sourceTree = "<group>"; };
-		C83F72741E9CDB1400EA3748 /* MailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MailTableViewCell.xib; sourceTree = "<group>"; };
 		C84522961E9DD70700CB650C /* ZADragTransitionLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZADragTransitionLayout.h; sourceTree = "<group>"; };
 		C84522971E9DD70700CB650C /* ZADragTransitionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZADragTransitionLayout.m; sourceTree = "<group>"; };
 		C84522991E9DD90200CB650C /* ZARevealTransitionLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZARevealTransitionLayout.h; sourceTree = "<group>"; };
@@ -121,6 +117,8 @@
 		C8619B5E1E9B26DF001CD425 /* ZASwipeActionTransitioningContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwipeActionTransitioningContext.m; sourceTree = "<group>"; };
 		C8619B721E9B2787001CD425 /* Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Email.h; sourceTree = "<group>"; };
 		C8619B731E9B2787001CD425 /* Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Email.m; sourceTree = "<group>"; };
+		C867177F1EA0AD0C00ABEDA9 /* SubtitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubtitleCell.h; sourceTree = "<group>"; };
+		C86717801EA0AD0C00ABEDA9 /* SubtitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubtitleCell.m; sourceTree = "<group>"; };
 		C8A7019C1E9B2C270030E851 /* MailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailViewCell.h; sourceTree = "<group>"; };
 		C8A7019D1E9B2C270030E851 /* MailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailViewCell.m; sourceTree = "<group>"; };
 		C8A7019F1E9B2CFF0030E851 /* IndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndicatorView.h; sourceTree = "<group>"; };
@@ -148,16 +146,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C83F72711E9CDAEC00EA3748 /* TestCell */ = {
-			isa = PBXGroup;
-			children = (
-				C83F72721E9CDB1400EA3748 /* MailTableViewCell.h */,
-				C83F72731E9CDB1400EA3748 /* MailTableViewCell.m */,
-				C83F72741E9CDB1400EA3748 /* MailTableViewCell.xib */,
-			);
-			name = TestCell;
-			sourceTree = "<group>";
-		};
 		C84522951E9DD6DD00CB650C /* TransistionLayout */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +215,8 @@
 				C8619B1B1E9B2618001CD425 /* LaunchScreen.storyboard */,
 				C8619B1E1E9B2618001CD425 /* Info.plist */,
 				C8619B0E1E9B2618001CD425 /* main.m */,
+				C8021CEE1E9F817400D32BD3 /* ViewController.h */,
+				C8021CEF1E9F817400D32BD3 /* ViewController.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -271,13 +261,12 @@
 		C8A7019B1E9B2BD00030E851 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C83F72711E9CDAEC00EA3748 /* TestCell */,
 				C8A7019C1E9B2C270030E851 /* MailViewCell.h */,
 				C8A7019D1E9B2C270030E851 /* MailViewCell.m */,
 				C8A7019F1E9B2CFF0030E851 /* IndicatorView.h */,
 				C8A701A01E9B2CFF0030E851 /* IndicatorView.m */,
-				C83F726B1E9CC19700EA3748 /* TestSwipeCell.h */,
-				C83F726C1E9CC19700EA3748 /* TestSwipeCell.m */,
+				C867177F1EA0AD0C00ABEDA9 /* SubtitleCell.h */,
+				C86717801EA0AD0C00ABEDA9 /* SubtitleCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -361,10 +350,10 @@
 		C8A701B11E9B48CB0030E851 /* SwipeCellKit */ = {
 			isa = PBXGroup;
 			children = (
-				C8A701B01E9B48570030E851 /* ZASwipeTransition */,
-				C8A701AF1E9B481F0030E851 /* ZASwipeAction */,
-				C8A701AC1E9B47880030E851 /* ZASwipeExpansion */,
 				C8A701A21E9B33620030E851 /* ZASwipeCell */,
+				C8A701AF1E9B481F0030E851 /* ZASwipeAction */,
+				C8A701B01E9B48570030E851 /* ZASwipeTransition */,
+				C8A701AC1E9B47880030E851 /* ZASwipeExpansion */,
 				C8619B391E9B26CE001CD425 /* Category */,
 			);
 			name = SwipeCellKit;
@@ -454,7 +443,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C83F72761E9CDB1400EA3748 /* MailTableViewCell.xib in Resources */,
 				C83F726A1E9CBE1C00EA3748 /* MailStoryboard.storyboard in Resources */,
 				C8619B1D1E9B2618001CD425 /* LaunchScreen.storyboard in Resources */,
 				C8619B1A1E9B2618001CD425 /* Assets.xcassets in Resources */,
@@ -477,20 +465,20 @@
 			files = (
 				C8619B631E9B26DF001CD425 /* ZASwipeExpansionAnimationTimingParameters.m in Sources */,
 				C8619B6B1E9B26DF001CD425 /* ZASwipeAction.m in Sources */,
-				C83F72751E9CDB1400EA3748 /* MailTableViewCell.m in Sources */,
 				C8A701A11E9B2CFF0030E851 /* IndicatorView.m in Sources */,
 				C8619B641E9B26DF001CD425 /* ZAScaleAndAlphaExpansion.m in Sources */,
 				C8619B6C1E9B26DF001CD425 /* ZASwipeActionButton.m in Sources */,
-				C83F726D1E9CC19700EA3748 /* TestSwipeCell.m in Sources */,
 				C8619B691E9B26DF001CD425 /* ZASwipeExpansionTarget.m in Sources */,
 				C80694241E9B67CE00800DD8 /* ZAScaleTransition.m in Sources */,
 				C8619B671E9B26DF001CD425 /* ZASwipeExpansionStyle.m in Sources */,
+				C8021CF01E9F817400D32BD3 /* ViewController.m in Sources */,
 				C8619B611E9B26DF001CD425 /* ZAActionsViewLayoutContext.m in Sources */,
 				C8619B701E9B26DF001CD425 /* ZASwipeActionTransitioningContext.m in Sources */,
 				C83F72701E9CC8BF00EA3748 /* MailTableViewController.m in Sources */,
 				C8A7019E1E9B2C270030E851 /* MailViewCell.m in Sources */,
 				C8619B621E9B26DF001CD425 /* ZABorderTranstionLayout.m in Sources */,
 				C8619B681E9B26DF001CD425 /* ZASwipeExpansionTrigger.m in Sources */,
+				C86717811EA0AD0C00ABEDA9 /* SubtitleCell.m in Sources */,
 				C8619B6F1E9B26DF001CD425 /* ZASwipeActionButtonWrapperView.m in Sources */,
 				C8619B601E9B26DF001CD425 /* ZASwipeTableViewCell.m in Sources */,
 				C8619B121E9B2618001CD425 /* AppDelegate.m in Sources */,
@@ -633,6 +621,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2X825966A4;
 				INFOPLIST_FILE = SwipeCellKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.VNG.Huy.SwipeCellKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -645,6 +634,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2X825966A4;
 				INFOPLIST_FILE = SwipeCellKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.VNG.Huy.SwipeCellKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";

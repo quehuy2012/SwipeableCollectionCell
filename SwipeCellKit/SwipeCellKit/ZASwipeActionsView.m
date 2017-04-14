@@ -78,8 +78,6 @@
         
         ZASwipeExpansionAnimationTimingParameters *timingParameters = [self.expansionDelegate animationTimingParametersForButtons:[[self.buttons reverseObjectEnumerator] allObjects] expanding:_expanded];
         
-#warning stop expansion animator
-        
         double duration = timingParameters.duration > 0 ? timingParameters.duration : 0.6;
         double delay = timingParameters.delay > 0 ? timingParameters.delay : 0;
         
@@ -179,7 +177,7 @@
 }
 
 - (UIEdgeInsets)buttonEdgeInsetsFromOptions:(ZASwipeCellOptions *)options {
-    CGFloat padding = self.options.buttonPadding;
+    CGFloat padding = self.options.buttonPadding != 8 ? self.options.buttonPadding : 8;
     return UIEdgeInsetsMake(padding, padding, padding, padding);
 }
 
