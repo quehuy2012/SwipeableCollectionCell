@@ -70,8 +70,6 @@ editActionsOptionsForRowAtIndexPath:(NSIndexPath *)indexPath
 
 @property (nonatomic, readwrite) UIEdgeInsets layoutMargins;
 
-
-
 - (void)hideSwipeWithAnimation:(BOOL)animated;
 @end
 

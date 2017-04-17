@@ -38,14 +38,14 @@
 }
 
 - (BOOL)shouldExpandView:(UIView<ZASwipeable> *)view ByGesture:(UIPanGestureRecognizer *)gesture inSuperView:(UIView *)superview {
-    if (!view.actionsView) {
+    if (![view swipeActionView]) {
         return NO;
     }
     
     CGFloat viewFrameMinX = CGRectGetMinX([view frame]);
 
     //NSLog(@"Min X Frame: %f", fabs(viewFrameMinX));
-    if (fabs(viewFrameMinX) < view.actionsView.preferredWidth) {
+    if (fabs(viewFrameMinX) < [view swipeActionView].preferredWidth) {
         return NO;
     }
     

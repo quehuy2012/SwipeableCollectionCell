@@ -17,6 +17,26 @@
     [self setupIndicatorView];
 }
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+    
+    }
+    return self;
+}
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+    }
+    return self;
+}
+
 - (void)setupIndicatorView {
     self.indicatorView = [[IndicatorView alloc] initWithFrame:CGRectZero];
     self.indicatorView.translatesAutoresizingMaskIntoConstraints = NO;

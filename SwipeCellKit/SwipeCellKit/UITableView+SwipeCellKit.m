@@ -38,12 +38,12 @@ static void *swipeCellKitGestureKey = &swipeCellKitGestureKey;
     }
 }
 
-- (UIPanGestureRecognizer *)swipeCellKitGesture {
-    return objc_getAssociatedObject(self, swipeCellKitGestureKey);
-}
-
-- (void)setSwipeCellKitGesture:(UIPanGestureRecognizer *)swipeCellKitGesture {
-    objc_setAssociatedObject(self, swipeCellKitGestureKey, swipeCellKitGesture, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
+//- (UIPanGestureRecognizer *)swipeCellKitGesture {
+//    return objc_getAssociatedObject(self, swipeCellKitGestureKey);
+//}
+//
+//- (void)setSwipeCellKitGesture:(UIPanGestureRecognizer *)swipeCellKitGesture {
+//    objc_setAssociatedObject(self, swipeCellKitGestureKey, swipeCellKitGesture, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//}
 
 @end

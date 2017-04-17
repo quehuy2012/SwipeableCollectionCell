@@ -20,19 +20,19 @@
 }
 
 - (BOOL)isTriggeredView:(NSObject<ZASwipeable> *)view byGesture:(UIPanGestureRecognizer *)gesture inSuperview:(UIView *)superview {
-    if (!view.actionsView) {
+    if (![view swipeActionView]) {
         return NO;
     }
     
     switch (self.trigger) {
         case ZAExpansionTriggerTouchThreshold: {
             CGFloat location = [gesture locationInView:superview].x;
-            CGFloat locationRatio = (view.actionsView.orientation == ZASwipeActionsOrientationLeft ? location : superview.bounds.size.width - location) / superview.bounds.size.width;
+            CGFloat locationRatio = ([view swipeActionView].orientation == ZASwipeActionsOrientationLeft ? location : superview.bounds.size.width - location) / superview.bounds.size.width;
             return locationRatio > self.threshold;
             break;
         }
         case ZAExpansionTriggerOverscroll:
-            return fabs(CGRectGetMinX([view cellFrame])) > (view.actionsView.preferredWidth + self.threshold);
+            return fabs(CGRectGetMinX([view swipeCellFrame])) > ([view swipeActionView].preferredWidth + self.threshold);
             break;
         default:
             break;

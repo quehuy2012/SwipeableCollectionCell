@@ -28,6 +28,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.buttonDisplayMode = ButtonDisplayModeTitleAndImage;
+    self.buttonStyle = ButtonStyleBackgroundColor;
+    self.isSwipeRightEnable = YES;
+    self.defaultOptions = [[ZASwipeCellOptions alloc] init];
+    
     self.tableView.allowsSelection = YES;
     self.tableView.allowsMultipleSelectionDuringEditing = YES;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -35,11 +40,6 @@
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
-    self.buttonDisplayMode = ButtonDisplayModeTitleAndImage;
-    self.buttonStyle = ButtonStyleBackgroundColor;
-    self.isSwipeRightEnable = YES;
-    self.defaultOptions = [[ZASwipeCellOptions alloc] init];
-    
     UIEdgeInsets margins = self.view.layoutMargins;
     margins.left = 32;
     self.view.layoutMargins = margins;
@@ -125,6 +125,15 @@
     [self presentViewController:controller animated:YES completion:nil];
 }
 
+#pragma mark - Tableview Delegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 120;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Select cell at %ld", (long)indexPath.row);
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -138,7 +147,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MailViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.delegate = self;
-    cell.selectedBackgroundView = [self createSelectedBackgroundView];
+    //cell.selectedBackgroundView = [self createSelectedBackgroundView];
+    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     
     Email *email = self.emails[indexPath.row];
     cell.fromLabel.text = email.from;
@@ -198,7 +208,7 @@
         }];
         
         readAction.hideWhenSelected = YES;
-        readAction.accessibilityLabel = email.unread ? @"Mask as Read" : @"Mask as Unread";
+        //readAction.accessibilityLabel = email.unread ? @"Mask as Read" : @"Mask as Unread";
         
         ActionDescriptorType type = email.unread ? ActionDescriptorTypeRead : ActionDescriptorTypeUnread;
         ActionDescriptor *descriptor = [ActionDescriptor type:type];
@@ -226,7 +236,7 @@
     
     options.expansionStyle = orientation == ZASwipeActionsOrientationLeft ? [ZASwipeExpansionStyle selection] : [ZASwipeExpansionStyle destructive];
     options.transitionStyle = self.defaultOptions.transitionStyle;
-    options.buttonSpacing = 4;
+    options.buttonSpacing = 11;
     
     return options;
 }

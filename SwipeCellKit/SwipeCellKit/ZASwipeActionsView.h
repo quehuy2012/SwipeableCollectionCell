@@ -31,8 +31,6 @@
 @property (nonatomic, readonly) id<ZASwipeTransitionLayout> transitionLayout;
 @property (nonatomic, readwrite) ZAActionsViewLayoutContext *layoutContext;
 
-// Animator
-
 @property (nonatomic, readonly) id<ZASwipeExpanding> expansionDelegate;
 
 @property (nonatomic, readonly) ZASwipeActionsOrientation orientation;

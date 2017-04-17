@@ -59,9 +59,9 @@ typedef NS_ENUM(NSInteger, ZASwipeState) {
 //@property (nonatomic, readonly) ZASwipeState state;
 //@property (nonatomic, readonly) CGRect frame;
 
-- (ZASwipeActionsView *)actionsView;
-- (ZASwipeState) state;
-- (CGRect)cellFrame;
+- (ZASwipeActionsView *)swipeActionView;
+- (ZASwipeState)swipaeState;
+- (CGRect)swipeCellFrame;
 
 
 //@property (nonatomic, readonly) CGRect swipeViewFrame;

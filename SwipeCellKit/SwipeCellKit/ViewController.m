@@ -18,7 +18,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (nonatomic, readwrite) NSMutableArray<Email *> *emails;
 @property (nonatomic, readwrite) ZASwipeCellOptions *defaultOptions;
 @property (nonatomic, readwrite) ButtonDisplayMode buttonDisplayMode;
 @property (nonatomic, readwrite) ButtonStyle buttonStyle;
@@ -32,15 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.allowsSelection = YES;
-    self.tableView.allowsMultipleSelectionDuringEditing = YES;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 150;
-    self.tableView.userInteractionEnabled = YES;
-    
     //    self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.buttonDisplayMode = ButtonDisplayModeTitleAndImage;
     self.buttonStyle = ButtonStyleBackgroundColor;
@@ -177,10 +168,6 @@
                             [[Email alloc] initWithSubject:@"Video: Operators and Strong Opinions with Erica Sadun" from:@"Realm" body:@"Swift operators are flexible and powerful. They’re symbols that behave like functions, adopting a natural mathematical syntax, for example 1 + 2 versus add(1, 2). So why is it so important that you treat them like potential Swift Kryptonite? Erica Sadun discusses why your operators should be few, well-chosen, and heavily used. There’s even a fun interactive quiz! Play along with “Name That Operator!” and learn about an essential Swift best practice." date:[NSDate date]]
                             ];
     
-    self.emails = [NSMutableArray arrayWithArray:mockEmails];
-    for (Email *email in self.emails) {
-        email.unread = NO;
-    }
     [self.tableView reloadData];
 }
 
@@ -192,7 +179,6 @@
 #pragma mark - ZASwipeTalbeViewCellDelegate
 
 - (NSArray<ZASwipeAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath forOrientation:(ZASwipeActionsOrientation)orientation {
-    Email *email = self.emails[indexPath.row];
     
     if (orientation == ZASwipeActionsOrientationLeft) {
         if (!self.isSwipeRightEnable) {
@@ -209,9 +195,9 @@
         }];
         
         readAction.hideWhenSelected = YES;
-        readAction.accessibilityLabel = email.unread ? @"Mask as Read" : @"Mask as Unread";
+        readAction.accessibilityLabel = YES ? @"Mask as Read" : @"Mask as Unread";
         
-        ActionDescriptorType type = email.unread ? ActionDescriptorTypeRead : ActionDescriptorTypeUnread;
+        ActionDescriptorType type = YES ? ActionDescriptorTypeRead : ActionDescriptorTypeUnread;
         ActionDescriptor *descriptor = [ActionDescriptor type:type];
         [self configureAction:readAction withDescriptor:descriptor];
         return @[readAction];

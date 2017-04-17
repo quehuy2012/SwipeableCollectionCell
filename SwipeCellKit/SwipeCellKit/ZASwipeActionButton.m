@@ -49,7 +49,7 @@
 }
 
 - (CGFloat)currentSpacing {
-    return (self.currentTitle && [self.currentTitle isEqualToString:@""] == false && self.maximumImageHeight >0) ? self.spacing : 0;
+    return (self.currentTitle && [self.currentTitle isEqualToString:@""] == NO && self.maximumImageHeight >0) ? self.spacing : 0;
 }
 
 - (CGRect)alignmentRect {

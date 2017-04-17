@@ -274,12 +274,12 @@
 		C8A701A21E9B33620030E851 /* ZASwipeCell */ = {
 			isa = PBXGroup;
 			children = (
+				C8A701A31E9B33790030E851 /* ZASwipeCellKit.h */,
 				C8619B3A1E9B26DF001CD425 /* ZASwipeable.h */,
 				C8619B3D1E9B26DF001CD425 /* ZASwipeTableViewCell.h */,
 				C8619B3E1E9B26DF001CD425 /* ZASwipeTableViewCell.m */,
 				C8619B571E9B26DF001CD425 /* ZASwipeCellOptions.h */,
 				C8619B581E9B26DF001CD425 /* ZASwipeCellOptions.m */,
-				C8A701A31E9B33790030E851 /* ZASwipeCellKit.h */,
 			);
 			name = ZASwipeCell;
 			sourceTree = "<group>";

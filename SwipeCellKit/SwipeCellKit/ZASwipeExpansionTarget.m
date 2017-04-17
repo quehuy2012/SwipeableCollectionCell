@@ -34,7 +34,7 @@
 }
 
 - (CGFloat)offsetForView:(NSObject<ZASwipeable> *)view inSuperview:(UIView *)superview withMinimumOverscroll:(CGFloat)minimumOverscroll {
-    if (!view.actionsView) {
+    if (![view swipeActionView]) {
         return CGFLOAT_MAX;
     }
     
@@ -50,7 +50,7 @@
             break;
     }
     
-    return MAX(view.actionsView.preferredWidth + minimumOverscroll, offset);
+    return MAX([view swipeActionView].preferredWidth + minimumOverscroll, offset);
 }
 
 @end
