@@ -8,6 +8,7 @@
 
 #import "ZASwipeExpansionTarget.h"
 #import "ZASwipeActionsView.h"
+#import "ZASwipeableCellContext.h"
 
 @implementation ZASwipeExpansionTarget
 
@@ -34,7 +35,7 @@
 }
 
 - (CGFloat)offsetForView:(NSObject<ZASwipeable> *)view inSuperview:(UIView *)superview withMinimumOverscroll:(CGFloat)minimumOverscroll {
-    if (![view swipeActionView]) {
+    if (!view.context.actionsView) {
         return CGFLOAT_MAX;
     }
     
@@ -50,7 +51,7 @@
             break;
     }
     
-    return MAX([view swipeActionView].preferredWidth + minimumOverscroll, offset);
+    return MAX(view.context.actionsView.preferredWidth + minimumOverscroll, offset);
 }
 
 @end

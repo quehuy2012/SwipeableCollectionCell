@@ -7,6 +7,7 @@
 //
 
 #import "ZASwipeExpansionStyle.h"
+#import "ZASwipeableCellContext.h"
 #import "ZASwipeActionsView.h"
 #import "ZASwipeExpansionTrigger.h"
 #import "ZASwipeExpansionTarget.h"
@@ -38,14 +39,14 @@
 }
 
 - (BOOL)shouldExpandView:(UIView<ZASwipeable> *)view ByGesture:(UIPanGestureRecognizer *)gesture inSuperView:(UIView *)superview {
-    if (![view swipeActionView]) {
+    if (!view.context.actionsView) {
         return NO;
     }
     
     CGFloat viewFrameMinX = CGRectGetMinX([view frame]);
 
     //NSLog(@"Min X Frame: %f", fabs(viewFrameMinX));
-    if (fabs(viewFrameMinX) < [view swipeActionView].preferredWidth) {
+    if (fabs(viewFrameMinX) < view.context.actionsView.preferredWidth) {
         return NO;
     }
     

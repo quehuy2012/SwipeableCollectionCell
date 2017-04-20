@@ -6,11 +6,12 @@
 //  Copyright © 2017 CPU11713. All rights reserved.
 //
 
-#import "ZASwipeTableViewCell.h"
+//#import "ZASwipeTableViewCell.h"
+#include "ZASwipeTableCell.h"
 
 @class IndicatorView;
 
-@interface MailViewCell : ZASwipeTableViewCell
+@interface MailViewCell : ZASwipeTableCell
 
 @property (weak, nonatomic) IBOutlet UILabel *fromLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;

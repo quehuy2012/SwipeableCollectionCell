@@ -8,16 +8,15 @@
 
 #import "UITableView+SwipeCellKit.h"
 #import "ZASwipeTableViewCell.h"
-#import <objc/runtime.h>
+#import "ZASwipeable.h"
 
-static void *swipeCellKitGestureKey = &swipeCellKitGestureKey;
 @implementation UITableView (SwipeCellKit)
 
-- (NSArray<ZASwipeTableViewCell *> *)swipeCells {
+- (NSArray<UIView<ZASwipeable> *> *)swipeCells {
     NSMutableArray *cells = [NSMutableArray array];
     
     [self.visibleCells enumerateObjectsUsingBlock:^(__kindof UITableViewCell * _Nonnull cell, NSUInteger index, BOOL * _Nonnull stop) {
-        if ([cell isKindOfClass:[ZASwipeTableViewCell class]]) {
+        if ([cell conformsToProtocol:@protocol(ZASwipeable)]) {
             [cells addObject:cell];
         }
     }];
@@ -25,7 +24,7 @@ static void *swipeCellKitGestureKey = &swipeCellKitGestureKey;
 }
 
 - (void)hideSwipeCell {
-    for (ZASwipeTableViewCell *swipeCell in [self swipeCells]) {
+    for (UITableViewCell<ZASwipeable> *swipeCell in [self swipeCells]) {
         [swipeCell hideSwipeWithAnimation:YES];
     }
 }
@@ -38,12 +37,19 @@ static void *swipeCellKitGestureKey = &swipeCellKitGestureKey;
     }
 }
 
-//- (UIPanGestureRecognizer *)swipeCellKitGesture {
-//    return objc_getAssociatedObject(self, swipeCellKitGestureKey);
-//}
-//
-//- (void)setSwipeCellKitGesture:(UIPanGestureRecognizer *)swipeCellKitGesture {
-//    objc_setAssociatedObject(self, swipeCellKitGestureKey, swipeCellKitGesture, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-//}
+- (void)deleteItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths {
+    [self deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+}
+
+- (void)deselectItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated {
+    [self deselectRowAtIndexPath:indexPath animated:animated];
+}
+
+- (NSIndexPath *)indexPathsForSelectedItems {
+    return [self indexPathForSelectedRow];
+}
+
+
+
 
 @end

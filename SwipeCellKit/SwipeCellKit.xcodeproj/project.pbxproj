@@ -13,6 +13,9 @@
 		C83F72701E9CC8BF00EA3748 /* MailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C83F726F1E9CC8BF00EA3748 /* MailTableViewController.m */; };
 		C84522981E9DD70700CB650C /* ZADragTransitionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C84522971E9DD70700CB650C /* ZADragTransitionLayout.m */; };
 		C845229B1E9DD90300CB650C /* ZARevealTransitionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C845229A1E9DD90300CB650C /* ZARevealTransitionLayout.m */; };
+		C855B54E1EA8656200CB5DC4 /* ZASwipeCellHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C855B54D1EA8656200CB5DC4 /* ZASwipeCellHandler.m */; };
+		C855B5511EA86B5E00CB5DC4 /* ZASwipeableCellContext.m in Sources */ = {isa = PBXBuildFile; fileRef = C855B5501EA86B5E00CB5DC4 /* ZASwipeableCellContext.m */; };
+		C855B5571EA8ACDE00CB5DC4 /* ZASwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C855B5561EA8ACDE00CB5DC4 /* ZASwipeTableCell.m */; };
 		C8619B0F1E9B2618001CD425 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B0E1E9B2618001CD425 /* main.m */; };
 		C8619B121E9B2618001CD425 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B111E9B2618001CD425 /* AppDelegate.m */; };
 		C8619B1A1E9B2618001CD425 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8619B191E9B2618001CD425 /* Assets.xcassets */; };
@@ -20,7 +23,6 @@
 		C8619B281E9B2618001CD425 /* SwipeCellKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B271E9B2618001CD425 /* SwipeCellKitTests.m */; };
 		C8619B371E9B26CC001CD425 /* UIPanGestureRecognizer+SwipeCellKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B341E9B26CC001CD425 /* UIPanGestureRecognizer+SwipeCellKit.m */; };
 		C8619B381E9B26CC001CD425 /* UITableView+SwipeCellKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B361E9B26CC001CD425 /* UITableView+SwipeCellKit.m */; };
-		C8619B601E9B26DF001CD425 /* ZASwipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B3E1E9B26DF001CD425 /* ZASwipeTableViewCell.m */; };
 		C8619B611E9B26DF001CD425 /* ZAActionsViewLayoutContext.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B401E9B26DF001CD425 /* ZAActionsViewLayoutContext.m */; };
 		C8619B621E9B26DF001CD425 /* ZABorderTranstionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B421E9B26DF001CD425 /* ZABorderTranstionLayout.m */; };
 		C8619B631E9B26DF001CD425 /* ZASwipeExpansionAnimationTimingParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B441E9B26DF001CD425 /* ZASwipeExpansionAnimationTimingParameters.m */; };
@@ -37,7 +39,6 @@
 		C8619B6F1E9B26DF001CD425 /* ZASwipeActionButtonWrapperView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B5C1E9B26DF001CD425 /* ZASwipeActionButtonWrapperView.m */; };
 		C8619B701E9B26DF001CD425 /* ZASwipeActionTransitioningContext.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B5E1E9B26DF001CD425 /* ZASwipeActionTransitioningContext.m */; };
 		C8619B741E9B2787001CD425 /* Email.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B731E9B2787001CD425 /* Email.m */; };
-		C86717811EA0AD0C00ABEDA9 /* SubtitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C86717801EA0AD0C00ABEDA9 /* SubtitleCell.m */; };
 		C8A7019E1E9B2C270030E851 /* MailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A7019D1E9B2C270030E851 /* MailViewCell.m */; };
 		C8A701A11E9B2CFF0030E851 /* IndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A701A01E9B2CFF0030E851 /* IndicatorView.m */; };
 		C8A701A61E9B35060030E851 /* ActionDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A701A51E9B35060030E851 /* ActionDescriptor.m */; };
@@ -65,6 +66,12 @@
 		C84522971E9DD70700CB650C /* ZADragTransitionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZADragTransitionLayout.m; sourceTree = "<group>"; };
 		C84522991E9DD90200CB650C /* ZARevealTransitionLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZARevealTransitionLayout.h; sourceTree = "<group>"; };
 		C845229A1E9DD90300CB650C /* ZARevealTransitionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZARevealTransitionLayout.m; sourceTree = "<group>"; };
+		C855B54C1EA8656200CB5DC4 /* ZASwipeCellHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeCellHandler.h; sourceTree = "<group>"; };
+		C855B54D1EA8656200CB5DC4 /* ZASwipeCellHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwipeCellHandler.m; sourceTree = "<group>"; };
+		C855B54F1EA86B5E00CB5DC4 /* ZASwipeableCellContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeableCellContext.h; sourceTree = "<group>"; };
+		C855B5501EA86B5E00CB5DC4 /* ZASwipeableCellContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwipeableCellContext.m; sourceTree = "<group>"; };
+		C855B5551EA8ACDE00CB5DC4 /* ZASwipeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeTableCell.h; sourceTree = "<group>"; };
+		C855B5561EA8ACDE00CB5DC4 /* ZASwipeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwipeTableCell.m; sourceTree = "<group>"; };
 		C8619B0A1E9B2618001CD425 /* SwipeCellKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipeCellKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8619B0E1E9B2618001CD425 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C8619B101E9B2618001CD425 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -80,8 +87,6 @@
 		C8619B351E9B26CC001CD425 /* UITableView+SwipeCellKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+SwipeCellKit.h"; sourceTree = "<group>"; };
 		C8619B361E9B26CC001CD425 /* UITableView+SwipeCellKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SwipeCellKit.m"; sourceTree = "<group>"; };
 		C8619B3A1E9B26DF001CD425 /* ZASwipeable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeable.h; sourceTree = "<group>"; };
-		C8619B3D1E9B26DF001CD425 /* ZASwipeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeTableViewCell.h; sourceTree = "<group>"; };
-		C8619B3E1E9B26DF001CD425 /* ZASwipeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwipeTableViewCell.m; sourceTree = "<group>"; };
 		C8619B3F1E9B26DF001CD425 /* ZAActionsViewLayoutContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZAActionsViewLayoutContext.h; sourceTree = "<group>"; };
 		C8619B401E9B26DF001CD425 /* ZAActionsViewLayoutContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZAActionsViewLayoutContext.m; sourceTree = "<group>"; };
 		C8619B411E9B26DF001CD425 /* ZABorderTranstionLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZABorderTranstionLayout.h; sourceTree = "<group>"; };
@@ -114,8 +119,6 @@
 		C8619B5E1E9B26DF001CD425 /* ZASwipeActionTransitioningContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwipeActionTransitioningContext.m; sourceTree = "<group>"; };
 		C8619B721E9B2787001CD425 /* Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Email.h; sourceTree = "<group>"; };
 		C8619B731E9B2787001CD425 /* Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Email.m; sourceTree = "<group>"; };
-		C867177F1EA0AD0C00ABEDA9 /* SubtitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubtitleCell.h; sourceTree = "<group>"; };
-		C86717801EA0AD0C00ABEDA9 /* SubtitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubtitleCell.m; sourceTree = "<group>"; };
 		C8A7019C1E9B2C270030E851 /* MailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailViewCell.h; sourceTree = "<group>"; };
 		C8A7019D1E9B2C270030E851 /* MailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailViewCell.m; sourceTree = "<group>"; };
 		C8A7019F1E9B2CFF0030E851 /* IndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndicatorView.h; sourceTree = "<group>"; };
@@ -167,6 +170,19 @@
 				C80694231E9B67CE00800DD8 /* ZAScaleTransition.m */,
 			);
 			name = TransistionAction;
+			sourceTree = "<group>";
+		};
+		C855B54B1EA8653300CB5DC4 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				C855B54C1EA8656200CB5DC4 /* ZASwipeCellHandler.h */,
+				C855B54D1EA8656200CB5DC4 /* ZASwipeCellHandler.m */,
+				C855B54F1EA86B5E00CB5DC4 /* ZASwipeableCellContext.h */,
+				C855B5501EA86B5E00CB5DC4 /* ZASwipeableCellContext.m */,
+				C855B5551EA8ACDE00CB5DC4 /* ZASwipeTableCell.h */,
+				C855B5561EA8ACDE00CB5DC4 /* ZASwipeTableCell.m */,
+			);
+			name = Test;
 			sourceTree = "<group>";
 		};
 		C8619B011E9B2618001CD425 = {
@@ -260,8 +276,6 @@
 				C8A7019D1E9B2C270030E851 /* MailViewCell.m */,
 				C8A7019F1E9B2CFF0030E851 /* IndicatorView.h */,
 				C8A701A01E9B2CFF0030E851 /* IndicatorView.m */,
-				C867177F1EA0AD0C00ABEDA9 /* SubtitleCell.h */,
-				C86717801EA0AD0C00ABEDA9 /* SubtitleCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -269,10 +283,9 @@
 		C8A701A21E9B33620030E851 /* ZASwipeCell */ = {
 			isa = PBXGroup;
 			children = (
+				C855B54B1EA8653300CB5DC4 /* Test */,
 				C8A701A31E9B33790030E851 /* ZASwipeCellKit.h */,
 				C8619B3A1E9B26DF001CD425 /* ZASwipeable.h */,
-				C8619B3D1E9B26DF001CD425 /* ZASwipeTableViewCell.h */,
-				C8619B3E1E9B26DF001CD425 /* ZASwipeTableViewCell.m */,
 				C8619B571E9B26DF001CD425 /* ZASwipeCellOptions.h */,
 				C8619B581E9B26DF001CD425 /* ZASwipeCellOptions.m */,
 			);
@@ -465,6 +478,7 @@
 				C8619B6C1E9B26DF001CD425 /* ZASwipeActionButton.m in Sources */,
 				C8619B691E9B26DF001CD425 /* ZASwipeExpansionTarget.m in Sources */,
 				C80694241E9B67CE00800DD8 /* ZAScaleTransition.m in Sources */,
+				C855B54E1EA8656200CB5DC4 /* ZASwipeCellHandler.m in Sources */,
 				C8619B671E9B26DF001CD425 /* ZASwipeExpansionStyle.m in Sources */,
 				C8619B611E9B26DF001CD425 /* ZAActionsViewLayoutContext.m in Sources */,
 				C8619B701E9B26DF001CD425 /* ZASwipeActionTransitioningContext.m in Sources */,
@@ -472,9 +486,8 @@
 				C8A7019E1E9B2C270030E851 /* MailViewCell.m in Sources */,
 				C8619B621E9B26DF001CD425 /* ZABorderTranstionLayout.m in Sources */,
 				C8619B681E9B26DF001CD425 /* ZASwipeExpansionTrigger.m in Sources */,
-				C86717811EA0AD0C00ABEDA9 /* SubtitleCell.m in Sources */,
+				C855B5511EA86B5E00CB5DC4 /* ZASwipeableCellContext.m in Sources */,
 				C8619B6F1E9B26DF001CD425 /* ZASwipeActionButtonWrapperView.m in Sources */,
-				C8619B601E9B26DF001CD425 /* ZASwipeTableViewCell.m in Sources */,
 				C8619B121E9B2618001CD425 /* AppDelegate.m in Sources */,
 				C83F72681E9C843500EA3748 /* ZASwipeAccessibilityCustomAction.m in Sources */,
 				C8A701A61E9B35060030E851 /* ActionDescriptor.m in Sources */,
@@ -486,6 +499,7 @@
 				C8619B741E9B2787001CD425 /* Email.m in Sources */,
 				C8619B661E9B26DF001CD425 /* ZAFillOption.m in Sources */,
 				C8619B381E9B26CC001CD425 /* UITableView+SwipeCellKit.m in Sources */,
+				C855B5571EA8ACDE00CB5DC4 /* ZASwipeTableCell.m in Sources */,
 				C8619B371E9B26CC001CD425 /* UIPanGestureRecognizer+SwipeCellKit.m in Sources */,
 				C8619B651E9B26DF001CD425 /* ZACompletionAnimation.m in Sources */,
 			);

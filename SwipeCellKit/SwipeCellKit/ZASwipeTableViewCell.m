@@ -1,11 +1,11 @@
+////
+////  ZASwipeTableViewCell.m
+////  ZaloMessageUI
+////
+////  Created by CPU11713 on 4/5/17.
+////  Copyright © 2017 CPU11713. All rights reserved.
+////
 //
-//  ZASwipeTableViewCell.m
-//  ZaloMessageUI
-//
-//  Created by CPU11713 on 4/5/17.
-//  Copyright © 2017 CPU11713. All rights reserved.
-//
-
 #import "ZASwipeTableViewCell.h"
 #import "ZASwipeActionsView.h"
 #import "ZASwipeExpansionStyle.h"
@@ -22,6 +22,7 @@
 @end
 
 @implementation ZASwipeTableViewCell
+
 
 - (CGRect)swipeCellFrame {
     return self.frame;
@@ -534,7 +535,8 @@
         
         switch (style) {
             case ZAExpansionFulfillmentStyleDelete: {
-                [weakSelf.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                
+                [weakSelf.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
                 
                 [UIView animateWithDuration:0.3 animations:^{
                     CGPoint center = weakSelf.center;
@@ -551,6 +553,8 @@
                 } completion:^(BOOL finished) {
                     weakSelf.maskView = nil;
                     [weakSelf reset];
+                    
+                    
                 }];
                 break;
             }

@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZASwipeable.h"
 
 @class ZASwipeTableViewCell;
 
-@interface UITableView (SwipeCellKit)
+@interface UITableView (SwipeCellKit) <ZASwipeCellParentViewProtocol>
 
 //@property (nonatomic, readwrite) UIPanGestureRecognizer *swipeCellKitGesture;
 
@@ -20,4 +21,5 @@
 
 - (void)setGestureEnabled:(BOOL)enabled;
 
+- (NSIndexPath *)indexPathsForSelectedItems;
 @end
