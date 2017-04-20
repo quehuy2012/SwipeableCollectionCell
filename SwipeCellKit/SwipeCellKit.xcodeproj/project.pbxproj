@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C8021CF01E9F817400D32BD3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8021CEF1E9F817400D32BD3 /* ViewController.m */; };
 		C80694241E9B67CE00800DD8 /* ZAScaleTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = C80694231E9B67CE00800DD8 /* ZAScaleTransition.m */; };
 		C83F72681E9C843500EA3748 /* ZASwipeAccessibilityCustomAction.m in Sources */ = {isa = PBXBuildFile; fileRef = C83F72671E9C843500EA3748 /* ZASwipeAccessibilityCustomAction.m */; };
 		C83F726A1E9CBE1C00EA3748 /* MailStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C83F72691E9CBE1C00EA3748 /* MailStoryboard.storyboard */; };
@@ -55,8 +54,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C8021CEE1E9F817400D32BD3 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C8021CEF1E9F817400D32BD3 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C80694221E9B67CE00800DD8 /* ZAScaleTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZAScaleTransition.h; sourceTree = "<group>"; };
 		C80694231E9B67CE00800DD8 /* ZAScaleTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZAScaleTransition.m; sourceTree = "<group>"; };
 		C83F72661E9C843500EA3748 /* ZASwipeAccessibilityCustomAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeAccessibilityCustomAction.h; sourceTree = "<group>"; };
@@ -215,8 +212,6 @@
 				C8619B1B1E9B2618001CD425 /* LaunchScreen.storyboard */,
 				C8619B1E1E9B2618001CD425 /* Info.plist */,
 				C8619B0E1E9B2618001CD425 /* main.m */,
-				C8021CEE1E9F817400D32BD3 /* ViewController.h */,
-				C8021CEF1E9F817400D32BD3 /* ViewController.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -471,7 +466,6 @@
 				C8619B691E9B26DF001CD425 /* ZASwipeExpansionTarget.m in Sources */,
 				C80694241E9B67CE00800DD8 /* ZAScaleTransition.m in Sources */,
 				C8619B671E9B26DF001CD425 /* ZASwipeExpansionStyle.m in Sources */,
-				C8021CF01E9F817400D32BD3 /* ViewController.m in Sources */,
 				C8619B611E9B26DF001CD425 /* ZAActionsViewLayoutContext.m in Sources */,
 				C8619B701E9B26DF001CD425 /* ZASwipeActionTransitioningContext.m in Sources */,
 				C83F72701E9CC8BF00EA3748 /* MailTableViewController.m in Sources */,

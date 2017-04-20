@@ -145,7 +145,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MailViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    MailViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MailViewCell" forIndexPath:indexPath];
     cell.delegate = self;
     //cell.selectedBackgroundView = [self createSelectedBackgroundView];
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;

@@ -45,6 +45,14 @@
     return self.frame.origin.x != 0 ? _originalLayoutMargins : [super layoutMargins];
 }
 
+- (void)setFrame:(CGRect)frame {
+    [super setFrame:self.state != ZASwipeStateCenter ? CGRectMake(CGRectGetMinX(super.frame), CGRectGetMinY(frame), frame.size.width, frame.size.height) : frame];
+}
+
+- (CGRect)frame {
+    return super.frame;
+}
+
 #pragma mark - Life cycle
 
 - (void)prepareForReuse {
@@ -94,21 +102,12 @@
     self.clipsToBounds = NO;
     [self addGestureRecognizer:self.panGestureRecognizer];
     [self addGestureRecognizer:self.tapGestureRecognizer];
-    //[self addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(testPanGesture:)]];
     
     [self addObserver:self forKeyPath:@"center" options:NSKeyValueObservingOptionNew context:nil];
 }
 
-- (void)testPanGesture:(UIPanGestureRecognizer *)gesture {
-    if (gesture.state == UIGestureRecognizerStateBegan) {
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:self];
-        NSLog(@"Panning Cell(%@) At Index: %ld",gesture.view, (long)indexPath.row);
-    }
-}
-
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     if ([@"center" compare:keyPath] == NSOrderedSame) {
-        //NSLog(@"Center (%1f , %1f)", self.center.x, self.center.y);
         self.actionsView.visibleWidth = fabs(CGRectGetMinX(self.frame));
     }
 }
@@ -141,10 +140,6 @@
 
 #pragma mark - Gesture
 - (void)handlePanGesture:(UIPanGestureRecognizer *)gesture {
-//    CGPoint location = [gesture locationInView:self.tableView];
-//    NSLog(@"Pan position: (%f, %f)", location.x, location.y);
-   
-    
     if (self.isEditing == YES || gesture.view == nil) {
         return;
     }
@@ -153,10 +148,6 @@
     
     switch (gesture.state) {
         case UIGestureRecognizerStateBegan: {
-            UITableViewCell *cell = (ZASwipeTableViewCell *)gesture.view;
-            NSIndexPath *cellIndex = [self.tableView indexPathForCell:cell];
-            NSLog(@"Panning Cell(%@) At Index: %ld",cell, (long)cellIndex.row);
-            
             self.originalCenter = self.center.x;
             
             if (self.state == ZASwipeStateCenter || self.state == ZASwipeStateAnimatingToCenter) {
@@ -194,7 +185,6 @@
                     CGFloat centerForTranslationToEdge = CGRectGetMidX(self.bounds) - targetOffset * self.actionsView.orientation;
                     CGFloat delta = centerForTranslationToEdge - self.originalCenter;
                     
-                    // [self animateToOffset: centerForTranslationToEdge];
                     [self animateWithDuration:0.7 toOffset:centerForTranslationToEdge withInitialVelocity:0 completion:nil];
                     [gesture setTranslation:CGPointMake(delta, 0) inView:self.superview];
                 }
@@ -255,9 +245,6 @@
 }
 
 - (void)handleTapGesture:(UIGestureRecognizer *)gesture {
-    UITableViewCell *cell = (ZASwipeTableViewCell *)gesture.view;
-    NSIndexPath *cellIndex = [self.tableView indexPathForCell:cell];
-    NSLog(@"Tapping Cell(%@) At Index: %ld",cell, (long)cellIndex.row);
     [self hideSwipeWithAnimation:YES];
 }
 
@@ -366,10 +353,9 @@
     [self animateWithDuration:0.7 toOffset:offset withInitialVelocity:0 completion:completion];
 }
 
-// This is required to detect touches on the ZASwipeActionView sitting along the ZASwipeTableCell
+ //This is required to detect touches on the ZASwipeActionView sitting along the ZASwipeTableCell
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
     CGPoint pointInSuperView = [self convertPoint:point toView:self.superview];
-    
     if (!UIAccessibilityIsVoiceOverRunning()) {
         for (ZASwipeTableViewCell *cell in self.tableView.swipeCells) {
             if ((cell.state == ZASwipeStateLeft || cell.state == ZASwipeStateRight) && ![cell containsPoint:pointInSuperView]) {
@@ -379,7 +365,7 @@
         }
     }
     
-    return [self containsPoint:point];
+    return [self containsPoint:pointInSuperView];
 }
 
 - (BOOL)containsPoint:(CGPoint)point {
