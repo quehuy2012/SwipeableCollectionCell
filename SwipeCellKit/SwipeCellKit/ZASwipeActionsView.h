@@ -48,6 +48,7 @@
 @property (nonatomic, readwrite, getter=isExpanded) BOOL expanded;
 
 @property (nonatomic, readwrite) ZASwipeAction *expandableAction;
+
 - (instancetype)initWithMaxSize:(CGSize)maxSize
                          option:(ZASwipeCellOptions *)options
                     orientation:(ZASwipeActionsOrientation)orientation

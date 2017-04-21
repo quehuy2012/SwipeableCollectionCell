@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ZASwipeable.h"
 
-@interface ZASwipeableCellContext : NSObject
+@interface ZASwipeCellContext : NSObject
 
 @property (nonatomic, readwrite) ZASwipeState state;
 @property (nonatomic, readwrite) ZASwipeActionsView *actionsView;

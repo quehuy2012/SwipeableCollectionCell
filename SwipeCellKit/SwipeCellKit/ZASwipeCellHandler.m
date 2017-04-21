@@ -7,7 +7,7 @@
 //
 
 #import "ZASwipeCellHandler.h"
-#import "ZASwipeableCellContext.h"
+#import "ZASwipeCellContext.h"
 #import "ZASwipeActionsView.h"
 #import "ZASwipeExpansionStyle.h"
 #import "ZASwipeCellOptions.h"
@@ -157,12 +157,12 @@
         return NO;
     }
     
-#warning TODO
+//TODO
     //swipeCell.originalLayoutMargins = super.layoutMargins;
     
     // Remove hightlight and deselect any selected cells
     //self.highlighted = NO;
-    NSArray<NSIndexPath *> *selectedIndexPaths = self.swipeCell.parentView.indexPathsForSelectedItems;
+    NSArray<NSIndexPath *> *selectedIndexPaths = [self.swipeCell.parentView indexPathsForSelectedItems];
     for (NSIndexPath *indexPath in selectedIndexPaths) {
         [self.swipeCell.parentView deselectItemAtIndexPath:indexPath animated:NO];
     }
@@ -226,7 +226,7 @@
     [self.swipeCell layoutIfNeeded];
     
     __weak typeof(self) weakSelf = self;
-    [UIView animateWithDuration:duration delay:0.0 usingSpringWithDamping:0.9 initialSpringVelocity:velocity options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:duration delay:0.0 usingSpringWithDamping:0.8 initialSpringVelocity:velocity options:UIViewAnimationOptionCurveEaseInOut animations:^{
         CGPoint newCenter = CGPointMake(offset, weakSelf.swipeCell.center.y);
         weakSelf.swipeCell.center = newCenter;
         [weakSelf.swipeCell layoutIfNeeded];
@@ -406,7 +406,7 @@
     
     self.swipeCell.context.state = ZASwipeStateAnimatingToCenter;
     
-    [self.swipeCell.parentView setGestureEnabled:YES];
+    //[self.swipeCell.parentView setGestureEnabled:YES];
     
     CGFloat targetCenter = [self targetCenterActive:NO];
     

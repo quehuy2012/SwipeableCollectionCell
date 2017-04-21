@@ -7,7 +7,7 @@
 //
 
 #import "ZASwipeCollectionCell.h"
-#import "ZASwipeableCellContext.h"
+#import "ZASwipeCellContext.h"
 #import "ZASwipeCellHandler.h"
 #import "ZASwipeActionsView.h"
 #import "UITableView+SwipeCellKit.h"
@@ -23,8 +23,12 @@
 
 @implementation ZASwipeCollectionCell
 
-- (CGRect)swipeCellFrame {
-    return self.frame;
+- (CGRect)frame {
+    return [super frame];
+}
+
+- (void)setFrame:(CGRect)frame {
+    [super setFrame:self.context.state != ZASwipeStateCenter ? CGRectMake(CGRectGetMinX(self.frame), CGRectGetMinY(frame), frame.size.width, frame.size.height) : frame];
 }
 
 - (void)dealloc {
@@ -53,7 +57,7 @@
 
 - (void)setup {
     _swipeHandler = [[ZASwipeCellHandler alloc] initWithCell:self];
-    _context = [[ZASwipeableCellContext alloc] init];
+    _context = [[ZASwipeCellContext alloc] init];
     _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
     _tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
     

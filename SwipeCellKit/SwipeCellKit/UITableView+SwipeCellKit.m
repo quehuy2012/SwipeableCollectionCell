@@ -7,7 +7,7 @@
 //
 
 #import "UITableView+SwipeCellKit.h"
-#import "ZASwipeTableViewCell.h"
+#import "ZASwipeTableCell.h"
 #import "ZASwipeable.h"
 
 @implementation UITableView (SwipeCellKit)
@@ -15,16 +15,17 @@
 - (NSArray<UIView<ZASwipeable> *> *)swipeCells {
     NSMutableArray *cells = [NSMutableArray array];
     
-    [self.visibleCells enumerateObjectsUsingBlock:^(__kindof UITableViewCell * _Nonnull cell, NSUInteger index, BOOL * _Nonnull stop) {
-        if ([cell conformsToProtocol:@protocol(ZASwipeable)]) {
+    for (UITableViewCell *cell in self.visibleCells) {
+        if ([cell isKindOfClass:[ZASwipeTableCell class]]) {
             [cells addObject:cell];
         }
-    }];
+    }
     return cells;
 }
 
 - (void)hideSwipeCell {
-    for (UITableViewCell<ZASwipeable> *swipeCell in [self swipeCells]) {
+    NSArray *swipeCells = [self swipeCells];
+    for (UITableViewCell<ZASwipeable> *swipeCell in swipeCells) {
         [swipeCell hideSwipeWithAnimation:YES];
     }
 }
@@ -45,11 +46,8 @@
     [self deselectRowAtIndexPath:indexPath animated:animated];
 }
 
-- (NSIndexPath *)indexPathsForSelectedItems {
-    return [self indexPathForSelectedRow];
+- (NSArray<NSIndexPath *> *)indexPathsForSelectedItems {
+    return [self indexPathsForSelectedRows];
 }
-
-
-
 
 @end

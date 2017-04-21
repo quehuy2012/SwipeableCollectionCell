@@ -6,9 +6,9 @@
 //  Copyright © 2017 CPU11713. All rights reserved.
 //
 
-#import "ZASwipeableCellContext.h"
+#import "ZASwipeCellContext.h"
 
-@implementation ZASwipeableCellContext
+@implementation ZASwipeCellContext
 
 - (instancetype)init {
     if (self = [super init]) {

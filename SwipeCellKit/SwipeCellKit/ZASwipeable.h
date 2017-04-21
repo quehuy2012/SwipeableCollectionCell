@@ -11,7 +11,7 @@
 
 @class ZASwipeExpansionAnimationTimingParameters;
 @class ZAActionsViewLayoutContext;
-@class ZASwipeableCellContext;
+@class ZASwipeCellContext;
 @class ZASwipeActionsView;
 @class ZASwipeAction;
 @class ZASwipeCellOptions;
@@ -122,12 +122,13 @@ editActionsOptionsForRowAtIndexPath:(NSIndexPath *)indexPath
 
 @property (nonatomic, readwrite, weak) id<ZASwipeViewCellDelegate> delegate;
 @property (nonatomic, readwrite, weak) UIView<ZASwipeCellParentViewProtocol> *parentView;
+@property (nonatomic, readwrite) CGRect frame;
 //@property (nonatomic, readwrite) ZASwipeActionsView *swipeActionView;
 //@property (nonatomic, readwrite) ZASwipeState state;
-@property (nonatomic, readwrite) ZASwipeableCellContext *context;
+@property (nonatomic, readwrite) ZASwipeCellContext *context;
 
-- (CGRect)swipeCellFrame;
-- (ZASwipeableCellContext *)context;
+//- (CGRect)swipeCellFrame;
+//- (ZASwipeableCellContext *)context;
 - (void)hideSwipeWithAnimation:(BOOL)animated;
 
 @end

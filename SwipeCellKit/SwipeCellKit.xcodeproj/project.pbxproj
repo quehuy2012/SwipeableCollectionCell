@@ -14,7 +14,7 @@
 		C84522981E9DD70700CB650C /* ZADragTransitionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C84522971E9DD70700CB650C /* ZADragTransitionLayout.m */; };
 		C845229B1E9DD90300CB650C /* ZARevealTransitionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C845229A1E9DD90300CB650C /* ZARevealTransitionLayout.m */; };
 		C855B54E1EA8656200CB5DC4 /* ZASwipeCellHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C855B54D1EA8656200CB5DC4 /* ZASwipeCellHandler.m */; };
-		C855B5511EA86B5E00CB5DC4 /* ZASwipeableCellContext.m in Sources */ = {isa = PBXBuildFile; fileRef = C855B5501EA86B5E00CB5DC4 /* ZASwipeableCellContext.m */; };
+		C855B5511EA86B5E00CB5DC4 /* ZASwipeCellContext.m in Sources */ = {isa = PBXBuildFile; fileRef = C855B5501EA86B5E00CB5DC4 /* ZASwipeCellContext.m */; };
 		C855B5571EA8ACDE00CB5DC4 /* ZASwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C855B5561EA8ACDE00CB5DC4 /* ZASwipeTableCell.m */; };
 		C858DDFB1EA9A9DD0077BCF4 /* ZASwipeCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C858DDFA1EA9A9DD0077BCF4 /* ZASwipeCollectionCell.m */; };
 		C858DDFE1EA9ADC50077BCF4 /* UICollectionView+SwipeCellKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C858DDFD1EA9ADC50077BCF4 /* UICollectionView+SwipeCellKit.m */; };
@@ -72,8 +72,8 @@
 		C845229A1E9DD90300CB650C /* ZARevealTransitionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZARevealTransitionLayout.m; sourceTree = "<group>"; };
 		C855B54C1EA8656200CB5DC4 /* ZASwipeCellHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeCellHandler.h; sourceTree = "<group>"; };
 		C855B54D1EA8656200CB5DC4 /* ZASwipeCellHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwipeCellHandler.m; sourceTree = "<group>"; };
-		C855B54F1EA86B5E00CB5DC4 /* ZASwipeableCellContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeableCellContext.h; sourceTree = "<group>"; };
-		C855B5501EA86B5E00CB5DC4 /* ZASwipeableCellContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwipeableCellContext.m; sourceTree = "<group>"; };
+		C855B54F1EA86B5E00CB5DC4 /* ZASwipeCellContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeCellContext.h; sourceTree = "<group>"; };
+		C855B5501EA86B5E00CB5DC4 /* ZASwipeCellContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwipeCellContext.m; sourceTree = "<group>"; };
 		C855B5551EA8ACDE00CB5DC4 /* ZASwipeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeTableCell.h; sourceTree = "<group>"; };
 		C855B5561EA8ACDE00CB5DC4 /* ZASwipeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwipeTableCell.m; sourceTree = "<group>"; };
 		C858DDF91EA9A9DD0077BCF4 /* ZASwipeCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeCollectionCell.h; sourceTree = "<group>"; };
@@ -184,21 +184,6 @@
 			name = TransistionAction;
 			sourceTree = "<group>";
 		};
-		C855B54B1EA8653300CB5DC4 /* Test */ = {
-			isa = PBXGroup;
-			children = (
-				C855B54C1EA8656200CB5DC4 /* ZASwipeCellHandler.h */,
-				C855B54D1EA8656200CB5DC4 /* ZASwipeCellHandler.m */,
-				C855B54F1EA86B5E00CB5DC4 /* ZASwipeableCellContext.h */,
-				C855B5501EA86B5E00CB5DC4 /* ZASwipeableCellContext.m */,
-				C855B5551EA8ACDE00CB5DC4 /* ZASwipeTableCell.h */,
-				C855B5561EA8ACDE00CB5DC4 /* ZASwipeTableCell.m */,
-				C858DDF91EA9A9DD0077BCF4 /* ZASwipeCollectionCell.h */,
-				C858DDFA1EA9A9DD0077BCF4 /* ZASwipeCollectionCell.m */,
-			);
-			name = Test;
-			sourceTree = "<group>";
-		};
 		C8619B011E9B2618001CD425 = {
 			isa = PBXGroup;
 			children = (
@@ -303,11 +288,18 @@
 		C8A701A21E9B33620030E851 /* ZASwipeCell */ = {
 			isa = PBXGroup;
 			children = (
-				C855B54B1EA8653300CB5DC4 /* Test */,
-				C8A701A31E9B33790030E851 /* ZASwipeCellKit.h */,
 				C8619B3A1E9B26DF001CD425 /* ZASwipeable.h */,
+				C8A701A31E9B33790030E851 /* ZASwipeCellKit.h */,
+				C855B54C1EA8656200CB5DC4 /* ZASwipeCellHandler.h */,
+				C855B54D1EA8656200CB5DC4 /* ZASwipeCellHandler.m */,
 				C8619B571E9B26DF001CD425 /* ZASwipeCellOptions.h */,
 				C8619B581E9B26DF001CD425 /* ZASwipeCellOptions.m */,
+				C855B54F1EA86B5E00CB5DC4 /* ZASwipeCellContext.h */,
+				C855B5501EA86B5E00CB5DC4 /* ZASwipeCellContext.m */,
+				C855B5551EA8ACDE00CB5DC4 /* ZASwipeTableCell.h */,
+				C855B5561EA8ACDE00CB5DC4 /* ZASwipeTableCell.m */,
+				C858DDF91EA9A9DD0077BCF4 /* ZASwipeCollectionCell.h */,
+				C858DDFA1EA9A9DD0077BCF4 /* ZASwipeCollectionCell.m */,
 			);
 			name = ZASwipeCell;
 			sourceTree = "<group>";
@@ -507,7 +499,7 @@
 				C8A7019E1E9B2C270030E851 /* MailViewCell.m in Sources */,
 				C8619B621E9B26DF001CD425 /* ZABorderTranstionLayout.m in Sources */,
 				C8619B681E9B26DF001CD425 /* ZASwipeExpansionTrigger.m in Sources */,
-				C855B5511EA86B5E00CB5DC4 /* ZASwipeableCellContext.m in Sources */,
+				C855B5511EA86B5E00CB5DC4 /* ZASwipeCellContext.m in Sources */,
 				C858DE071EA9B0C00077BCF4 /* MailCollectionViewController.m in Sources */,
 				C8619B6F1E9B26DF001CD425 /* ZASwipeActionButtonWrapperView.m in Sources */,
 				C8619B121E9B2618001CD425 /* AppDelegate.m in Sources */,

@@ -7,7 +7,7 @@
 //
 
 #import "ZASwipeExpansionStyle.h"
-#import "ZASwipeableCellContext.h"
+#import "ZASwipeCellContext.h"
 #import "ZASwipeActionsView.h"
 #import "ZASwipeExpansionTrigger.h"
 #import "ZASwipeExpansionTarget.h"

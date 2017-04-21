@@ -14,6 +14,6 @@
 @property (nonatomic, readwrite, weak) id<ZASwipeViewCellDelegate> delegate;
 @property (nonatomic, readwrite, weak) UIView<ZASwipeCellParentViewProtocol> *parentView;
 
-@property (nonatomic, readwrite) ZASwipeableCellContext *context;
+@property (nonatomic, readwrite) ZASwipeCellContext *context;
 
 @end

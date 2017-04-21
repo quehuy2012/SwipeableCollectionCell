@@ -41,11 +41,6 @@
     self.tableView.estimatedRowHeight = 100;
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
-
-    UIEdgeInsets margins = self.view.layoutMargins;
-    margins.left = 32;
-    self.view.layoutMargins = margins;
-    
     self.navigationController.toolbarHidden = NO;
     
     [self resetData];

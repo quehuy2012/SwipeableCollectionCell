@@ -40,10 +40,7 @@ static NSString * const reuseIdentifier = @"MailCollectionViewCell";
     self.collectionView.allowsSelection = YES;
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    UIEdgeInsets margins = self.view.layoutMargins;
-    margins.left = 32;
-    self.view.layoutMargins = margins;
+    self.navigationController.toolbarHidden = NO;
     
     [self resetData];
 }
@@ -69,6 +66,83 @@ static NSString * const reuseIdentifier = @"MailCollectionViewCell";
         email.unread = NO;
     }
     [self.collectionView reloadData];
+}
+
+#pragma mark - Action
+
+- (IBAction)optionTapped:(id)sender {
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Swipe Transition Style" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    __weak typeof(self) weakSelf = self;
+    [controller addAction:[UIAlertAction actionWithTitle:@"Border" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        weakSelf.defaultOptions.transitionStyle = ZASwipeTransitionStyleBorder;
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"Drag" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        weakSelf.defaultOptions.transitionStyle = ZASwipeTransitionStyleDrag;
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"Reveal" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        weakSelf.defaultOptions.transitionStyle = ZASwipeTransitionStyleReveal;
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"(%@) Swipe Right", self.isSwipeRightEnable ? @"Disable" : @"Enable"] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        weakSelf.isSwipeRightEnable = !weakSelf.isSwipeRightEnable;
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"Button Display Mode" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [weakSelf buttonDisplayModeTapped];
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"Button Style" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [weakSelf buttonStyleTapped];
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"Reset" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [weakSelf resetData];
+    }]];
+    
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)buttonDisplayModeTapped {
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Button Display Mode" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    __weak typeof(self) weakSelf = self;
+    [controller addAction:[UIAlertAction actionWithTitle:@"Image + Tittle" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        weakSelf.buttonDisplayMode = ButtonDisplayModeTitleAndImage;
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"Image Only" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        weakSelf.buttonDisplayMode = ButtonDisplayModeImageOnly;
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"Tittle Only" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        weakSelf.buttonDisplayMode = ButtonDisplayModeTitleOnly;
+    }]];
+    
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)buttonStyleTapped {
+    UIAlertController *controller= [UIAlertController alertControllerWithTitle:@"Button Style" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    __weak typeof(self) weakSelf = self;
+    [controller addAction:[UIAlertAction actionWithTitle:@"Background Color" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        weakSelf.buttonStyle = ButtonStyleBackgroundColor;
+        weakSelf.defaultOptions.transitionStyle = ZASwipeTransitionStyleBorder;
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"Circular" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        weakSelf.buttonStyle = ButtonStyleCircular;
+        weakSelf.defaultOptions.transitionStyle = ZASwipeTransitionStyleReveal;
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"Cancle" style:UIAlertActionStyleCancel handler:nil]];
+    
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 #pragma mark <UICollectionViewDataSource>

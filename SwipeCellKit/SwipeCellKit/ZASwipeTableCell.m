@@ -7,7 +7,7 @@
 //
 
 #import "ZASwipeTableCell.h"
-#import "ZASwipeableCellContext.h"
+#import "ZASwipeCellContext.h"
 #import "ZASwipeCellHandler.h"
 #import "ZASwipeActionsView.h"
 #import "UITableView+SwipeCellKit.h"
@@ -23,8 +23,12 @@
 
 @implementation ZASwipeTableCell
 
-- (CGRect)swipeCellFrame {
-    return self.frame;
+- (CGRect)frame {
+    return [super frame];
+}
+
+- (void)setFrame:(CGRect)frame {
+    [super setFrame:self.context.state != ZASwipeStateCenter ? CGRectMake(CGRectGetMinX(self.frame), CGRectGetMinY(frame), frame.size.width, frame.size.height) : frame];
 }
 
 - (void)awakeFromNib {
@@ -65,7 +69,7 @@
 
 - (void)setup {
     _swipeHandler = [[ZASwipeCellHandler alloc] initWithCell:self];
-    _context = [[ZASwipeableCellContext alloc] init];
+    _context = [[ZASwipeCellContext alloc] init];
     _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
     _tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
     
@@ -157,11 +161,8 @@
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
     if (gestureRecognizer == self.tapGestureRecognizer) {
-        if (UIAccessibilityIsVoiceOverRunning()) {
-            [self.parentView hideSwipeCell];
-        }
 
-        NSArray<UIView<ZASwipeable> *> *cells = self.parentView.swipeCells;
+        NSArray<UIView<ZASwipeable> *> *cells = [self.parentView swipeCells];
         for (UIView<ZASwipeable> *cell in cells) {
             if (cell.context.state != ZASwipeStateCenter) {
                 return YES;

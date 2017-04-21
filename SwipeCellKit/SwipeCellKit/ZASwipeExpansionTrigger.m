@@ -8,7 +8,7 @@
 
 #import "ZASwipeExpansionTrigger.h"
 #import "ZASwipeActionsView.h"
-#import "ZASwipeableCellContext.h"
+#import "ZASwipeCellContext.h"
 
 @implementation ZASwipeExpansionTrigger
 
@@ -33,7 +33,7 @@
             break;
         }
         case ZAExpansionTriggerOverscroll:
-            return fabs(CGRectGetMinX([view swipeCellFrame])) > (view.context.actionsView.preferredWidth + self.threshold);
+            return fabs(CGRectGetMinX(view.frame)) > (view.context.actionsView.preferredWidth + self.threshold);
 //            return fabs(CGRectGetMinX(view.frame)) > ([view swipeActionView].preferredWidth + self.threshold);
 
             break;

@@ -8,7 +8,7 @@
 
 #import "ZASwipeExpansionTarget.h"
 #import "ZASwipeActionsView.h"
-#import "ZASwipeableCellContext.h"
+#import "ZASwipeCellContext.h"
 
 @implementation ZASwipeExpansionTarget
 

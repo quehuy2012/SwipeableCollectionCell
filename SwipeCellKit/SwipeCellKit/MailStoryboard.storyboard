@@ -138,7 +138,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RQB-0f-cNe">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="RQB-0f-cNe">
                             <size key="itemSize" width="353" height="109"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -214,6 +214,14 @@
                             <outlet property="delegate" destination="icm-G6-sYO" id="4dK-Ge-XXI"/>
                         </connections>
                     </collectionView>
+                    <toolbarItems>
+                        <barButtonItem image="Archive" id="XG4-NG-3GO">
+                            <connections>
+                                <action selector="optionTapped:" destination="icm-G6-sYO" id="jdH-yF-cj1"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wip-MD-azl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

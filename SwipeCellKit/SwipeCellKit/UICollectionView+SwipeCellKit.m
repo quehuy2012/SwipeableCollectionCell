@@ -8,16 +8,14 @@
 
 #import "UICollectionView+SwipeCellKit.h"
 
+
 @implementation UICollectionView (SwipeCellKit)
 
 - (NSArray<UIView<ZASwipeable> *> *)swipeCells {
     NSMutableArray *cells = [NSMutableArray array];
     
-    [self.visibleCells enumerateObjectsUsingBlock:^(__kindof UICollectionViewCell * _Nonnull cell, NSUInteger index, BOOL * _Nonnull stop) {
-        if ([cell conformsToProtocol:@protocol(ZASwipeable)]) {
-            [cells addObject:cell];
-        }
-    }];
+    
+    
     return [cells copy];
 }
 
