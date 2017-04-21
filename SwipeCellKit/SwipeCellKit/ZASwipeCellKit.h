@@ -14,5 +14,7 @@
 
 #import "ZASwipeCellOptions.h"
 #import "ZASwipeAction.h"
-#import "ZAScaleTransition.h"
 #import "ZASwipeExpansionStyle.h"
+#import "ZASwipeTableCell.h"
+#import "ZASwipeCollectionCell.h"
+#import "ZAScaleTransition.h"

@@ -16,6 +16,10 @@
 		C855B54E1EA8656200CB5DC4 /* ZASwipeCellHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C855B54D1EA8656200CB5DC4 /* ZASwipeCellHandler.m */; };
 		C855B5511EA86B5E00CB5DC4 /* ZASwipeableCellContext.m in Sources */ = {isa = PBXBuildFile; fileRef = C855B5501EA86B5E00CB5DC4 /* ZASwipeableCellContext.m */; };
 		C855B5571EA8ACDE00CB5DC4 /* ZASwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C855B5561EA8ACDE00CB5DC4 /* ZASwipeTableCell.m */; };
+		C858DDFB1EA9A9DD0077BCF4 /* ZASwipeCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C858DDFA1EA9A9DD0077BCF4 /* ZASwipeCollectionCell.m */; };
+		C858DDFE1EA9ADC50077BCF4 /* UICollectionView+SwipeCellKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C858DDFD1EA9ADC50077BCF4 /* UICollectionView+SwipeCellKit.m */; };
+		C858DE041EA9AEE00077BCF4 /* MailCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C858DE031EA9AEE00077BCF4 /* MailCollectionViewCell.m */; };
+		C858DE071EA9B0C00077BCF4 /* MailCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C858DE061EA9B0C00077BCF4 /* MailCollectionViewController.m */; };
 		C8619B0F1E9B2618001CD425 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B0E1E9B2618001CD425 /* main.m */; };
 		C8619B121E9B2618001CD425 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8619B111E9B2618001CD425 /* AppDelegate.m */; };
 		C8619B1A1E9B2618001CD425 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8619B191E9B2618001CD425 /* Assets.xcassets */; };
@@ -72,6 +76,14 @@
 		C855B5501EA86B5E00CB5DC4 /* ZASwipeableCellContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwipeableCellContext.m; sourceTree = "<group>"; };
 		C855B5551EA8ACDE00CB5DC4 /* ZASwipeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeTableCell.h; sourceTree = "<group>"; };
 		C855B5561EA8ACDE00CB5DC4 /* ZASwipeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwipeTableCell.m; sourceTree = "<group>"; };
+		C858DDF91EA9A9DD0077BCF4 /* ZASwipeCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeCollectionCell.h; sourceTree = "<group>"; };
+		C858DDFA1EA9A9DD0077BCF4 /* ZASwipeCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwipeCollectionCell.m; sourceTree = "<group>"; };
+		C858DDFC1EA9ADC50077BCF4 /* UICollectionView+SwipeCellKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+SwipeCellKit.h"; sourceTree = "<group>"; };
+		C858DDFD1EA9ADC50077BCF4 /* UICollectionView+SwipeCellKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+SwipeCellKit.m"; sourceTree = "<group>"; };
+		C858DE021EA9AEE00077BCF4 /* MailCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailCollectionViewCell.h; sourceTree = "<group>"; };
+		C858DE031EA9AEE00077BCF4 /* MailCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailCollectionViewCell.m; sourceTree = "<group>"; };
+		C858DE051EA9B0C00077BCF4 /* MailCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MailCollectionViewController.h; path = SwipeCellKit/MailCollectionViewController.h; sourceTree = "<group>"; };
+		C858DE061EA9B0C00077BCF4 /* MailCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MailCollectionViewController.m; path = SwipeCellKit/MailCollectionViewController.m; sourceTree = "<group>"; };
 		C8619B0A1E9B2618001CD425 /* SwipeCellKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipeCellKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8619B0E1E9B2618001CD425 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C8619B101E9B2618001CD425 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -181,6 +193,8 @@
 				C855B5501EA86B5E00CB5DC4 /* ZASwipeableCellContext.m */,
 				C855B5551EA8ACDE00CB5DC4 /* ZASwipeTableCell.h */,
 				C855B5561EA8ACDE00CB5DC4 /* ZASwipeTableCell.m */,
+				C858DDF91EA9A9DD0077BCF4 /* ZASwipeCollectionCell.h */,
+				C858DDFA1EA9A9DD0077BCF4 /* ZASwipeCollectionCell.m */,
 			);
 			name = Test;
 			sourceTree = "<group>";
@@ -188,6 +202,8 @@
 		C8619B011E9B2618001CD425 = {
 			isa = PBXGroup;
 			children = (
+				C858DE051EA9B0C00077BCF4 /* MailCollectionViewController.h */,
+				C858DE061EA9B0C00077BCF4 /* MailCollectionViewController.m */,
 				C83F726E1E9CC8BF00EA3748 /* MailTableViewController.h */,
 				C83F726F1E9CC8BF00EA3748 /* MailTableViewController.m */,
 				C83F72691E9CBE1C00EA3748 /* MailStoryboard.storyboard */,
@@ -256,6 +272,8 @@
 				C8619B341E9B26CC001CD425 /* UIPanGestureRecognizer+SwipeCellKit.m */,
 				C8619B351E9B26CC001CD425 /* UITableView+SwipeCellKit.h */,
 				C8619B361E9B26CC001CD425 /* UITableView+SwipeCellKit.m */,
+				C858DDFC1EA9ADC50077BCF4 /* UICollectionView+SwipeCellKit.h */,
+				C858DDFD1EA9ADC50077BCF4 /* UICollectionView+SwipeCellKit.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -276,6 +294,8 @@
 				C8A7019D1E9B2C270030E851 /* MailViewCell.m */,
 				C8A7019F1E9B2CFF0030E851 /* IndicatorView.h */,
 				C8A701A01E9B2CFF0030E851 /* IndicatorView.m */,
+				C858DE021EA9AEE00077BCF4 /* MailCollectionViewCell.h */,
+				C858DE031EA9AEE00077BCF4 /* MailCollectionViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -472,6 +492,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8619B631E9B26DF001CD425 /* ZASwipeExpansionAnimationTimingParameters.m in Sources */,
+				C858DDFB1EA9A9DD0077BCF4 /* ZASwipeCollectionCell.m in Sources */,
 				C8619B6B1E9B26DF001CD425 /* ZASwipeAction.m in Sources */,
 				C8A701A11E9B2CFF0030E851 /* IndicatorView.m in Sources */,
 				C8619B641E9B26DF001CD425 /* ZAScaleAndAlphaExpansion.m in Sources */,
@@ -487,17 +508,20 @@
 				C8619B621E9B26DF001CD425 /* ZABorderTranstionLayout.m in Sources */,
 				C8619B681E9B26DF001CD425 /* ZASwipeExpansionTrigger.m in Sources */,
 				C855B5511EA86B5E00CB5DC4 /* ZASwipeableCellContext.m in Sources */,
+				C858DE071EA9B0C00077BCF4 /* MailCollectionViewController.m in Sources */,
 				C8619B6F1E9B26DF001CD425 /* ZASwipeActionButtonWrapperView.m in Sources */,
 				C8619B121E9B2618001CD425 /* AppDelegate.m in Sources */,
 				C83F72681E9C843500EA3748 /* ZASwipeAccessibilityCustomAction.m in Sources */,
 				C8A701A61E9B35060030E851 /* ActionDescriptor.m in Sources */,
 				C84522981E9DD70700CB650C /* ZADragTransitionLayout.m in Sources */,
+				C858DDFE1EA9ADC50077BCF4 /* UICollectionView+SwipeCellKit.m in Sources */,
 				C8619B0F1E9B2618001CD425 /* main.m in Sources */,
 				C845229B1E9DD90300CB650C /* ZARevealTransitionLayout.m in Sources */,
 				C8619B6D1E9B26DF001CD425 /* ZASwipeCellOptions.m in Sources */,
 				C8619B6E1E9B26DF001CD425 /* ZASwipeActionsView.m in Sources */,
 				C8619B741E9B2787001CD425 /* Email.m in Sources */,
 				C8619B661E9B26DF001CD425 /* ZAFillOption.m in Sources */,
+				C858DE041EA9AEE00077BCF4 /* MailCollectionViewCell.m in Sources */,
 				C8619B381E9B26CC001CD425 /* UITableView+SwipeCellKit.m in Sources */,
 				C855B5571EA8ACDE00CB5DC4 /* ZASwipeTableCell.m in Sources */,
 				C8619B371E9B26CC001CD425 /* UIPanGestureRecognizer+SwipeCellKit.m in Sources */,

@@ -1,18 +1,18 @@
 //
-//  MailTableViewController.m
+//  MailCollectionViewController.m
 //  SwipeCellKit
 //
-//  Created by CPU11713 on 4/11/17.
+//  Created by CPU11713 on 4/21/17.
 //  Copyright © 2017 CPU11713. All rights reserved.
 //
 
-#import "MailTableViewController.h"
+#import "MailCollectionViewController.h"
 #import "ZASwipeCellKit.h"
 #import "Email.h"
-#import "MailViewCell.h"
+#import "MailCollectionViewCell.h"
 #import "ActionDescriptor.h"
 
-@interface MailTableViewController () <ZASwipeViewCellDelegate>
+@interface MailCollectionViewController () <ZASwipeViewCellDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, readwrite) NSMutableArray<Email *> *emails;
 @property (nonatomic, readwrite) ZASwipeCellOptions *defaultOptions;
@@ -21,146 +21,31 @@
 
 @property (nonatomic, readwrite) BOOL isSwipeRightEnable;
 
-@property (strong, nonatomic) IBOutlet UIToolbar *toolBar;
-
 @end
 
-@implementation MailTableViewController
+@implementation MailCollectionViewController
+
+static NSString * const reuseIdentifier = @"MailCollectionViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+//    [self.collectionView registerClass:[MailCollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     self.buttonDisplayMode = ButtonDisplayModeTitleAndImage;
     self.buttonStyle = ButtonStyleBackgroundColor;
     self.isSwipeRightEnable = YES;
     self.defaultOptions = [[ZASwipeCellOptions alloc] init];
     
-    self.tableView.allowsSelection = YES;
-    self.tableView.allowsMultipleSelectionDuringEditing = YES;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 100;
+    self.collectionView.allowsSelection = YES;
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
-
+    
     UIEdgeInsets margins = self.view.layoutMargins;
     margins.left = 32;
     self.view.layoutMargins = margins;
     
-    self.navigationController.toolbarHidden = NO;
-    
     [self resetData];
-}
-
-#pragma mark - Action
-
-- (IBAction)optionTapped:(id)sender {
-    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Swipe Transition Style" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    
-    __weak typeof(self) weakSelf = self;
-    [controller addAction:[UIAlertAction actionWithTitle:@"Border" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        weakSelf.defaultOptions.transitionStyle = ZASwipeTransitionStyleBorder;
-    }]];
-    
-    [controller addAction:[UIAlertAction actionWithTitle:@"Drag" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        weakSelf.defaultOptions.transitionStyle = ZASwipeTransitionStyleDrag;
-    }]];
-    
-    [controller addAction:[UIAlertAction actionWithTitle:@"Reveal" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        weakSelf.defaultOptions.transitionStyle = ZASwipeTransitionStyleReveal;
-    }]];
-    
-    [controller addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"(%@) Swipe Right", self.isSwipeRightEnable ? @"Disable" : @"Enable"] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        weakSelf.isSwipeRightEnable = !weakSelf.isSwipeRightEnable;
-    }]];
-    
-    [controller addAction:[UIAlertAction actionWithTitle:@"Button Display Mode" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [weakSelf buttonDisplayModeTapped];
-    }]];
-    
-    [controller addAction:[UIAlertAction actionWithTitle:@"Button Style" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [weakSelf buttonStyleTapped];
-    }]];
-    
-    [controller addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
-    
-    [controller addAction:[UIAlertAction actionWithTitle:@"Reset" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [weakSelf resetData];
-    }]];
-    
-    [self presentViewController:controller animated:YES completion:nil];
-}
-
-- (void)buttonDisplayModeTapped {
-    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Button Display Mode" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    
-    __weak typeof(self) weakSelf = self;
-    [controller addAction:[UIAlertAction actionWithTitle:@"Image + Tittle" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        weakSelf.buttonDisplayMode = ButtonDisplayModeTitleAndImage;
-    }]];
-    
-    [controller addAction:[UIAlertAction actionWithTitle:@"Image Only" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        weakSelf.buttonDisplayMode = ButtonDisplayModeImageOnly;
-    }]];
-    
-    [controller addAction:[UIAlertAction actionWithTitle:@"Tittle Only" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        weakSelf.buttonDisplayMode = ButtonDisplayModeTitleOnly;
-    }]];
-    
-    [self presentViewController:controller animated:YES completion:nil];
-}
-
-- (void)buttonStyleTapped {
-    UIAlertController *controller= [UIAlertController alertControllerWithTitle:@"Button Style" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    
-    __weak typeof(self) weakSelf = self;
-    [controller addAction:[UIAlertAction actionWithTitle:@"Background Color" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        weakSelf.buttonStyle = ButtonStyleBackgroundColor;
-        weakSelf.defaultOptions.transitionStyle = ZASwipeTransitionStyleBorder;
-    }]];
-    
-    [controller addAction:[UIAlertAction actionWithTitle:@"Circular" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        weakSelf.buttonStyle = ButtonStyleCircular;
-        weakSelf.defaultOptions.transitionStyle = ZASwipeTransitionStyleReveal;
-    }]];
-    
-    [controller addAction:[UIAlertAction actionWithTitle:@"Cancle" style:UIAlertActionStyleCancel handler:nil]];
-    
-    [self presentViewController:controller animated:YES completion:nil];
-}
-
-#pragma mark - Tableview Delegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 120;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"Select cell at %ld", (long)indexPath.row);
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.emails count];;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MailViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MailViewCell" forIndexPath:indexPath];
-    cell.delegate = self;
-    //cell.selectedBackgroundView = [self createSelectedBackgroundView];
-    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-    
-    Email *email = self.emails[indexPath.row];
-    cell.fromLabel.text = email.from;
-    cell.dateLabel.text = [email relativeDateString];
-    cell.subjectLabel.text = email.subject;
-    cell.bodyLabel.text = email.body;
-    cell.unread = email.unread;
-    
-    return cell;
 }
 
 - (UIView *)createSelectedBackgroundView {
@@ -183,15 +68,36 @@
     for (Email *email in self.emails) {
         email.unread = NO;
     }
-    [self.tableView reloadData];
+    [self.collectionView reloadData];
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGRect rect = cell.frame;
-    NSLog(@"Cell frame: (%f, %f, %f, %f)", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
+#pragma mark <UICollectionViewDataSource>
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
 }
 
-#pragma mark - ZASwipeTalbeViewCellDelegate
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.emails.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    MailCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    cell.delegate = self;
+    
+    Email *email = self.emails[indexPath.row];
+    cell.fromLabel.text = email.from;
+    cell.dateLabel.text = [email relativeDateString];
+    cell.subjectLabel.text = email.subject;
+    cell.bodyLabel.text = email.body;
+    cell.unread = email.unread;
+
+    
+    return cell;
+}
+
+#pragma mark <ZASwipeTableViewCellDelegate>
 
 - (NSArray<ZASwipeAction *> *)view:(UIView<ZASwipeCellParentViewProtocol> *)view editActionsForRowAtIndexPath:(NSIndexPath *)indexPath forOrientation:(ZASwipeActionsOrientation)orientation {
     Email *email = self.emails[indexPath.row];
@@ -206,7 +112,7 @@
             BOOL updatedStatus = !email.unread;
             email.unread = updatedStatus;
             
-            MailViewCell *cell = [weakSelf.tableView cellForRowAtIndexPath:indexPath];
+            MailCollectionViewCell *cell = (MailCollectionViewCell *)[weakSelf.collectionView cellForItemAtIndexPath:indexPath];
             cell.unread = updatedStatus;
         }];
         
@@ -271,5 +177,40 @@
     }
 }
 
+
+#pragma mark <UICollectionViewDelegate>
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(collectionView.bounds.size.width, 130);
+}
+
+/*
+// Uncomment this method to specify if the specified item should be highlighted during tracking
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+	return YES;
+}
+*/
+
+/*
+// Uncomment this method to specify if the specified item should be selected
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+*/
+
+/*
+// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
+	return NO;
+}
+
+- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
+	return NO;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
+	
+}
+*/
 
 @end
