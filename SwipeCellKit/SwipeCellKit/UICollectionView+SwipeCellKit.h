@@ -13,6 +13,9 @@
 
 @interface UICollectionView (SwipeCellKit) <ZASwipeCellParentViewProtocol>
 
-
+@property (nonatomic) BOOL editing;
+@property (nonatomic) BOOL dealloced;
 
 @end
+
+extern NSString *const kSwipeCellKitCollectionEditingNotification;

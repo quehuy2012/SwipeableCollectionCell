@@ -13,6 +13,7 @@
 		C83F72701E9CC8BF00EA3748 /* MailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C83F726F1E9CC8BF00EA3748 /* MailTableViewController.m */; };
 		C84522981E9DD70700CB650C /* ZADragTransitionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C84522971E9DD70700CB650C /* ZADragTransitionLayout.m */; };
 		C845229B1E9DD90300CB650C /* ZARevealTransitionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C845229A1E9DD90300CB650C /* ZARevealTransitionLayout.m */; };
+		C848AB491EAD9DB00060BB0D /* ZACheckMark.m in Sources */ = {isa = PBXBuildFile; fileRef = C848AB481EAD9DB00060BB0D /* ZACheckMark.m */; };
 		C855B54E1EA8656200CB5DC4 /* ZASwipeCellHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C855B54D1EA8656200CB5DC4 /* ZASwipeCellHandler.m */; };
 		C855B5511EA86B5E00CB5DC4 /* ZASwipeCellContext.m in Sources */ = {isa = PBXBuildFile; fileRef = C855B5501EA86B5E00CB5DC4 /* ZASwipeCellContext.m */; };
 		C855B5571EA8ACDE00CB5DC4 /* ZASwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C855B5561EA8ACDE00CB5DC4 /* ZASwipeTableCell.m */; };
@@ -70,6 +71,8 @@
 		C84522971E9DD70700CB650C /* ZADragTransitionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZADragTransitionLayout.m; sourceTree = "<group>"; };
 		C84522991E9DD90200CB650C /* ZARevealTransitionLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZARevealTransitionLayout.h; sourceTree = "<group>"; };
 		C845229A1E9DD90300CB650C /* ZARevealTransitionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZARevealTransitionLayout.m; sourceTree = "<group>"; };
+		C848AB471EAD9DB00060BB0D /* ZACheckMark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZACheckMark.h; sourceTree = "<group>"; };
+		C848AB481EAD9DB00060BB0D /* ZACheckMark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZACheckMark.m; sourceTree = "<group>"; };
 		C855B54C1EA8656200CB5DC4 /* ZASwipeCellHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeCellHandler.h; sourceTree = "<group>"; };
 		C855B54D1EA8656200CB5DC4 /* ZASwipeCellHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZASwipeCellHandler.m; sourceTree = "<group>"; };
 		C855B54F1EA86B5E00CB5DC4 /* ZASwipeCellContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZASwipeCellContext.h; sourceTree = "<group>"; };
@@ -300,6 +303,8 @@
 				C855B5561EA8ACDE00CB5DC4 /* ZASwipeTableCell.m */,
 				C858DDF91EA9A9DD0077BCF4 /* ZASwipeCollectionCell.h */,
 				C858DDFA1EA9A9DD0077BCF4 /* ZASwipeCollectionCell.m */,
+				C848AB471EAD9DB00060BB0D /* ZACheckMark.h */,
+				C848AB481EAD9DB00060BB0D /* ZACheckMark.m */,
 			);
 			name = ZASwipeCell;
 			sourceTree = "<group>";
@@ -508,6 +513,7 @@
 				C84522981E9DD70700CB650C /* ZADragTransitionLayout.m in Sources */,
 				C858DDFE1EA9ADC50077BCF4 /* UICollectionView+SwipeCellKit.m in Sources */,
 				C8619B0F1E9B2618001CD425 /* main.m in Sources */,
+				C848AB491EAD9DB00060BB0D /* ZACheckMark.m in Sources */,
 				C845229B1E9DD90300CB650C /* ZARevealTransitionLayout.m in Sources */,
 				C8619B6D1E9B26DF001CD425 /* ZASwipeCellOptions.m in Sources */,
 				C8619B6E1E9B26DF001CD425 /* ZASwipeActionsView.m in Sources */,
@@ -645,7 +651,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2X825966A4;
 				INFOPLIST_FILE = SwipeCellKit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.VNG.Huy.SwipeCellKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -658,7 +664,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2X825966A4;
 				INFOPLIST_FILE = SwipeCellKit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.VNG.Huy.SwipeCellKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";

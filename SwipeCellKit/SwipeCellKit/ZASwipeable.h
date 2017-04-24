@@ -63,6 +63,8 @@ typedef NS_ENUM(NSInteger, ZASwipeState) {
 
 @protocol ZASwipeCellParentViewProtocol <NSObject>
 
+@property(nonatomic) BOOL editing;
+
 @property (nonatomic, readonly) UIPanGestureRecognizer *panGestureRecognizer;
 @property (nonatomic, readonly) NSArray<UIView<ZASwipeable> *> *swipeCells;
 @property (nonatomic, readonly) NSArray<NSIndexPath *> *indexPathsForSelectedItems;
@@ -123,8 +125,6 @@ editActionsOptionsForRowAtIndexPath:(NSIndexPath *)indexPath
 @property (nonatomic, readwrite, weak) id<ZASwipeViewCellDelegate> delegate;
 @property (nonatomic, readwrite, weak) UIView<ZASwipeCellParentViewProtocol> *parentView;
 @property (nonatomic, readwrite) CGRect frame;
-//@property (nonatomic, readwrite) ZASwipeActionsView *swipeActionView;
-//@property (nonatomic, readwrite) ZASwipeState state;
 @property (nonatomic, readwrite) ZASwipeCellContext *context;
 
 //- (CGRect)swipeCellFrame;

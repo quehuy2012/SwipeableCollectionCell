@@ -177,7 +177,7 @@
 }
 
 - (UIEdgeInsets)buttonEdgeInsetsFromOptions:(ZASwipeCellOptions *)options {
-    CGFloat padding = self.options.buttonPadding != 8 ? self.options.buttonPadding : 8;
+    CGFloat padding = self.options.buttonPadding != 8 ? self.options.buttonPadding : 8.0;
     return UIEdgeInsetsMake(padding, padding, padding, padding);
 }
 

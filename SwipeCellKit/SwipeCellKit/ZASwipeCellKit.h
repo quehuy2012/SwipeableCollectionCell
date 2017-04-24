@@ -18,3 +18,4 @@
 #import "ZASwipeTableCell.h"
 #import "ZASwipeCollectionCell.h"
 #import "ZAScaleTransition.h"
+#import "UICollectionView+SwipeCellKit.h"

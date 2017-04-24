@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,24 +21,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VVj-3Y-Xvi">
-                                <rect key="frame" x="113" y="174" width="115" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="TableView"/>
-                                <connections>
-                                    <segue destination="fYc-fu-Zwo" kind="show" id="BoK-Fd-eed"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bHl-pf-tun">
-                                <rect key="frame" x="113" y="334" width="115" height="69"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="CollectionView"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bHl-pf-tun">
+                                <rect key="frame" x="69" y="527" width="203" height="120"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="CollectionView">
+                                    <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="icm-G6-sYO" kind="show" id="PWS-DN-K47"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VVj-3Y-Xvi">
+                                <rect key="frame" x="69" y="84" width="203" height="120"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="40J-ix-y5L"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="TableView">
+                                    <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="fYc-fu-Zwo" kind="show" id="BoK-Fd-eed"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vJW-pg-lk1" firstAttribute="top" secondItem="bHl-pf-tun" secondAttribute="bottom" constant="20" id="2FH-vL-QFe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bHl-pf-tun" secondAttribute="trailing" constant="87" id="8hI-Ol-fIW"/>
+                            <constraint firstItem="bHl-pf-tun" firstAttribute="leading" secondItem="Iyg-OO-b0N" secondAttribute="leadingMargin" constant="53" id="Hkg-oW-jyD"/>
+                            <constraint firstItem="VVj-3Y-Xvi" firstAttribute="leading" secondItem="Iyg-OO-b0N" secondAttribute="leadingMargin" constant="53" id="JaU-V2-BCd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VVj-3Y-Xvi" secondAttribute="trailing" constant="87" id="irh-Au-NvG"/>
+                            <constraint firstItem="bHl-pf-tun" firstAttribute="height" secondItem="VVj-3Y-Xvi" secondAttribute="height" id="u5O-SH-hV0"/>
+                            <constraint firstItem="VVj-3Y-Xvi" firstAttribute="top" secondItem="CUe-cT-5WP" secondAttribute="bottom" constant="20" id="v9D-ka-Htb"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6qA-gZ-rfd"/>
                 </viewController>
@@ -177,7 +194,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u3k-Fn-IhW">
-                                            <rect key="frame" x="0.0" y="108" width="353" height="1"/>
+                                            <rect key="frame" x="-8" y="108" width="361" height="1"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="eXl-AM-e5b"/>
@@ -197,7 +214,7 @@
                                     <constraint firstItem="ufR-Py-KD1" firstAttribute="top" secondItem="NSR-01-PNn" secondAttribute="topMargin" constant="8" id="WGc-ZR-bGt"/>
                                     <constraint firstItem="mz3-Vm-DuP" firstAttribute="top" secondItem="k93-9z-vfx" secondAttribute="bottom" constant="4" id="WT8-mw-LsN"/>
                                     <constraint firstItem="k93-9z-vfx" firstAttribute="top" secondItem="ufR-Py-KD1" secondAttribute="bottom" constant="4" id="bav-82-JnA"/>
-                                    <constraint firstItem="u3k-Fn-IhW" firstAttribute="leading" secondItem="NSR-01-PNn" secondAttribute="leading" id="iG7-dg-69B"/>
+                                    <constraint firstItem="u3k-Fn-IhW" firstAttribute="leading" secondItem="NSR-01-PNn" secondAttribute="leading" constant="-8" id="iG7-dg-69B"/>
                                     <constraint firstItem="J5P-yX-0GW" firstAttribute="baseline" secondItem="ufR-Py-KD1" secondAttribute="baseline" id="rcZ-vS-W11"/>
                                     <constraint firstAttribute="bottom" secondItem="u3k-Fn-IhW" secondAttribute="bottom" id="taX-RG-NiN"/>
                                 </constraints>
