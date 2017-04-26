@@ -1,8 +1,8 @@
 # SwipeableCollectionCell
 
 [![Swift 3.0](https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat)](https://developer.apple.com/swift/)
-[![license MIT](https://img.shields.io/cocoapods/l/SwipeCellKit.svg)][mitLink] 
-[![Platform](https://img.shields.io/cocoapods/p/SwipeCellKit.svg)][docsLink] 
+![license MIT](https://img.shields.io/cocoapods/l/SwipeCellKit.svg)
+![Platform](https://img.shields.io/cocoapods/p/SwipeCellKit.svg)
 
 **`SwipeableCollectionCell` is port from https://github.com/jerkoch/SwipeCellKit to support IOS 9 and UICollectionViewCell**
 
