@@ -37,17 +37,42 @@
     if (editing) {
         self.checkMarkLeading.constant = 8;
     } else {
-        self.checkMarkLeading.constant = -self.checkMark.bounds.size.width - EDITING_MARGIN * 2;
+        self.checkMarkLeading.constant = -self.checkMark.bounds.size.width - EDITING_MARGIN * 4;
     }
-    
+
     [UIView animateWithDuration:0.3 animations:^{
         [self layoutIfNeeded];
         
     }];
-    
+
     [UIView animateWithDuration:0.2 animations:^{
         self.checkMark.alpha = editing ? 1.0 : 0;
     }];
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    _editing = editing;
+    
+    if (editing) {
+        self.checkMarkLeading.constant = 8;
+    } else {
+        self.checkMarkLeading.constant = -self.checkMark.bounds.size.width - EDITING_MARGIN * 4;
+    }
+
+    if (animated) {
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            [self layoutIfNeeded];
+            
+        }];
+        
+        [UIView animateWithDuration:0.2 animations:^{
+            self.checkMark.alpha = editing ? 1.0 : 0;
+        }];
+    }
+    else {
+        [self layoutIfNeeded];
+    }
 }
 
 - (void)setSelected:(BOOL)selected {
@@ -170,7 +195,7 @@
             
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyParentViewEditingChange:) name:kSwipeCellKitCollectionEditingNotification object:nil];
             
-            self.editing = collectionView.editing;
+            [self setEditing:collectionView.editing animated:NO];
             
             return;
         }
