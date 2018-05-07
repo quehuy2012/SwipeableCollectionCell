@@ -1,16 +1,14 @@
 /**
  * Copyright (c) 2016-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  */
 
 #import <Foundation/Foundation.h>
 
 #import <IGListKit/IGListMacros.h>
-#import <IGListKit/IGListSectionType.h>
+
 #import <IGListKit/IGListSectionController.h>
 #import <IGListKit/IGListBindingSectionControllerSelectionDelegate.h>
 #import <IGListKit/IGListBindingSectionControllerDataSource.h>
@@ -47,7 +45,8 @@ NS_ASSUME_NONNULL_BEGIN
  Only when `-diffIdentifier`s match is object equality compared, so you can assume the class is the same, and the
  instance has already been checked.
  */
-@interface IGListBindingSectionController : IGListSectionController<IGListSectionType>
+NS_SWIFT_NAME(ListBindingSectionController)
+@interface IGListBindingSectionController<__covariant ObjectType : id<IGListDiffable>> : IGListSectionController
 
 /**
  A data source that transforms a top-level object into view models, and returns cells and sizes for given view models.
@@ -58,6 +57,11 @@ NS_ASSUME_NONNULL_BEGIN
  A delegate that receives selection events from cells in an `IGListBindingSectionController` instance.
  */
 @property (nonatomic, weak, nullable) id<IGListBindingSectionControllerSelectionDelegate> selectionDelegate;
+
+/**
+ The object currently assigned to the section controller, if any.
+ */
+@property (nonatomic, strong, readonly, nullable) ObjectType object;
 
 /**
  The array of view models created from the data source. Values are changed when the top-level object changes or by

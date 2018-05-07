@@ -47,9 +47,9 @@
     return self.viewModels;
 }
 
-- (IGListSectionController<IGListSectionType> *)listAdapter:(IGListAdapter *)listAdapter sectionControllerForObject:(id)object {
+- (IGListSectionController *)listAdapter:(IGListAdapter *)listAdapter sectionControllerForObject:(id)object {
     MainMessageViewModel *viewModel = object;
-    IGListSectionController<IGListSectionType> *sectionController;
+    IGListSectionController *sectionController;
     
     switch (viewModel.type) {
         case MainMessageViewModelTypeLastMessage:

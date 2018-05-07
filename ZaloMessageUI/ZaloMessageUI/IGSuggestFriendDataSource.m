@@ -11,7 +11,7 @@
 
 @implementation IGSuggestFriendDataSource
 
-- (IGListSectionController<IGListSectionType> *)listAdapter:(IGListAdapter *)adapter sectionControllerFor:(id)object {
+- (IGListSectionController *)listAdapter:(IGListAdapter *)adapter sectionControllerFor:(id)object {
     return [[IGFriendSectionController alloc] init];
 }
 @end

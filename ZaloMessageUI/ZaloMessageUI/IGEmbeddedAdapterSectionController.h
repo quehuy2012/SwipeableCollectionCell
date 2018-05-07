@@ -14,11 +14,11 @@
 
 @protocol IGEmbeddedAdapterDataSource <NSObject>
 
-- (IGListSectionController<IGListSectionType> *)listAdapter:(IGListAdapter *)adapter sectionControllerFor:(id)object;
+- (IGListSectionController *)listAdapter:(IGListAdapter *)adapter sectionControllerFor:(id)object;
 
 @end
 
-@interface IGEmbeddedAdapterSectionController : IGListSectionController <IGListSectionType, IGListAdapterDataSource, IGCollapseSupplementaryDelegate>
+@interface IGEmbeddedAdapterSectionController : IGListSectionController < IGListAdapterDataSource, IGCollapseSupplementaryDelegate>
 
 @property (nonatomic, readwrite) MainMessageViewModel *viewModel;
 

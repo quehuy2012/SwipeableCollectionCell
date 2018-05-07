@@ -1,21 +1,21 @@
 /**
  * Copyright (c) 2016-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  */
 
 #import "IGListSectionMap.h"
 
 #import <IGListKit/IGListAssert.h>
 
+#import "IGListSectionControllerInternal.h"
+
 @interface IGListSectionMap ()
 
 // both of these maps allow fast lookups of objects, list objects, and indexes
-@property (nonatomic, strong, readonly, nonnull) NSMapTable<id, IGListSectionController<IGListSectionType> *> *objectToSectionControllerMap;
-@property (nonatomic, strong, readonly, nonnull) NSMapTable<IGListSectionController<IGListSectionType> *, NSNumber *> *sectionControllerToSectionMap;
+@property (nonatomic, strong, readonly, nonnull) NSMapTable<id, IGListSectionController *> *objectToSectionControllerMap;
+@property (nonatomic, strong, readonly, nonnull) NSMapTable<IGListSectionController *, NSNumber *> *sectionControllerToSectionMap;
 
 @property (nonatomic, strong, nonnull) NSMutableArray *mObjects;
 
@@ -45,34 +45,41 @@
     return [self.mObjects copy];
 }
 
-- (NSInteger)sectionForSectionController:(IGListSectionController <IGListSectionType> *)sectionController {
+- (NSInteger)sectionForSectionController:(IGListSectionController *)sectionController {
     IGParameterAssert(sectionController != nil);
 
     NSNumber *index = [self.sectionControllerToSectionMap objectForKey:sectionController];
     return index != nil ? [index integerValue] : NSNotFound;
 }
 
-- (IGListSectionController <IGListSectionType> *)sectionControllerForSection:(NSInteger)section {
+- (IGListSectionController *)sectionControllerForSection:(NSInteger)section {
     return [self.objectToSectionControllerMap objectForKey:[self objectForSection:section]];
 }
 
 - (void)updateWithObjects:(NSArray *)objects sectionControllers:(NSArray *)sectionControllers {
     IGParameterAssert(objects.count == sectionControllers.count);
 
-    self.mObjects = [objects mutableCopy];
-
     [self reset];
 
+    self.mObjects = [objects mutableCopy];
+
+    id firstObject = objects.firstObject;
+    id lastObject = objects.lastObject;
+
     [objects enumerateObjectsUsingBlock:^(id object, NSUInteger idx, BOOL *stop) {
-        IGListSectionController<IGListSectionType> *sectionController = sectionControllers[idx];
+        IGListSectionController *sectionController = sectionControllers[idx];
 
         // set the index of the list for easy reverse lookup
         [self.sectionControllerToSectionMap setObject:@(idx) forKey:sectionController];
         [self.objectToSectionControllerMap setObject:sectionController forKey:object];
+
+        sectionController.isFirstSection = (object == firstObject);
+        sectionController.isLastSection = (object == lastObject);
+        sectionController.section = (NSInteger)idx;
     }];
 }
 
-- (nullable IGListSectionController <IGListSectionType> *)sectionControllerForObject:(id)object {
+- (nullable IGListSectionController *)sectionControllerForObject:(id)object {
     IGParameterAssert(object != nil);
 
     return [self.objectToSectionControllerMap objectForKey:object];
@@ -99,6 +106,12 @@
 }
 
 - (void)reset {
+    [self enumerateUsingBlock:^(id  _Nonnull object, IGListSectionController * _Nonnull sectionController, NSInteger section, BOOL * _Nonnull stop) {
+        sectionController.section = NSNotFound;
+        sectionController.isFirstSection = NO;
+        sectionController.isLastSection = NO;
+    }];
+
     [self.sectionControllerToSectionMap removeAllObjects];
     [self.objectToSectionControllerMap removeAllObjects];
 }
@@ -112,14 +125,14 @@
     self.mObjects[section] = object;
 }
 
-- (void)enumerateUsingBlock:(void (^)(id object, IGListSectionController <IGListSectionType> *sectionController, NSInteger section, BOOL *stop))block {
+- (void)enumerateUsingBlock:(void (^)(id object, IGListSectionController *sectionController, NSInteger section, BOOL *stop))block {
     IGParameterAssert(block != nil);
 
     BOOL stop = NO;
     NSArray *objects = self.objects;
     for (NSInteger section = 0; section < objects.count; section++) {
         id object = objects[section];
-        IGListSectionController <IGListSectionType> *sectionController = [self sectionControllerForObject:object];
+        IGListSectionController *sectionController = [self sectionControllerForObject:object];
         block(object, sectionController, section, &stop);
         if (stop) {
             break;
