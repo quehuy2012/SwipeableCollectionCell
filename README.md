@@ -158,14 +158,6 @@ UITableViewRowAnimationAutomatic];
 }];
 ```
 
-## Advanced 
-
-See the [Advanced Guide](https://github.com/jerkoch/SwipeCellKit/blob/develop/Guides/Advanced.md) for more details on customization.
-
-## Credits
-
-Created and maintained by [**@jerkoch**](https://twitter.com/jerkoch).
-
 ## License
 
 `SwipeCellKit` is released under an [MIT License][mitLink]. See `LICENSE` for details.
