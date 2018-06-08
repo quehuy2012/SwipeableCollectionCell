@@ -117,7 +117,7 @@
 - (void)setUpCollectionView {
     // init collectionView
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    self.collectionView = [[IGListCollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
+    self.collectionView = [[IGListCollectionView alloc] initWithFrame:self.view.bounds listCollectionViewLayout:layout];
     [self.view addSubview:self.collectionView];
     
     // configurate collectionView

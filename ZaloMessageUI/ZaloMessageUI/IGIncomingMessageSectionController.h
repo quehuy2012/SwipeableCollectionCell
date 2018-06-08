@@ -10,6 +10,7 @@
 #import "IGCollapseSupplementary.h"
 #import "ZASwippableCell.h"
 
-@interface IGIncomingMessageSectionController : IGListSectionController <IGListSectionType, IGCollapseSupplementaryDelegate, IGListDisplayDelegate, ZASwippableCellDelegate>
-
+@interface IGIncomingMessageSectionController : IGListSectionController < IGCollapseSupplementaryDelegate, IGListDisplayDelegate, ZASwippableCellDelegate>
+@property (nonatomic, readwrite, copy) NSString *sectionTitle;
+@property (nonatomic, assign, getter=isExpanded) BOOL expanded;
 @end

@@ -53,7 +53,9 @@
 - (void)collectionViewCellWillHide:(SuggestFriendCollectionViewCell *)cell {
     self.friendViewModel = nil;
     NSInteger index = [self.collectionContext indexForCell:cell sectionController:self];
-    [self .collectionContext deleteInSectionController:self atIndexes:[NSIndexSet indexSetWithIndex:index]];
+    [self.collectionContext performBatchAnimated:YES updates:^(id<IGListBatchContext>  _Nonnull batchContext) {
+        [batchContext deleteInSectionController:self atIndexes:[NSIndexSet indexSetWithIndex:index]];
+    } completion:nil];
 }
 
 @end

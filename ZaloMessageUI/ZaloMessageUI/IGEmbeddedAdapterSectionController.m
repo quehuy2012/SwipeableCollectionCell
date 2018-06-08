@@ -106,7 +106,7 @@
     return self.viewModel.subViewModels;
 }
 
-- (IGListSectionController<IGListSectionType> *)listAdapter:(IGListAdapter *)listAdapter sectionControllerForObject:(id)object {
+- (IGListSectionController *)listAdapter:(IGListAdapter *)listAdapter sectionControllerForObject:(id)object {
     return [self.dataSource listAdapter:listAdapter sectionControllerFor:object];
 }
 
@@ -120,7 +120,7 @@
     [self updateSection];
 }
 
-- (void)didTouchAddButtonInSupplementary:(UIView *)supplementaryView ofSectionController:(IGListSectionController<IGListSectionType> *)sectionController {
+- (void)didTouchAddButtonInSupplementary:(UIView *)supplementaryView ofSectionController:(IGListSectionController *)sectionController {
     if (!self.expanded) {
         self.expanded = YES;
         [self updateSection];
@@ -145,10 +145,14 @@
     NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 1)];
     // Update cell
     if (self.isExpanded) {
-        [self.collectionContext insertInSectionController:self atIndexes:indexSet];
+        [self.collectionContext performBatchAnimated:YES updates:^(id<IGListBatchContext>  _Nonnull batchContext) {
+            [batchContext insertInSectionController:self atIndexes:indexSet];
+        } completion:nil];
     }
     else {
-        [self.collectionContext deleteInSectionController:self atIndexes:indexSet];
+        [self.collectionContext performBatchAnimated:YES updates:^(id<IGListBatchContext>  _Nonnull batchContext) {
+            [batchContext deleteInSectionController:self atIndexes:indexSet];
+        } completion:nil];
     }
 }
 

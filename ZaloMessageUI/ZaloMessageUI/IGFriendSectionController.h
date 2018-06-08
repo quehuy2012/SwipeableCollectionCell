@@ -15,7 +15,7 @@
 //
 //@end
 
-@interface IGFriendSectionController : IGListSectionController <IGListSectionType>
+@interface IGFriendSectionController : IGListSectionController 
 
 //@property (nonatomic, readwrite, weak) id<IGFriendSectionControllerDelegate> delegate;
 

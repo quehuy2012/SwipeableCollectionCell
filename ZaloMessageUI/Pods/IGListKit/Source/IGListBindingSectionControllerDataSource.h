@@ -1,10 +1,8 @@
 /**
  * Copyright (c) 2016-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  */
 
 #import <Foundation/Foundation.h>
@@ -19,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  A protocol that returns data to power cells in an `IGListBindingSectionController`.
  */
+NS_SWIFT_NAME(ListBindingSectionControllerDataSource)
 @protocol IGListBindingSectionControllerDataSource <NSObject>
 
 /**
@@ -26,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @param sectionController The section controller requesting view models.
  @param object The top-level object that powers the section controller.
+ 
  @return A new array of view models.
  */
 - (NSArray<id<IGListDiffable>> *)sectionController:(IGListBindingSectionController *)sectionController
@@ -37,6 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param sectionController The section controller requesting a cell.
  @param viewModel The view model for the cell.
  @param index The index of the view model.
+ 
  @return A dequeued cell.
  
  @note The section controller will call `-bindViewModel:` with the provided view model after the cell is dequeued. You
@@ -52,6 +53,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param sectionController The section controller requesting a size.
  @param viewModel The view model for the cell.
  @param index The index of the view model.
+ 
  @return A size for the view model.
  */
 - (CGSize)sectionController:(IGListBindingSectionController *)sectionController

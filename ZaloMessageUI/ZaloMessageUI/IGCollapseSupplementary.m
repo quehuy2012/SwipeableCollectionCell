@@ -13,7 +13,7 @@
 
 @implementation IGCollapseSupplementary
 
-- (instancetype)initWithSectionController:(IGListSectionController<IGListSectionType> *)sectionController {
+- (instancetype)initWithSectionController:(IGListSectionController *)sectionController {
     self = [super init];
     
     if (self) {

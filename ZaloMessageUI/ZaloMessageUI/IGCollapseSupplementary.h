@@ -15,8 +15,8 @@
 @property (nonatomic, readwrite, copy) NSString *sectionTitle;
 @property (nonatomic, assign, getter=isExpanded) BOOL expanded;
 
-- (void)didTouchSupplementary:(UIView *)supplementaryView ofSectionController:(IGListSectionController<IGListSectionType> *)sectionController;
-- (void)didTouchAddButtonInSupplementary:(UIView *)supplementaryView ofSectionController:(IGListSectionController<IGListSectionType> *)sectionController;
+- (void)didTouchSupplementary:(UIView *)supplementaryView ofSectionController:(IGListSectionController *)sectionController;
+- (void)didTouchAddButtonInSupplementary:(UIView *)supplementaryView ofSectionController:(IGListSectionController *)sectionController;
 
 @end
 
@@ -24,10 +24,10 @@
 @interface IGCollapseSupplementary : NSObject <IGListSupplementaryViewSource, HeaderCollapseViewDelegate>
 
 @property (nonatomic, readwrite, weak) id<IGCollapseSupplementaryDelegate> delegate;
-@property (nonatomic, readwrite, weak) IGListSectionController<IGListSectionType> *sectionController;
+@property (nonatomic, readwrite, weak) IGListSectionController *sectionController;
 
 - (instancetype)init __attribute__((unavailable("use initWithSectionController: instead")));
-- (instancetype)initWithSectionController:(IGListSectionController<IGListSectionType> *)sectionController;
+- (instancetype)initWithSectionController:(IGListSectionController *)sectionController;
 
 @end
 

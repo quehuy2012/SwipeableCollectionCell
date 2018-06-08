@@ -102,7 +102,7 @@
 }
 
 #pragma mark - IGListDisplayDelgate
-- (void)listAdapter:(IGListAdapter *)listAdapter willDisplaySectionController:(IGListSectionController<IGListSectionType> *)sectionController cell:(UICollectionViewCell *)cell atIndex:(NSInteger)index {
+- (void)listAdapter:(IGListAdapter *)listAdapter willDisplaySectionController:(IGListSectionController *)sectionController cell:(UICollectionViewCell *)cell atIndex:(NSInteger)index {
     
     id<IncomingMessage> messageViewModel = self.viewModel.subViewModels[index];
     
@@ -123,29 +123,31 @@
     incomingMessageCell.utilityButtons = @[deleteButton, testButton];
 }
 
-- (void)listAdapter:(IGListAdapter *)listAdapter willDisplaySectionController:(IGListSectionController<IGListSectionType> *)sectionController {
+- (void)listAdapter:(IGListAdapter *)listAdapter willDisplaySectionController:(IGListSectionController *)sectionController {
     
 }
 
-- (void)listAdapter:(IGListAdapter *)listAdapter didEndDisplayingSectionController:(IGListSectionController<IGListSectionType> *)sectionController {
+- (void)listAdapter:(IGListAdapter *)listAdapter didEndDisplayingSectionController:(IGListSectionController *)sectionController {
     
 }
 
-- (void)listAdapter:(IGListAdapter *)listAdapter didEndDisplayingSectionController:(IGListSectionController<IGListSectionType> *)sectionController cell:(UICollectionViewCell *)cell atIndex:(NSInteger)index {
+- (void)listAdapter:(IGListAdapter *)listAdapter didEndDisplayingSectionController:(IGListSectionController *)sectionController cell:(UICollectionViewCell *)cell atIndex:(NSInteger)index {
     
 }
 
 #pragma mark - IGCollapseSupplementaryDelegate
-- (void)didTouchSupplementary:(UIView *)supplementaryView ofSectionController:(IGListSectionController<IGListSectionType> *)sectionController {
+- (void)didTouchSupplementary:(UIView *)supplementaryView ofSectionController:(IGListSectionController *)sectionController {
     self.expanded = !self.expanded;
     //[self.collectionContext reloadSectionController:self];
     [self updateSection];
 }
 
-- (void)didTouchAddButtonInSupplementary:(UIView *)supplementaryView ofSectionController:(IGListSectionController<IGListSectionType> *)sectionController {
+- (void)didTouchAddButtonInSupplementary:(UIView *)supplementaryView ofSectionController:(IGListSectionController *)sectionController {
     if (!self.expanded) {
         self.expanded = YES;
-        [self.collectionContext reloadSectionController:self];
+        [self.collectionContext performBatchAnimated:YES updates:^(id<IGListBatchContext>  _Nonnull batchContext) {
+            [batchContext reloadSectionController:self];
+        } completion:nil];
     }
     
     NSUInteger index = [self.viewModel.subViewModels count];
@@ -160,7 +162,9 @@
     id<IncomingMessage> messageViewModel = [IncomingMessageFactory createMessageViewModel:messageEntity];
 
     [self.viewModel.subViewModels insertObject:messageViewModel atIndex:0];
-    [self.collectionContext insertInSectionController:self atIndexes:[NSIndexSet indexSetWithIndex:0]];
+    [self.collectionContext performBatchAnimated:YES updates:^(id<IGListBatchContext>  _Nonnull batchContext) {
+        [batchContext insertInSectionController:self atIndexes:[NSIndexSet indexSetWithIndex:0]];
+    } completion:nil];
 }
 
 #pragma mark - Private
@@ -168,10 +172,14 @@
     NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.viewModel.subViewModels.count)];
     // Update cell
     if (self.isExpanded) {
-        [self.collectionContext insertInSectionController:self atIndexes:indexSet];
+        [self.collectionContext performBatchAnimated:YES updates:^(id<IGListBatchContext>  _Nonnull batchContext) {
+            [batchContext insertInSectionController:self atIndexes:indexSet];
+        } completion:nil];
     }
     else {
-        [self.collectionContext deleteInSectionController:self atIndexes:indexSet];
+        [self.collectionContext performBatchAnimated:YES updates:^(id<IGListBatchContext>  _Nonnull batchContext) {
+            [batchContext deleteInSectionController:self atIndexes:indexSet];
+        } completion:nil];
     }
 }
 
@@ -182,7 +190,9 @@
         [self.viewModel.subViewModels removeObjectAtIndex:cellIndex];
         
         NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:cellIndex];
-        [self.collectionContext deleteInSectionController:self atIndexes:indexSet];
+        [self.collectionContext performBatchAnimated:YES updates:^(id<IGListBatchContext>  _Nonnull batchContext) {
+            [batchContext deleteInSectionController:self atIndexes:indexSet];
+        } completion:nil];
     }
 }
 
